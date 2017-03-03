@@ -1,0 +1,1 @@
+start tomitaparser.exe config.proto

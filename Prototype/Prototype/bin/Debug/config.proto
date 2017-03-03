@@ -1,0 +1,15 @@
+encoding "utf8";
+
+TTextMinerConfig {
+  Dictionary = "Dictionary.gzt";
+  
+  PrettyOutput = "PrettyOutput.html";
+
+  Input = {
+    File = "Input.txt";
+  }
+
+  Articles = [
+    { Name = "отзывы" }
+  ]
+}

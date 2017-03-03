@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#"
+     xml:base="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:untitled-ontology-47="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasAttribute -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasAttribute"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasKeyWord -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasKeyWord"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasTable -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasTable"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Застройщик -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Застройщик">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
+        <HasKeyWord>Застройщик</HasKeyWord>
+        <HasKeyWord>Ответственный</HasKeyWord>
+        <HasKeyWord>Подрядчик</HasKeyWord>
+        <HasKeyWord>Строитель</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+#GRAMMAR_ROOT S
+
+Entity -> [ENTITY];
+
+AdjCoord -&gt; Adj;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
+S1 -&gt; Entity;
+S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
+S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
+S4 -&gt; S1 | S2 | S3;
+S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
+S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
+S7 -&gt; S5 | S6;
+S -&gt; (Prep) S7;</HasScript>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Инфраструктура -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Инфраструктура">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
+        <HasKeyWord>Инфраструктура</HasKeyWord>
+        <HasKeyWord>Развитая</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+#GRAMMAR_ROOT S
+
+Entity -> [ENTITY];
+
+AdjCoord -&gt; Adj;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
+S1 -&gt; Entity;
+S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
+S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
+S4 -&gt; S1 | S2 | S3;
+S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
+S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
+S7 -&gt; S5 | S6;
+S -&gt; (Prep) S7;</HasScript>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отделка -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отделка">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
+        <HasAttribute>Факт</HasAttribute>
+        <HasKeyWord>балкон</HasKeyWord>
+        <HasKeyWord>батарея</HasKeyWord>
+        <HasKeyWord>ванная</HasKeyWord>
+        <HasKeyWord>гардероб</HasKeyWord>
+        <HasKeyWord>дверь</HasKeyWord>
+        <HasKeyWord>зал</HasKeyWord>
+        <HasKeyWord>комната</HasKeyWord>
+        <HasKeyWord>коридор</HasKeyWord>
+        <HasKeyWord>кухня</HasKeyWord>
+        <HasKeyWord>ламинат</HasKeyWord>
+        <HasKeyWord>линолеум</HasKeyWord>
+        <HasKeyWord>лоджия</HasKeyWord>
+        <HasKeyWord>обои</HasKeyWord>
+        <HasKeyWord>отделка</HasKeyWord>
+        <HasKeyWord>парадная</HasKeyWord>
+        <HasKeyWord>паркет</HasKeyWord>
+        <HasKeyWord>планировка</HasKeyWord>
+        <HasKeyWord>подоконник</HasKeyWord>
+        <HasKeyWord>помещение</HasKeyWord>
+        <HasKeyWord>потолок</HasKeyWord>
+        <HasKeyWord>прихожая</HasKeyWord>
+        <HasKeyWord>проводка</HasKeyWord>
+        <HasKeyWord>сантехника</HasKeyWord>
+        <HasKeyWord>стеклопакет</HasKeyWord>
+        <HasKeyWord>стены</HasKeyWord>
+        <HasKeyWord>туалет</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+#GRAMMAR_ROOT S
+
+Entity -> [ENTITY];
+
+AdjCoord -&gt; Adj;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
+S1 -&gt; Entity;
+S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
+S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
+S4 -&gt; S1 | S2 | S3;
+S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
+S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
+S7 -&gt; S5 | S6;
+S -&gt; (Prep) S7;</HasScript>
+        <HasTable>Отделка</HasTable>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Район -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Район">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
+        <HasKeyWord>Макрорайон</HasKeyWord>
+        <HasKeyWord>Микрорайон</HasKeyWord>
+        <HasKeyWord>Район</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+#GRAMMAR_ROOT S
+
+Entity -> [ENTITY];
+
+AdjCoord -&gt; Adj;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
+S1 -&gt; Entity;
+S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
+S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
+S4 -&gt; S1 | S2 | S3;
+S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
+S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
+S7 -&gt; S5 | S6;
+S -&gt; (Prep) S7;</HasScript>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Цена -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Цена">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
+        <HasKeyWord>Дорого</HasKeyWord>
+        <HasKeyWord>Дёшего</HasKeyWord>
+        <HasKeyWord>Заоблачная</HasKeyWord>
+        <HasKeyWord>Плата</HasKeyWord>
+        <HasKeyWord>Расценка</HasKeyWord>
+        <HasKeyWord>Стоимость</HasKeyWord>
+        <HasKeyWord>Цена</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+#GRAMMAR_ROOT S
+
+Entity -> [ENTITY];
+
+AdjCoord -&gt; Adj;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
+MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
+S1 -&gt; Entity;
+S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
+S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
+S4 -&gt; S1 | S2 | S3;
+S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
+S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
+S7 -&gt; S5 | S6;
+S -&gt; (Prep) S7;</HasScript>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

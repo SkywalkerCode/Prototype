@@ -1,0 +1,9 @@
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\bin\Debug\Prototype.exe.config
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\bin\Debug\Prototype.exe
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\bin\Debug\Prototype.pdb
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.Properties.Resources.resources
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.csproj.GenerateResource.Cache
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.exe
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.pdb
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.MainForm.resources
+C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache

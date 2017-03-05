@@ -10,19 +10,24 @@ namespace Prototype
 {
     public class WriteInLog : ILogWriter
     {
-        ListBox listBox;
+        ListBox ListBox;
 
         public WriteInLog(ListBox LBox)
         {
-            listBox = LBox;
+            ListBox = LBox;
         }
 
         /// <summary> Выводит сообщение в лог. </summary>
         public void Write(string Message)
         {
-            listBox.Items.Add(Message);
-            listBox.SelectedIndex = listBox.Items.Count - 1;
-            listBox.SelectedIndex = -1;
+            ListBox.Items.Add(Message);
+            ListBox.SelectedIndex = ListBox.Items.Count - 1;
+            ListBox.SelectedIndex = -1;
+        }
+
+        public void Clear()
+        {
+            ListBox.Items.Clear();
         }
     }
 }

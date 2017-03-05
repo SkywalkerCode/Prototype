@@ -10,5 +10,7 @@ namespace Prototype.Interfaces
     public interface ILogWriter
     {
         void Write(string Message);
+
+        void Clear();
     }
 }

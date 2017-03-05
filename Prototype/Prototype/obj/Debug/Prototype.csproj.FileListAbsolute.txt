@@ -7,3 +7,15 @@ C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\
 C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.pdb
 C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.MainForm.resources
 C:\Users\Anakin\Desktop\Курсовая\Программа\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\Prototype.exe.config
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.exe
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.pdb
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\Prototype.exe
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\Prototype.pdb
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.MainForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Properties.Resources.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csproj.GenerateResource.Cache
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.OntologyForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.ReviewForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.FactsForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache

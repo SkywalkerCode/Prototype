@@ -22,27 +22,21 @@ namespace Prototype.Parser
             script = script.Replace("[ENTITY]", entity.Remove(entity.Length - 3));
             File.WriteAllText(@"Script.cxx", script);
             File.WriteAllText(@"Input.txt", text);
-            if (script != "")
+            Process Parsing = new Process();
+            Parsing.StartInfo.FileName = @"tomitaparser.exe";
+            Parsing.StartInfo.Arguments = @"Config.proto";
+            Parsing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            Parsing.Start();
+            Parsing.WaitForExit();
+            if (File.Exists("PrettyOutput.html"))
             {
-                Process Parsing = new Process();
-                Parsing.StartInfo.FileName = @"tomitaparser.exe";
-                Parsing.StartInfo.Arguments = @"Config.proto";
-                Parsing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                Parsing.Start();
-                Parsing.WaitForExit();
-                if (File.Exists("PrettyOutput.html"))
-                {
-                    string factsHTML = File.ReadAllText("PrettyOutput.html");
-                    foreach (string fact in factsHTML.Substrings("<a href=", "</a>").ToList())
-                        listFacts.Add(fact.Remove(0, fact.IndexOf(">") + 1));
-                }
-                File.Delete("PrettyOutput.html");
-                File.Delete("Input.txt");
-                return listFacts;
+                string factsHTML = File.ReadAllText("PrettyOutput.html");
+                foreach (string fact in factsHTML.Substrings("<a href=", "</a>").ToList())
+                    listFacts.Add(fact.Remove(0, fact.IndexOf(">") + 1));
             }
             File.Delete("PrettyOutput.html");
             File.Delete("Input.txt");
-            return null;
+            return listFacts;
         }        
     }
 }

@@ -19,3 +19,4 @@ D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.OntologyForm.resourc
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.ReviewForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.FactsForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.StopWordsForm.resources

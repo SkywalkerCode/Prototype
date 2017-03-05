@@ -15,6 +15,7 @@ namespace Prototype
 {
     public partial class MainForm : Form
     {
+        public StopWordsForm StopWords;
         public OntologyForm Ontology;
         public ReviewForm Review;
         public FactsForm Facts;
@@ -22,9 +23,11 @@ namespace Prototype
         public MainForm()
         {
             InitializeComponent();
+            StopWords = new StopWordsForm();
             Ontology = new OntologyForm(this, Path.GetFullPath("Онтология Protege.owl"));
             Review = new ReviewForm();
             Facts = new FactsForm();
+            StopWords.Show();
             Ontology.Show();
             Review.Show();
             Facts.Show();
@@ -49,8 +52,9 @@ namespace Prototype
 
         private void WindowsNormalize()
         {
-            Review.StandartPosition();
+            StopWords.StandartPosition();
             Ontology.StandartPosition();
+            Review.StandartPosition();
             Facts.StandartPosition();
             this.StandartPosition();
         }
@@ -103,6 +107,18 @@ namespace Prototype
             }
         }
 
+        private void btnShowStopWords_Click(object sender, EventArgs e)
+        {
+            if (StopWords.Visible == true)
+            {
+                StopWords.Hide();
+            }
+            else
+            {
+                StopWords.Show();
+            }
+        }
+
         private void btnShowFacts_Click(object sender, EventArgs e)
         {
             if (Facts.Visible == true)
@@ -147,6 +163,11 @@ namespace Prototype
             string textReview = Review.TextReview;
             OwlClassItem headClass = (OwlClassItem)cbSelectClass.SelectedItem;
             Facts.ExtractFacts(textReview, (OwlClass)headClass.owlNode);
+        }
+
+        private void DeleteStopWord_Click(object sender, EventArgs e)
+        {
+            Review.DeleteStopWords(StopWords.StopWords);
         }
     }
 }

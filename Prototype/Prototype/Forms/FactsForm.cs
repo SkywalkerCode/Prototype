@@ -1,14 +1,16 @@
 ﻿using OwlDotNetApi;
-using Prototype.Parser;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xNet;
 
 namespace Prototype.Forms
 {
@@ -29,7 +31,7 @@ namespace Prototype.Forms
             this.Size = new Size()
             {
                 Height = Screen.PrimaryScreen.WorkingArea.Height * 5 / 7,
-                Width = Screen.PrimaryScreen.WorkingArea.Width / 2
+                Width = Screen.PrimaryScreen.WorkingArea.Width * 9 / 25
             };
         }
 
@@ -49,8 +51,8 @@ namespace Prototype.Forms
                 OwlIndividual owlIndividual = (OwlIndividual)(owlEdge.ParentNode);
                 string owlIndividualName = OntologyForm.ConvertNameNode(owlIndividual);
                 TreeNode nodeIndividual = new TreeNode(owlIndividualName);
-                nodeClass.Nodes.Add(nodeIndividual);
                 ExtractFactsFromIndividual(textReview, owlIndividual, nodeIndividual);
+                nodeClass.Nodes.Add(nodeIndividual);
                 nodeClass.Expand();
             }
         }
@@ -79,7 +81,7 @@ namespace Prototype.Forms
 
                 if (_script != "")
                 {
-                    List<string> listFacts = TomitaParser.GetFacts(_script, _keyWords, textReview);
+                    List<string> listFacts = GetFacts(_script, _keyWords, textReview);
                     foreach (string fact in listFacts)
                         nodeIndividual.Nodes.Add(fact);
                 }
@@ -100,5 +102,33 @@ namespace Prototype.Forms
         {
             tvFacts.Nodes.Clear();
         }
+
+        private static List<string> GetFacts(string script, List<string> keyWords, string text)
+        {
+            string entity = "";
+            List<string> listFacts = new List<string>();
+            foreach (string synonym in keyWords)
+            {
+                entity += "'" + synonym.ToLower() + "'" + " | ";
+            }
+            script = script.Replace("[ENTITY]", entity.Remove(entity.Length - 3));
+            File.WriteAllText(@"Script.cxx", script);
+            File.WriteAllText(@"Input.txt", text);
+            Process Parsing = new Process();
+            Parsing.StartInfo.FileName = @"tomitaparser.exe";
+            Parsing.StartInfo.Arguments = @"Config.proto";
+            Parsing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            Parsing.Start();
+            Parsing.WaitForExit();
+            if (File.Exists("PrettyOutput.html"))
+            {
+                string factsHTML = File.ReadAllText("PrettyOutput.html");
+                foreach (string fact in factsHTML.Substrings("<a href=", "</a>").ToList())
+                    listFacts.Add(fact.Remove(0, fact.IndexOf(">") + 1));
+            }
+            File.Delete("PrettyOutput.html");
+            File.Delete("Input.txt");
+            return listFacts;
+        } 
     }
 }

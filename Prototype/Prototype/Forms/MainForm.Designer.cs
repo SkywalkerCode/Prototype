@@ -29,19 +29,23 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnWindowsNormalize = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnShowFacts = new System.Windows.Forms.Button();
             this.btnShowReview = new System.Windows.Forms.Button();
             this.btnShowOntology = new System.Windows.Forms.Button();
+            this.btnWindowsNormalize = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbSelectClass = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnExtractFacts = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbSelectClass = new System.Windows.Forms.ComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.DeleteStopWord = new System.Windows.Forms.Button();
+            this.btnShowStopWords = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -56,26 +60,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Окна";
             // 
-            // btnWindowsNormalize
-            // 
-            this.btnWindowsNormalize.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnWindowsNormalize.Location = new System.Drawing.Point(3, 16);
-            this.btnWindowsNormalize.Name = "btnWindowsNormalize";
-            this.btnWindowsNormalize.Size = new System.Drawing.Size(115, 23);
-            this.btnWindowsNormalize.TabIndex = 0;
-            this.btnWindowsNormalize.Text = "Упорядочить";
-            this.btnWindowsNormalize.UseVisualStyleBackColor = true;
-            this.btnWindowsNormalize.Click += new System.EventHandler(this.btnWindowsNormalize_Click_1);
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnShowStopWords);
             this.groupBox2.Controls.Add(this.btnShowFacts);
             this.groupBox2.Controls.Add(this.btnShowReview);
             this.groupBox2.Controls.Add(this.btnShowOntology);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(3, 39);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(115, 90);
+            this.groupBox2.Size = new System.Drawing.Size(115, 114);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Показать/скрыть";
@@ -113,6 +107,17 @@
             this.btnShowOntology.UseVisualStyleBackColor = true;
             this.btnShowOntology.Click += new System.EventHandler(this.btnShowOntology_Click);
             // 
+            // btnWindowsNormalize
+            // 
+            this.btnWindowsNormalize.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnWindowsNormalize.Location = new System.Drawing.Point(3, 16);
+            this.btnWindowsNormalize.Name = "btnWindowsNormalize";
+            this.btnWindowsNormalize.Size = new System.Drawing.Size(115, 23);
+            this.btnWindowsNormalize.TabIndex = 0;
+            this.btnWindowsNormalize.Text = "Упорядочить";
+            this.btnWindowsNormalize.UseVisualStyleBackColor = true;
+            this.btnWindowsNormalize.Click += new System.EventHandler(this.btnWindowsNormalize_Click_1);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnExtractFacts);
@@ -124,6 +129,29 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Извлечение фактов";
+            // 
+            // btnExtractFacts
+            // 
+            this.btnExtractFacts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExtractFacts.Enabled = false;
+            this.btnExtractFacts.Location = new System.Drawing.Point(3, 57);
+            this.btnExtractFacts.Name = "btnExtractFacts";
+            this.btnExtractFacts.Size = new System.Drawing.Size(174, 23);
+            this.btnExtractFacts.TabIndex = 4;
+            this.btnExtractFacts.Text = "Извлечь факты";
+            this.btnExtractFacts.UseVisualStyleBackColor = true;
+            this.btnExtractFacts.Click += new System.EventHandler(this.btnExtractFacts_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbSelectClass);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Location = new System.Drawing.Point(3, 16);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(174, 41);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Корневой класс";
             // 
             // cbSelectClass
             // 
@@ -138,34 +166,44 @@
             this.cbSelectClass.DropDown += new System.EventHandler(this.cbSelectClass_DropDown);
             this.cbSelectClass.SelectedValueChanged += new System.EventHandler(this.cbSelectClass_SelectedValueChanged);
             // 
-            // groupBox4
+            // groupBox5
             // 
-            this.groupBox4.Controls.Add(this.cbSelectClass);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(3, 16);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(174, 41);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Корневой класс";
+            this.groupBox5.Controls.Add(this.DeleteStopWord);
+            this.groupBox5.Location = new System.Drawing.Point(304, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(155, 44);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Текст отзыва";
             // 
-            // btnExtractFacts
+            // DeleteStopWord
             // 
-            this.btnExtractFacts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnExtractFacts.Enabled = false;
-            this.btnExtractFacts.Location = new System.Drawing.Point(3, 57);
-            this.btnExtractFacts.Name = "btnExtractFacts";
-            this.btnExtractFacts.Size = new System.Drawing.Size(174, 23);
-            this.btnExtractFacts.TabIndex = 4;
-            this.btnExtractFacts.Text = "Извлечь факты";
-            this.btnExtractFacts.UseVisualStyleBackColor = true;
-            this.btnExtractFacts.Click += new System.EventHandler(this.btnExtractFacts_Click);
+            this.DeleteStopWord.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DeleteStopWord.Location = new System.Drawing.Point(3, 16);
+            this.DeleteStopWord.Name = "DeleteStopWord";
+            this.DeleteStopWord.Size = new System.Drawing.Size(149, 23);
+            this.DeleteStopWord.TabIndex = 0;
+            this.DeleteStopWord.Text = "Удалить стоп-слова";
+            this.DeleteStopWord.UseVisualStyleBackColor = true;
+            this.DeleteStopWord.Click += new System.EventHandler(this.DeleteStopWord_Click);
+            // 
+            // btnShowStopWords
+            // 
+            this.btnShowStopWords.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnShowStopWords.Location = new System.Drawing.Point(3, 85);
+            this.btnShowStopWords.Name = "btnShowStopWords";
+            this.btnShowStopWords.Size = new System.Drawing.Size(109, 23);
+            this.btnShowStopWords.TabIndex = 13;
+            this.btnShowStopWords.Text = "Стоп-слова";
+            this.btnShowStopWords.UseVisualStyleBackColor = true;
+            this.btnShowStopWords.Click += new System.EventHandler(this.btnShowStopWords_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 212);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
@@ -175,6 +213,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -191,6 +230,9 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbSelectClass;
         private System.Windows.Forms.Button btnExtractFacts;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button DeleteStopWord;
+        private System.Windows.Forms.Button btnShowStopWords;
 
     }
 }

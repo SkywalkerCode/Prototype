@@ -8,20 +8,44 @@ namespace Prototype.Tools
 {
     public class Review
     {
-        private string URI;
-        private string Text;
-        private List<Fact> Fact;
+        private string Uri;
+        private string text;
+        private List<Fact> facts;
+
+        public string URI
+        {
+            get
+            {
+                return Uri;
+            }
+        }
+
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+        }
+
+        public List<Fact> Facts
+        {
+            get
+            {
+                return facts;
+            }
+        }
 
         public Review(string text, string uri)
         {
-            Fact = new List<Fact>();
-            Text = text;
-            URI = uri;
+            facts = new List<Fact>();
+            this.text = text;
+            this.Uri = uri;
         }
 
         public void Add(Fact fact)
         {
-            Fact.Add(fact);
+            this.facts.Add(fact);
         }
     }
 }

@@ -36,10 +36,10 @@
             this.btnSave = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tbText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tbURI = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbText = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -104,6 +104,33 @@
             this.panel1.Size = new System.Drawing.Size(641, 20);
             this.panel1.TabIndex = 4;
             // 
+            // tbURI
+            // 
+            this.tbURI.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbURI.Location = new System.Drawing.Point(34, 0);
+            this.tbURI.Name = "tbURI";
+            this.tbURI.Size = new System.Drawing.Size(607, 20);
+            this.tbURI.TabIndex = 3;
+            this.tbURI.Text = "http://www.sampridumal.me";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(34, 20);
+            this.panel2.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "URI:";
+            // 
             // tbText
             // 
             this.tbText.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -115,33 +142,6 @@
             this.tbText.Size = new System.Drawing.Size(641, 336);
             this.tbText.TabIndex = 5;
             this.tbText.Text = resources.GetString("tbText.Text");
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "URI:";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(34, 20);
-            this.panel2.TabIndex = 2;
-            // 
-            // tbURI
-            // 
-            this.tbURI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbURI.Location = new System.Drawing.Point(34, 0);
-            this.tbURI.Name = "tbURI";
-            this.tbURI.Size = new System.Drawing.Size(607, 20);
-            this.tbURI.TabIndex = 3;
-            this.tbURI.Text = "http://www.sampridumal.me";
             // 
             // ReviewForm
             // 

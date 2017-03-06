@@ -1,5 +1,6 @@
 ﻿using OwlDotNetApi;
 using Prototype.Forms;
+using Prototype.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,24 +17,24 @@ namespace Prototype
 {
     public partial class MainForm : Form
     {
-        public ConnectSqlServerForm Connecting;
-        public StopWordsForm StopWords;
-        public OntologyForm Ontology;
-        public ReviewForm Review;
-        public FactsForm Facts;
+        public ConnectSqlServerForm ConnectingForm;
+        public StopWordsForm StopWordsForm;
+        public OntologyForm OntologyForm;
+        public ReviewForm ReviewForm;
+        public FactsForm FactsForm;
 
         public MainForm()
         {
             InitializeComponent();
-            Connecting = new ConnectSqlServerForm();
-            StopWords = new StopWordsForm();
-            Ontology = new OntologyForm(this, Path.GetFullPath("Онтология Protege.owl"));
-            Review = new ReviewForm();
-            Facts = new FactsForm();
-            StopWords.Show();
-            Ontology.Show();
-            Review.Show();
-            Facts.Show();
+            ConnectingForm = new ConnectSqlServerForm();
+            StopWordsForm = new StopWordsForm();
+            OntologyForm = new OntologyForm(this, Path.GetFullPath("Онтология Protege.owl"));
+            ReviewForm = new ReviewForm();
+            FactsForm = new FactsForm();
+            StopWordsForm.Show();
+            OntologyForm.Show();
+            ReviewForm.Show();
+            FactsForm.Show();
         }
 
         public List<OwlClass> ListOwlClass
@@ -55,10 +56,10 @@ namespace Prototype
 
         private void WindowsNormalize()
         {
-            StopWords.StandartPosition();
-            Ontology.StandartPosition();
-            Review.StandartPosition();
-            Facts.StandartPosition();
+            StopWordsForm.StandartPosition();
+            OntologyForm.StandartPosition();
+            ReviewForm.StandartPosition();
+            FactsForm.StandartPosition();
             this.StandartPosition();
         }
 
@@ -88,49 +89,49 @@ namespace Prototype
 
         private void btnShowOntology_Click(object sender, EventArgs e)
         {
-            if (Ontology.Visible == true)
+            if (OntologyForm.Visible == true)
             {
-                Ontology.Hide();
+                OntologyForm.Hide();
             }
             else
             {
-                Ontology.Show();
+                OntologyForm.Show();
             }
         }
 
         private void btnShowReview_Click(object sender, EventArgs e)
         {
-            if (Review.Visible == true)
+            if (ReviewForm.Visible == true)
             {
-                Review.Hide();
+                ReviewForm.Hide();
             }
             else
             {
-                Review.Show();
+                ReviewForm.Show();
             }
         }
 
         private void btnShowStopWords_Click(object sender, EventArgs e)
         {
-            if (StopWords.Visible == true)
+            if (StopWordsForm.Visible == true)
             {
-                StopWords.Hide();
+                StopWordsForm.Hide();
             }
             else
             {
-                StopWords.Show();
+                StopWordsForm.Show();
             }
         }
 
         private void btnShowFacts_Click(object sender, EventArgs e)
         {
-            if (Facts.Visible == true)
+            if (FactsForm.Visible == true)
             {
-                Facts.Hide();
+                FactsForm.Hide();
             }
             else
             {
-                Facts.Show();
+                FactsForm.Show();
             }
         }
 
@@ -163,29 +164,29 @@ namespace Prototype
 
         private void btnExtractFacts_Click(object sender, EventArgs e)
         {
-            Facts.ExtractFacts(
-                Review.TextReview,
-                Review.URI,
+            FactsForm.ExtractFacts(
+                ReviewForm.TextReview,
+                ReviewForm.URI,
                 (OwlClass)((OwlClassItem)cbSelectClass.SelectedItem).owlNode);
         }
 
         private void btnDeleteStopWord_Click(object sender, EventArgs e)
         {
-            Review.DeleteStopWords(StopWords.StopWords);
+            ReviewForm.DeleteStopWords(StopWordsForm.StopWords);
         }
 
         private void btnConnecting_Click(object sender, EventArgs e)
         {
-            Connecting.ShowDialog();
-            var SqlConnStr = Connecting.SqlConnectStr;
-            if (Connecting.SqlConnectStr == null)
+            ConnectingForm.ShowDialog();
+            var SqlConnStr = ConnectingForm.SqlConnectStr;
+            if (ConnectingForm.SqlConnectStr == null)
             {
                 lStatus.Text = "Не подключено";
                 lStatus.ForeColor = Color.Red;
             }
             else
             {
-                lStatus.Text = "Сервер: " + Connecting.SqlConnectStr.DataSource;
+                lStatus.Text = "Сервер: " + ConnectingForm.SqlConnectStr.DataSource;
                 lStatus.ForeColor = Color.Green;
                 cbCurrentDataBase.Items.Clear();
                 using (var sConn = new SqlConnection(SqlConnStr.ConnectionString))
@@ -208,7 +209,7 @@ namespace Prototype
 
         private void cbCurrentDataBase_TextChanged(object sender, EventArgs e)
         {
-            var SqlConnStr = Connecting.SqlConnectStr;
+            var SqlConnStr = ConnectingForm.SqlConnectStr;
             cbTableReview.Items.Clear();
             SqlConnStr.InitialCatalog = cbCurrentDataBase.Text;
             using (var sConn = new SqlConnection(SqlConnStr.ConnectionString))
@@ -226,6 +227,34 @@ namespace Prototype
                 }
                 cbTableReview.SelectedIndex = (cbTableReview.Items.Count != 0) ? 0 : -1;
             }
+        }
+
+        private void cbTableReview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTableReview.SelectedIndex == -1)
+            {
+                btnExport.Enabled = false;
+            }
+            else
+            {
+                btnExport.Enabled = true;
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string tableReviewName = cbTableReview.Text;
+            ExportForm export = new ExportForm(ConnectingForm.SqlConnectStr, tableReviewName);
+            foreach (Review review in FactsForm.Reviews)
+            {
+                export.AddReview(review);
+            }
+            export.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

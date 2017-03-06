@@ -46,7 +46,7 @@
             // 
             this.btnConnection.Enabled = false;
             this.btnConnection.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConnection.Location = new System.Drawing.Point(61, 188);
+            this.btnConnection.Location = new System.Drawing.Point(58, 180);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(119, 23);
             this.btnConnection.TabIndex = 7;
@@ -57,7 +57,7 @@
             // tbPassword
             // 
             this.tbPassword.Enabled = false;
-            this.tbPassword.Location = new System.Drawing.Point(155, 126);
+            this.tbPassword.Location = new System.Drawing.Point(155, 119);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(219, 20);
             this.tbPassword.TabIndex = 1;
@@ -65,7 +65,7 @@
             // tbUserName
             // 
             this.tbUserName.Enabled = false;
-            this.tbUserName.Location = new System.Drawing.Point(155, 152);
+            this.tbUserName.Location = new System.Drawing.Point(155, 145);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(219, 20);
             this.tbUserName.TabIndex = 2;
@@ -77,7 +77,7 @@
             this.cbTypeCheck.Items.AddRange(new object[] {
             "Проверка подлинности Windows",
             "Проверка подлинности SQL Server"});
-            this.cbTypeCheck.Location = new System.Drawing.Point(155, 99);
+            this.cbTypeCheck.Location = new System.Drawing.Point(155, 92);
             this.cbTypeCheck.Name = "cbTypeCheck";
             this.cbTypeCheck.Size = new System.Drawing.Size(219, 21);
             this.cbTypeCheck.TabIndex = 0;
@@ -86,7 +86,7 @@
             // btnSearchServers
             // 
             this.btnSearchServers.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSearchServers.Location = new System.Drawing.Point(271, 43);
+            this.btnSearchServers.Location = new System.Drawing.Point(271, 36);
             this.btnSearchServers.Name = "btnSearchServers";
             this.btnSearchServers.Size = new System.Drawing.Size(103, 23);
             this.btnSearchServers.TabIndex = 1;
@@ -97,7 +97,7 @@
             // cbServerName
             // 
             this.cbServerName.FormattingEnabled = true;
-            this.cbServerName.Location = new System.Drawing.Point(155, 72);
+            this.cbServerName.Location = new System.Drawing.Point(155, 65);
             this.cbServerName.Name = "cbServerName";
             this.cbServerName.Size = new System.Drawing.Size(219, 21);
             this.cbServerName.TabIndex = 2;
@@ -109,14 +109,14 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 31);
+            this.label1.Size = new System.Drawing.Size(165, 31);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Microsoft SQL Server";
+            this.label1.Text = "SQL Server";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 75);
+            this.label2.Location = new System.Drawing.Point(12, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 13;
@@ -125,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 102);
+            this.label3.Location = new System.Drawing.Point(12, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 13);
             this.label3.TabIndex = 14;
@@ -134,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 129);
+            this.label4.Location = new System.Drawing.Point(12, 122);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 14;
@@ -143,7 +143,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 155);
+            this.label5.Location = new System.Drawing.Point(12, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 14;
@@ -152,7 +152,7 @@
             // btnCancel
             // 
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancel.Location = new System.Drawing.Point(186, 188);
+            this.btnCancel.Location = new System.Drawing.Point(183, 180);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(119, 23);
             this.btnCancel.TabIndex = 7;
@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 223);
+            this.ClientSize = new System.Drawing.Size(386, 215);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

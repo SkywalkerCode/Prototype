@@ -8,13 +8,29 @@ namespace Prototype.Tools
 {
     public class Fact
     {
-        private string Text { get; set; }
-        private string Query { get; set; }
+        private string text;
+        private string table;
 
-        public Fact(string text, string query)
+        public string Text
         {
-            Text = text;
-            Query = query;
+            get
+            {
+                return text;
+            }
+        }
+
+        public string Table
+        {
+            get
+            {
+                return table;
+            }
+        }
+
+        public Fact(string text, string table)
+        {
+            this.text = text;
+            this.table = table;
         }
     }
 }

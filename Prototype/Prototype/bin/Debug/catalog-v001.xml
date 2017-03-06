@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1488778024358" name="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47" uri="Онтология%20Protege.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1488835045556" name="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47" uri="Онтология%20Protege.owl"/>
     </group>
 </catalog>

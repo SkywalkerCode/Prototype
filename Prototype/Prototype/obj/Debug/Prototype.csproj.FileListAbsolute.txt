@@ -18,6 +18,6 @@ D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csproj.GenerateResou
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.OntologyForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.ReviewForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.FactsForm.resources
-D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.StopWordsForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.ConnectSqlServerForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.ExportForm.resources

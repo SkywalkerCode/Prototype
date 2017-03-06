@@ -28,15 +28,15 @@
     
 
 
-    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasQuery -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasQuery"/>
-    
-
-
     <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasTable -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasTable"/>
     
 
 
@@ -93,6 +93,7 @@ S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-a
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
 S -&gt; (Prep) S7;</HasScript>
+        <HasTable>Застройщик</HasTable>
     </owl:NamedIndividual>
     
 
@@ -120,6 +121,7 @@ S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-a
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
 S -&gt; (Prep) S7;</HasScript>
+        <HasTable>Инфраструктура</HasTable>
     </owl:NamedIndividual>
     
 
@@ -154,7 +156,6 @@ S -&gt; (Prep) S7;</HasScript>
         <HasKeyWord>стеклопакет</HasKeyWord>
         <HasKeyWord>стены</HasKeyWord>
         <HasKeyWord>туалет</HasKeyWord>
-        <HasQuery>insert into Отделка values (&lt;id отзыва&gt;, &apos;&lt;факт&gt;&apos;)</HasQuery>
         <HasScript>#encoding &quot;utf-8&quot;
 #GRAMMAR_ROOT S
 
@@ -172,6 +173,7 @@ S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-a
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
 S -&gt; (Prep) S7;</HasScript>
+        <HasTable>Отделка</HasTable>
     </owl:NamedIndividual>
     
 
@@ -200,6 +202,7 @@ S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-a
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
 S -&gt; (Prep) S7;</HasScript>
+        <HasTable>Район</HasTable>
     </owl:NamedIndividual>
     
 
@@ -232,6 +235,7 @@ S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-a
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
 S -&gt; (Prep) S7;</HasScript>
+        <HasTable>Цена</HasTable>
     </owl:NamedIndividual>
 </rdf:RDF>
 

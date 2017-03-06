@@ -17,12 +17,20 @@ namespace Prototype.Forms
 {
     public partial class FactsForm : Form
     {
-        private List<Review> Reviews;
+        private List<Review> reviews;
+
+        public List<Review> Reviews
+        {
+            get
+            {
+                return reviews;
+            }
+        }
 
         public FactsForm()
         {
             InitializeComponent();
-            Reviews = new List<Review>();
+            reviews = new List<Review>();
         }
 
         public void StandartPosition()
@@ -48,9 +56,9 @@ namespace Prototype.Forms
         public void ExtractFacts(string textReview, string URI, OwlClass owlClass)
         {
             Review review = new Review(textReview, URI);
-            Reviews.Add(review);
+            reviews.Add(review);
             string owlClassName = OntologyForm.ConvertNameNode(owlClass);
-            TreeNode nodeClass = new TreeNode(owlClassName);
+            TreeNode nodeClass = new TreeNode(owlClassName + " " + (tvFacts.Nodes.Count + 1).ToString() + ": " + URI);
             tvFacts.Nodes.Add(nodeClass);
             foreach (OwlEdge owlEdge in owlClass.ParentEdges)
             {
@@ -69,7 +77,7 @@ namespace Prototype.Forms
             {
                 List<string> keyWords = new List<string>();
                 string script = "";
-                string query = "";
+                string table = "";
 
                 foreach (OwlEdge owlAttribute in owlIndividual.ChildEdges)
                 {
@@ -83,10 +91,10 @@ namespace Prototype.Forms
                         OwlNode attribute = (OwlNode)(owlAttribute.ChildNode);
                         script = attribute.ID;
                     }
-                    if (OntologyForm.ConvertNameNode(owlAttribute) == "HasQuery")
+                    if (OntologyForm.ConvertNameNode(owlAttribute) == "HasTable")
                     {
                         OwlNode attribute = (OwlNode)(owlAttribute.ChildNode);
-                        query = attribute.ID;
+                        table = attribute.ID;
                     }
                 }
                 if (script != "")
@@ -94,7 +102,7 @@ namespace Prototype.Forms
                     List<string> listFacts = GetFacts(script, keyWords, textReview);
                     foreach (string fact in listFacts)
                     {
-                        review.Add(new Fact(fact, query));
+                        review.Add(new Fact(fact, table));
                         nodeIndividual.Nodes.Add(fact);
                     }
                 }
@@ -114,7 +122,7 @@ namespace Prototype.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             tvFacts.Nodes.Clear();
-            Reviews.Clear();
+            reviews.Clear();
         }
 
         private static List<string> GetFacts(string script, List<string> keyWords, string text)

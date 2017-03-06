@@ -22,27 +22,21 @@
     
 
 
-    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasAttribute -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasAttribute"/>
-    
-
-
     <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasKeyWord -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasKeyWord"/>
     
 
 
-    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript -->
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasQuery -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript"/>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasQuery"/>
     
 
 
-    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasTable -->
+    <!-- http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasTable"/>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#HasScript"/>
     
 
 
@@ -85,7 +79,7 @@
         <HasScript>#encoding &quot;utf-8&quot;
 #GRAMMAR_ROOT S
 
-Entity -> [ENTITY];
+Entity -&gt; [ENTITY];
 
 AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
@@ -112,7 +106,7 @@ S -&gt; (Prep) S7;</HasScript>
         <HasScript>#encoding &quot;utf-8&quot;
 #GRAMMAR_ROOT S
 
-Entity -> [ENTITY];
+Entity -&gt; [ENTITY];
 
 AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
@@ -134,7 +128,6 @@ S -&gt; (Prep) S7;</HasScript>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отделка">
         <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
-        <HasAttribute>Факт</HasAttribute>
         <HasKeyWord>балкон</HasKeyWord>
         <HasKeyWord>батарея</HasKeyWord>
         <HasKeyWord>ванная</HasKeyWord>
@@ -161,10 +154,11 @@ S -&gt; (Prep) S7;</HasScript>
         <HasKeyWord>стеклопакет</HasKeyWord>
         <HasKeyWord>стены</HasKeyWord>
         <HasKeyWord>туалет</HasKeyWord>
+        <HasQuery>insert into Отделка values (&lt;id отзыва&gt;, &apos;&lt;факт&gt;&apos;)</HasQuery>
         <HasScript>#encoding &quot;utf-8&quot;
 #GRAMMAR_ROOT S
 
-Entity -> [ENTITY];
+Entity -&gt; [ENTITY];
 
 AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
@@ -178,7 +172,6 @@ S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-a
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
 S -&gt; (Prep) S7;</HasScript>
-        <HasTable>Отделка</HasTable>
     </owl:NamedIndividual>
     
 
@@ -193,7 +186,7 @@ S -&gt; (Prep) S7;</HasScript>
         <HasScript>#encoding &quot;utf-8&quot;
 #GRAMMAR_ROOT S
 
-Entity -> [ENTITY];
+Entity -&gt; [ENTITY];
 
 AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
@@ -225,7 +218,7 @@ S -&gt; (Prep) S7;</HasScript>
         <HasScript>#encoding &quot;utf-8&quot;
 #GRAMMAR_ROOT S
 
-Entity -> [ENTITY];
+Entity -&gt; [ENTITY];
 
 AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;

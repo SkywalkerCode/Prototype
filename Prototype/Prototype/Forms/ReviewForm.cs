@@ -15,6 +15,18 @@ namespace Prototype
     {
         private string Path;
 
+        public string URI
+        {
+            get
+            {
+                return tbURI.Text;
+            }
+            set
+            {
+                tbURI.Text = value;
+            }
+        }
+
         public ReviewForm()
         {
             InitializeComponent();
@@ -165,8 +177,8 @@ namespace Prototype
             string allText = tbText.Text.ToLower();
             foreach (string word in stopWords)
             {
-                allText = allText.Replace(" " + word.ToLower() + " ", "");
-                allText = allText.Replace(" " + word.ToLower() + ",", ",");
+                allText = allText.Replace(" " + word.ToLower() + " ", " ");
+                allText = allText.Replace(" " + word.ToLower() + ",", ", ");
                 allText = allText.Replace("-" + word.ToLower() + " ", "-");
                 allText = allText.Replace(" " + word.ToLower() + "-", "-");
             }

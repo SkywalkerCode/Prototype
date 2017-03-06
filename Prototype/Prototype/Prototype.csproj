@@ -55,6 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ConnectSqlServerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConnectSqlServerForm.Designer.cs">
+      <DependentUpon>ConnectSqlServerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FactsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,10 +92,15 @@
     <Compile Include="Forms\ReviewForm.Designer.cs">
       <DependentUpon>ReviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\Fact.cs" />
     <Compile Include="Tools\OwlClassItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Review.cs" />
     <Compile Include="Tools\WriteInLog.cs" />
+    <EmbeddedResource Include="Forms\ConnectSqlServerForm.resx">
+      <DependentUpon>ConnectSqlServerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FactsForm.resx">
       <DependentUpon>FactsForm.cs</DependentUpon>
     </EmbeddedResource>

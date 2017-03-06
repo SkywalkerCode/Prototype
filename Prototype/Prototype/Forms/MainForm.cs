@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Prototype
 {
     public partial class MainForm : Form
     {
+        public ConnectSqlServerForm Connecting;
         public StopWordsForm StopWords;
         public OntologyForm Ontology;
         public ReviewForm Review;
@@ -23,6 +25,7 @@ namespace Prototype
         public MainForm()
         {
             InitializeComponent();
+            Connecting = new ConnectSqlServerForm();
             StopWords = new StopWordsForm();
             Ontology = new OntologyForm(this, Path.GetFullPath("Онтология Protege.owl"));
             Review = new ReviewForm();
@@ -133,9 +136,9 @@ namespace Prototype
 
         private void cbSelectClass_DropDown(object sender, EventArgs e)
         {
-            int maxWidth = cbSelectClass.Width;
+            int maxWidth = ((ComboBox)sender).Width;
             Label label = new Label();
-            foreach (object item in cbSelectClass.Items)
+            foreach (object item in ((ComboBox)sender).Items)
             {
                 label.Text = item.ToString();
                 if (label.PreferredWidth > maxWidth)
@@ -143,7 +146,7 @@ namespace Prototype
                     maxWidth = label.PreferredWidth;
                 }
             }
-            cbSelectClass.DropDownWidth = maxWidth;
+            ((ComboBox)sender).DropDownWidth = maxWidth;
         }
 
         private void cbSelectClass_SelectedValueChanged(object sender, EventArgs e)
@@ -160,14 +163,69 @@ namespace Prototype
 
         private void btnExtractFacts_Click(object sender, EventArgs e)
         {
-            string textReview = Review.TextReview;
-            OwlClassItem headClass = (OwlClassItem)cbSelectClass.SelectedItem;
-            Facts.ExtractFacts(textReview, (OwlClass)headClass.owlNode);
+            Facts.ExtractFacts(
+                Review.TextReview,
+                Review.URI,
+                (OwlClass)((OwlClassItem)cbSelectClass.SelectedItem).owlNode);
         }
 
-        private void DeleteStopWord_Click(object sender, EventArgs e)
+        private void btnDeleteStopWord_Click(object sender, EventArgs e)
         {
             Review.DeleteStopWords(StopWords.StopWords);
+        }
+
+        private void btnConnecting_Click(object sender, EventArgs e)
+        {
+            Connecting.ShowDialog();
+            var SqlConnStr = Connecting.SqlConnectStr;
+            if (Connecting.SqlConnectStr == null)
+            {
+                lStatus.Text = "Не подключено";
+                lStatus.ForeColor = Color.Red;
+            }
+            else
+            {
+                lStatus.Text = "Сервер: " + Connecting.SqlConnectStr.DataSource;
+                lStatus.ForeColor = Color.Green;
+                cbCurrentDataBase.Items.Clear();
+                using (var sConn = new SqlConnection(SqlConnStr.ConnectionString))
+                {
+                    sConn.Open();
+                    var sCommand = new SqlCommand
+                    {
+                        Connection = sConn,
+                        CommandText = @"USE master SELECT name FROM sys.databases"
+                    };
+                    var reader = sCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cbCurrentDataBase.Items.Add((string)reader["name"]);
+                    }
+                    cbCurrentDataBase.SelectedIndex = (cbCurrentDataBase.Items.Count != 0) ? 0 : -1;
+                }
+            }
+        }
+
+        private void cbCurrentDataBase_TextChanged(object sender, EventArgs e)
+        {
+            var SqlConnStr = Connecting.SqlConnectStr;
+            cbTableReview.Items.Clear();
+            SqlConnStr.InitialCatalog = cbCurrentDataBase.Text;
+            using (var sConn = new SqlConnection(SqlConnStr.ConnectionString))
+            {
+                sConn.Open();
+                var sCommand = new SqlCommand
+                {
+                    Connection = sConn,
+                    CommandText = @"SELECT name FROM sys.objects WHERE type = 'U'"
+                };
+                var reader = sCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    cbTableReview.Items.Add((string)reader["name"]);
+                }
+                cbTableReview.SelectedIndex = (cbTableReview.Items.Count != 0) ? 0 : -1;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prototype
 {
+    /// <summary> Используется для заполнения контролов вершинами OWL. </summary>
     public class OwlClassItem : OwlNode
     {
         public OwlNode owlNode;

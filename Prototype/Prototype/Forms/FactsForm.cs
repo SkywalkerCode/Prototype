@@ -1,4 +1,5 @@
 ﻿using OwlDotNetApi;
+using Prototype.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,12 @@ namespace Prototype.Forms
 {
     public partial class FactsForm : Form
     {
+        private List<Review> Reviews;
+
         public FactsForm()
         {
             InitializeComponent();
+            Reviews = new List<Review>();
         }
 
         public void StandartPosition()
@@ -41,8 +45,10 @@ namespace Prototype.Forms
             this.Hide();
         }
 
-        public void ExtractFacts(string textReview, OwlClass owlClass)
+        public void ExtractFacts(string textReview, string URI, OwlClass owlClass)
         {
+            Review review = new Review(textReview, URI);
+            Reviews.Add(review);
             string owlClassName = OntologyForm.ConvertNameNode(owlClass);
             TreeNode nodeClass = new TreeNode(owlClassName);
             tvFacts.Nodes.Add(nodeClass);
@@ -51,39 +57,46 @@ namespace Prototype.Forms
                 OwlIndividual owlIndividual = (OwlIndividual)(owlEdge.ParentNode);
                 string owlIndividualName = OntologyForm.ConvertNameNode(owlIndividual);
                 TreeNode nodeIndividual = new TreeNode(owlIndividualName);
-                ExtractFactsFromIndividual(textReview, owlIndividual, nodeIndividual);
+                ExtractFactsFromIndividual(textReview, owlIndividual, nodeIndividual, review);
                 nodeClass.Nodes.Add(nodeIndividual);
                 nodeClass.Expand();
             }
         }
 
-        private void ExtractFactsFromIndividual(string textReview, OwlIndividual owlIndividual, TreeNode nodeIndividual)
+        private void ExtractFactsFromIndividual(string textReview, OwlIndividual owlIndividual, TreeNode nodeIndividual, Review review)
         {
             if (owlIndividual is OwlIndividual)
             {
-                List<string> _keyWords = new List<string>();
-                string _script = "";
+                List<string> keyWords = new List<string>();
+                string script = "";
+                string query = "";
 
                 foreach (OwlEdge owlAttribute in owlIndividual.ChildEdges)
                 {
                     if (OntologyForm.ConvertNameNode(owlAttribute) == "HasKeyWord")
                     {
                         OwlNode Attribute = (OwlNode)(owlAttribute.ChildNode);
-                        _keyWords.Add(Attribute.ID);
+                        keyWords.Add(Attribute.ID);
                     }
-
                     if (OntologyForm.ConvertNameNode(owlAttribute) == "HasScript")
                     {
                         OwlNode attribute = (OwlNode)(owlAttribute.ChildNode);
-                        _script = attribute.ID;
+                        script = attribute.ID;
+                    }
+                    if (OntologyForm.ConvertNameNode(owlAttribute) == "HasQuery")
+                    {
+                        OwlNode attribute = (OwlNode)(owlAttribute.ChildNode);
+                        query = attribute.ID;
                     }
                 }
-
-                if (_script != "")
+                if (script != "")
                 {
-                    List<string> listFacts = GetFacts(_script, _keyWords, textReview);
+                    List<string> listFacts = GetFacts(script, keyWords, textReview);
                     foreach (string fact in listFacts)
+                    {
+                        review.Add(new Fact(fact, query));
                         nodeIndividual.Nodes.Add(fact);
+                    }
                 }
             }
         }
@@ -101,6 +114,7 @@ namespace Prototype.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             tvFacts.Nodes.Clear();
+            Reviews.Clear();
         }
 
         private static List<string> GetFacts(string script, List<string> keyWords, string text)

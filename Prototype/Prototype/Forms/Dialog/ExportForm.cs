@@ -31,15 +31,24 @@ namespace Prototype.Forms
             Close();
         }
 
-        public void AddReview(Review review)
+        public void ExecuteQuery(Review review)
         {
             using (var sConn = new SqlConnection(sConnStr.ConnectionString))
             {
                 sConn.Open();
                 string strQuery = "insert into " + TableReviewName + " output inserted.id values ({0}, {1})";
                 SqlQuery sqlQuery = new SqlQuery(strQuery, review.Text, review.URI);
-                lbReviews.Items.Add(sqlQuery);
-                int idReview = Convert.ToInt32(sqlQuery.GetSqlCommand(sConn).ExecuteScalar());
+                int idReview = 0;
+                try
+                {
+                    idReview = Convert.ToInt32(sqlQuery.GetSqlCommand(sConn).ExecuteScalar());
+                    lbReviews.Items.Add(sqlQuery);
+                }
+                catch
+                {
+                    lbErrors.Items.Add("Главная таблица не подходит по составу!");
+                    return;
+                }
                 foreach (Fact fact in review.Facts)
                 {
                     try
@@ -58,6 +67,10 @@ namespace Prototype.Forms
                         if (fact.Table == "")
                         {
                             lbErrors.Items.Add("Для факта \"" + fact.Text + "\" не указана таблица!");
+                        }
+                        if (true)
+                        {
+                            lbErrors.Items.Add("Таблица '" + fact.Table + "' не обнаружена в БД!");
                         }
                     }
                 }

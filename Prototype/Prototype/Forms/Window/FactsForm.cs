@@ -15,7 +15,7 @@ using xNet;
 
 namespace Prototype.Forms
 {
-    public partial class FactsForm : Form
+    public partial class FactsForm : MasterForm
     {
         private List<Review> reviews;
 
@@ -33,26 +33,6 @@ namespace Prototype.Forms
             reviews = new List<Review>();
         }
 
-        public void StandartPosition()
-        {
-            this.Location = new Point()
-            {
-                Y = Screen.PrimaryScreen.WorkingArea.Height * 2 / 7,
-                X = Screen.PrimaryScreen.WorkingArea.Left
-            };
-            this.Size = new Size()
-            {
-                Height = Screen.PrimaryScreen.WorkingArea.Height * 5 / 7,
-                Width = Screen.PrimaryScreen.WorkingArea.Width * 9 / 25
-            };
-        }
-
-        private void FactsForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.Hide();
-        }
-
         public void ExtractFacts(string textReview, string URI, OwlClass owlClass)
         {
             Review review = new Review(textReview, URI);
@@ -65,8 +45,15 @@ namespace Prototype.Forms
                 OwlIndividual owlIndividual = (OwlIndividual)(owlEdge.ParentNode);
                 string owlIndividualName = OntologyForm.ConvertNameNode(owlIndividual);
                 TreeNode nodeIndividual = new TreeNode(owlIndividualName);
-                ExtractFactsFromIndividual(textReview, owlIndividual, nodeIndividual, review);
-                nodeClass.Nodes.Add(nodeIndividual);
+                try
+                {
+                    ExtractFactsFromIndividual(textReview, owlIndividual, nodeIndividual, review);
+                    nodeClass.Nodes.Add(nodeIndividual);
+                }
+                catch (Exception exception)
+                {
+                    nodeClass.Nodes.Add(owlIndividualName + ": " + exception.Message);
+                }
                 nodeClass.Expand();
             }
         }
@@ -78,7 +65,6 @@ namespace Prototype.Forms
                 List<string> keyWords = new List<string>();
                 string script = "";
                 string table = "";
-
                 foreach (OwlEdge owlAttribute in owlIndividual.ChildEdges)
                 {
                     if (OntologyForm.ConvertNameNode(owlAttribute) == "HasKeyWord")
@@ -97,14 +83,10 @@ namespace Prototype.Forms
                         table = attribute.ID;
                     }
                 }
-                if (script != "")
+                foreach (string fact in GetFacts(script, keyWords, textReview))
                 {
-                    List<string> listFacts = GetFacts(script, keyWords, textReview);
-                    foreach (string fact in listFacts)
-                    {
-                        review.Add(new Fact(fact, table));
-                        nodeIndividual.Nodes.Add(fact);
-                    }
+                    review.Add(new Fact(fact, table));
+                    nodeIndividual.Nodes.Add(fact);
                 }
             }
         }
@@ -127,30 +109,52 @@ namespace Prototype.Forms
 
         private static List<string> GetFacts(string script, List<string> keyWords, string text)
         {
-            string entity = "";
+            if (script == "")
+            {
+                throw new Exception("Паттерн пуст!");
+            }
+            if (keyWords.Count == 0)
+            {
+                throw new Exception("Ключевые слова отсутствуют!");
+            }
+            string entity = "#encoding \"utf-8\"\n#GRAMMAR_ROOT S\nEntity -> ";
             List<string> listFacts = new List<string>();
             foreach (string synonym in keyWords)
             {
-                entity += "'" + synonym.ToLower() + "'" + " | ";
+                entity += String.Format("'{0}' | ", synonym.ToLower());
             }
-            script = script.Replace("[ENTITY]", entity.Remove(entity.Length - 3));
-            File.WriteAllText(@"Script.cxx", script);
+            string pattern = entity.Remove(entity.Length - 3) + ";\n" + script;
+            File.WriteAllText(@"Script.cxx", pattern);
             File.WriteAllText(@"Input.txt", text);
-            Process Parsing = new Process();
-            Parsing.StartInfo.FileName = @"tomitaparser.exe";
-            Parsing.StartInfo.Arguments = @"Config.proto";
-            Parsing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            Parsing.Start();
-            Parsing.WaitForExit();
+            using (Process Parsing = new Process())
+            {
+                Parsing.StartInfo.FileName = @"tomitaparser.exe";
+                Parsing.StartInfo.Arguments = @"Config.proto";
+                Parsing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                Parsing.Start();
+                Parsing.WaitForExit();
+            }
             if (File.Exists("PrettyOutput.html"))
             {
                 string factsHTML = File.ReadAllText("PrettyOutput.html");
                 foreach (string fact in factsHTML.Substrings("<a href=", "</a>").ToList())
                     listFacts.Add(fact.Remove(0, fact.IndexOf(">") + 1));
             }
-            File.Delete("PrettyOutput.html");
-            File.Delete("Input.txt");
+            else
+            {
+                throw new Exception("Паттерн некорректен!");
+            }
+            File.Delete(@"Script.cxx");
+            File.Delete(@"PrettyOutput.html");
+            File.Delete(@"Input.txt");
+            File.Delete(@"Dictionary.gzt.bin");
+            File.Delete(@"Script.bin");
             return listFacts;
+        }
+
+        private void FactsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            NoClosing(sender, e);
         } 
     }
 }

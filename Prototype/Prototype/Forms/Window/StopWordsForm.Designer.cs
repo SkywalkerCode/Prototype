@@ -109,6 +109,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "StopWordsForm";
             this.Text = "Стоп-слова";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StopWordsForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

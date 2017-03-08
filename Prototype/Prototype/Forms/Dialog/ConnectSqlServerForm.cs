@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -49,12 +50,12 @@ namespace Prototype.Forms
         {
             Enabled = false;
             cbServerName.Items.Clear();
-            DataTable table = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
+            DataTable table = SqlDataSourceEnumerator.Instance.GetDataSources();
             foreach (DataRow row in table.Rows)
             {
                 cbServerName.Items.Add(string.Concat(row["ServerName"], "\\", row["InstanceName"]));
             }
-            cbServerName.SelectedIndex = cbServerName.Items.Count - 1;
+            cbServerName.SelectedIndex = (cbServerName.Items.Count != 0) ? 0 : -1;
             Enabled = true;
         }
 
@@ -95,9 +96,9 @@ namespace Prototype.Forms
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch(Exception exception)
+            catch
             {
-                MessageBox.Show(exception.ToString(), "Ошибка подключения");
+                MessageBox.Show("Ошибка подключения\nНеверный логин и/или пароль.");
             }
         }
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbErrors = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbReviews = new System.Windows.Forms.ListBox();
-            this.lbErrors = new System.Windows.Forms.ListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -47,10 +47,20 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(892, 243);
+            this.groupBox1.Size = new System.Drawing.Size(797, 244);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ошибки";
+            // 
+            // lbErrors
+            // 
+            this.lbErrors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbErrors.ForeColor = System.Drawing.Color.Red;
+            this.lbErrors.FormattingEnabled = true;
+            this.lbErrors.Location = new System.Drawing.Point(3, 16);
+            this.lbErrors.Name = "lbErrors";
+            this.lbErrors.Size = new System.Drawing.Size(791, 225);
+            this.lbErrors.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -58,7 +68,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(892, 202);
+            this.groupBox2.Size = new System.Drawing.Size(797, 201);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Выполненные запросы";
@@ -69,17 +79,8 @@
             this.lbReviews.FormattingEnabled = true;
             this.lbReviews.Location = new System.Drawing.Point(3, 16);
             this.lbReviews.Name = "lbReviews";
-            this.lbReviews.Size = new System.Drawing.Size(886, 183);
+            this.lbReviews.Size = new System.Drawing.Size(791, 182);
             this.lbReviews.TabIndex = 0;
-            // 
-            // lbErrors
-            // 
-            this.lbErrors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(3, 16);
-            this.lbErrors.Name = "lbErrors";
-            this.lbErrors.Size = new System.Drawing.Size(886, 224);
-            this.lbErrors.TabIndex = 1;
             // 
             // splitContainer1
             // 
@@ -95,15 +96,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(892, 449);
-            this.splitContainer1.SplitterDistance = 202;
+            this.splitContainer1.Size = new System.Drawing.Size(797, 449);
+            this.splitContainer1.SplitterDistance = 201;
             this.splitContainer1.TabIndex = 4;
             // 
             // ExportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 449);
+            this.ClientSize = new System.Drawing.Size(797, 449);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ExportForm";
             this.Text = "Просмотр результатов";

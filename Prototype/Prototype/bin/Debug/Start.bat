@@ -1,1 +1,1 @@
-start tomitaparser.exe config.proto
+start tomita\tomitaparser.exe config.proto

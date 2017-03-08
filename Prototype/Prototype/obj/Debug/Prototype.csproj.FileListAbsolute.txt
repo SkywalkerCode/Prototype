@@ -21,3 +21,5 @@ D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.FactsForm.reso
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.StopWordsForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.ConnectSqlServerForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.ExportForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Tools.MasterForm.resources

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace Prototype
 {
     /// <summary> Используется для заполнения контролов вершинами OWL. </summary>
-    public class OwlClassItem : OwlNode
+    public class OwlItem : OwlNode
     {
         public OwlNode owlNode;
 
-        public OwlClassItem(OwlNode owlNode)
+        public OwlItem(OwlNode owlNode)
         {
             this.owlNode = owlNode;
         }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tvFacts = new System.Windows.Forms.TreeView();
-            this.btnExpandAll = new System.Windows.Forms.Button();
-            this.btnCollapseAll = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnCollapseAll = new System.Windows.Forms.Button();
+            this.btnExpandAll = new System.Windows.Forms.Button();
+            this.tvFacts = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,23 +49,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Управление";
             // 
-            // tvFacts
+            // btnClear
             // 
-            this.tvFacts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvFacts.Location = new System.Drawing.Point(120, 0);
-            this.tvFacts.Name = "tvFacts";
-            this.tvFacts.Size = new System.Drawing.Size(606, 432);
-            this.tvFacts.TabIndex = 4;
-            // 
-            // btnExpandAll
-            // 
-            this.btnExpandAll.Location = new System.Drawing.Point(12, 48);
-            this.btnExpandAll.Name = "btnExpandAll";
-            this.btnExpandAll.Size = new System.Drawing.Size(100, 23);
-            this.btnExpandAll.TabIndex = 0;
-            this.btnExpandAll.Text = "Развернуть всё";
-            this.btnExpandAll.UseVisualStyleBackColor = true;
-            this.btnExpandAll.Click += new System.EventHandler(this.btnExpandAll_Click_1);
+            this.btnClear.Location = new System.Drawing.Point(12, 19);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(100, 23);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Очистить";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnCollapseAll
             // 
@@ -77,15 +69,23 @@
             this.btnCollapseAll.UseVisualStyleBackColor = true;
             this.btnCollapseAll.Click += new System.EventHandler(this.btnCollapseAll_Click_1);
             // 
-            // btnClear
+            // btnExpandAll
             // 
-            this.btnClear.Location = new System.Drawing.Point(12, 19);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(100, 23);
-            this.btnClear.TabIndex = 2;
-            this.btnClear.Text = "Очистить";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnExpandAll.Location = new System.Drawing.Point(12, 48);
+            this.btnExpandAll.Name = "btnExpandAll";
+            this.btnExpandAll.Size = new System.Drawing.Size(100, 23);
+            this.btnExpandAll.TabIndex = 0;
+            this.btnExpandAll.Text = "Развернуть всё";
+            this.btnExpandAll.UseVisualStyleBackColor = true;
+            this.btnExpandAll.Click += new System.EventHandler(this.btnExpandAll_Click_1);
+            // 
+            // tvFacts
+            // 
+            this.tvFacts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvFacts.Location = new System.Drawing.Point(120, 0);
+            this.tvFacts.Name = "tvFacts";
+            this.tvFacts.Size = new System.Drawing.Size(606, 432);
+            this.tvFacts.TabIndex = 4;
             // 
             // FactsForm
             // 

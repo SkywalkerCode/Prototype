@@ -49,7 +49,7 @@
             this.btnConnection.Location = new System.Drawing.Point(58, 180);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(119, 23);
-            this.btnConnection.TabIndex = 7;
+            this.btnConnection.TabIndex = 5;
             this.btnConnection.Text = "Соединить";
             this.btnConnection.UseVisualStyleBackColor = true;
             this.btnConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
@@ -60,7 +60,7 @@
             this.tbPassword.Location = new System.Drawing.Point(155, 119);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(219, 20);
-            this.tbPassword.TabIndex = 1;
+            this.tbPassword.TabIndex = 3;
             // 
             // tbUserName
             // 
@@ -68,7 +68,7 @@
             this.tbUserName.Location = new System.Drawing.Point(155, 145);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(219, 20);
-            this.tbUserName.TabIndex = 2;
+            this.tbUserName.TabIndex = 4;
             // 
             // cbTypeCheck
             // 
@@ -80,7 +80,7 @@
             this.cbTypeCheck.Location = new System.Drawing.Point(155, 92);
             this.cbTypeCheck.Name = "cbTypeCheck";
             this.cbTypeCheck.Size = new System.Drawing.Size(219, 21);
-            this.cbTypeCheck.TabIndex = 0;
+            this.cbTypeCheck.TabIndex = 2;
             this.cbTypeCheck.SelectedIndexChanged += new System.EventHandler(this.cbTypeCheck_SelectedIndexChanged);
             // 
             // btnSearchServers
@@ -89,7 +89,7 @@
             this.btnSearchServers.Location = new System.Drawing.Point(271, 36);
             this.btnSearchServers.Name = "btnSearchServers";
             this.btnSearchServers.Size = new System.Drawing.Size(103, 23);
-            this.btnSearchServers.TabIndex = 1;
+            this.btnSearchServers.TabIndex = 0;
             this.btnSearchServers.Text = "Поиск серверов";
             this.btnSearchServers.UseVisualStyleBackColor = true;
             this.btnSearchServers.Click += new System.EventHandler(this.btnSearchServers_Click);
@@ -100,7 +100,7 @@
             this.cbServerName.Location = new System.Drawing.Point(155, 65);
             this.cbServerName.Name = "cbServerName";
             this.cbServerName.Size = new System.Drawing.Size(219, 21);
-            this.cbServerName.TabIndex = 2;
+            this.cbServerName.TabIndex = 1;
             this.cbServerName.TextChanged += new System.EventHandler(this.cbServerName_TextChanged);
             // 
             // label1
@@ -151,19 +151,22 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCancel.Location = new System.Drawing.Point(183, 180);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(119, 23);
-            this.btnCancel.TabIndex = 7;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ConnectSqlServerForm
             // 
+            this.AcceptButton = this.btnConnection;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(386, 215);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

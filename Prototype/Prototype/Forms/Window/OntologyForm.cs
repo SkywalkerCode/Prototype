@@ -1,4 +1,5 @@
 ﻿using OwlDotNetApi;
+using Prototype.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Prototype
 {
-    public partial class OntologyForm : Form
+    public partial class OntologyForm : MasterForm
     {
         private MainForm MainForm;
         private WriteInLog LogWriter;
@@ -43,26 +44,6 @@ namespace Prototype
             }
         }
 
-        public void StandartPosition()
-        {
-            Location = new Point()
-            {
-                Y = Screen.PrimaryScreen.WorkingArea.Top,
-                X = Screen.PrimaryScreen.WorkingArea.Width / 2
-            };
-            Size = new Size()
-            {
-                Height = Screen.PrimaryScreen.WorkingArea.Height / 2,
-                Width = Screen.PrimaryScreen.WorkingArea.Width / 2
-            };
-        }
-
-        private void OntologyForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.Hide();
-        }
-
         private void btnOpen_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -78,6 +59,7 @@ namespace Prototype
 
         private void LoadOntology()
         {
+            LogWriter.Clear();
             LogWriter.Write("Загрузка онтологии: " + Path);
             OwlXmlParser parser = new OwlXmlParser();
             LogWriter.Write("Парсинг файла онтологии...");
@@ -85,6 +67,7 @@ namespace Prototype
             LogWriter.Write(string.Format("Парсинг онтологии завершен с {0} ошибками и {1} предупреждениями.", ((OwlParser)parser).Errors.Count, ((OwlParser)parser).Warnings.Count));
             LogWriter.Write(string.Format("Онтологический граф построен и содержит {0} вершин и {1} граней.", OwlGraph.Nodes.Count, OwlGraph.Edges.Count));
             ClassificationOwlNodes();
+            WriteTree();
             MainForm.ListOwlClass = ListOwlClass;
         }
 
@@ -172,6 +155,97 @@ namespace Prototype
         private void btnWriteGraph_Click(object sender, EventArgs e)
         {
             WriteStructure();
+        }
+
+        private void OntologyForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            NoClosing(sender, e);
+        }
+
+        private void WriteTree()
+        {
+            tvClasses.Nodes.Clear();
+            lbIndividuals.Items.Clear();
+            tvDataProperty.Nodes.Clear();
+            foreach (OwlClass owlClass in ListOwlClass)
+            {
+                if (owlClass.ChildEdges.Count == 1)
+                {
+                    TreeNode treeNode = new TreeNode(ConvertNameNode(owlClass));
+                    WriteTree(owlClass, treeNode);
+                    tvClasses.Nodes.Add(treeNode);
+                }
+            }
+            tvClasses.ExpandAll();
+        }
+
+        private void WriteTree(OwlClass owlClass, TreeNode treeNode)
+        {
+            foreach (OwlEdge owlEdge in owlClass.ParentEdges)
+            {
+                OwlNode owlNode = (OwlNode)owlEdge.ParentNode;
+                if (owlNode is OwlClass)
+                {
+                    TreeNode childTreeNode = new TreeNode(ConvertNameNode(owlNode));
+                    WriteTree((OwlClass)owlNode, childTreeNode);
+                    treeNode.Nodes.Add(childTreeNode);
+                }
+            }
+        }
+
+        private void tvClasses_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            lbIndividuals.Items.Clear();
+            tvDataProperty.Nodes.Clear();
+            foreach (OwlClass owlClass in ListOwlClass)
+            {
+                if (ConvertNameNode(owlClass) == tvClasses.SelectedNode.Text)
+                {
+                    foreach (OwlEdge owlIndividual in owlClass.ParentEdges)
+                    {
+                        if (owlIndividual.ParentNode is OwlIndividual)
+                        {
+                            lbIndividuals.Items.Add(ConvertNameNode((OwlNode)owlIndividual.ParentNode));
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        private void lbIndividuals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tvDataProperty.Nodes.Clear();
+            foreach (OwlIndividual individual in ListOwlIndividual)
+            {
+                if (ConvertNameNode(individual) == lbIndividuals.Text)
+                {
+                    TreeNode hasKeyWord = new TreeNode("HasKeyWord");
+                    TreeNode hasScript = new TreeNode("HasScript");
+                    TreeNode hasTable = new TreeNode("HasTable");
+                    foreach (OwlEdge owlAttribute in individual.ChildEdges)
+                    {
+                        OwlNode attribute = (OwlNode)(owlAttribute.ChildNode);
+                        if (OntologyForm.ConvertNameNode(owlAttribute) == "HasKeyWord")
+                        {
+                            hasKeyWord.Nodes.Add(attribute.ID);
+                        }
+                        if (OntologyForm.ConvertNameNode(owlAttribute) == "HasScript")
+                        {
+                            hasScript.Nodes.Add(attribute.ID);
+                        }
+                        if (OntologyForm.ConvertNameNode(owlAttribute) == "HasTable")
+                        {
+                            hasTable.Nodes.Add(attribute.ID);
+                        }
+                    }
+                    tvDataProperty.Nodes.Add(hasKeyWord);
+                    tvDataProperty.Nodes.Add(hasScript);
+                    tvDataProperty.Nodes.Add(hasTable);
+                    tvDataProperty.ExpandAll();
+                    break;
+                }
+            }
         }
     }
 }

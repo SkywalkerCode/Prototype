@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Prototype
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MasterForm
     {
         public ConnectSqlServerForm ConnectingForm;
         public StopWordsForm StopWordsForm;
@@ -44,7 +44,7 @@ namespace Prototype
                 cbSelectClass.Items.Clear();
                 foreach (OwlClass owlClass in value)
                 {
-                    OwlClassItem item = new OwlClassItem(owlClass);
+                    OwlItem item = new OwlItem(owlClass);
                     cbSelectClass.Items.Add(item);
                 }
                 if (value.Count != 0)
@@ -56,25 +56,39 @@ namespace Prototype
 
         private void WindowsNormalize()
         {
-            StopWordsForm.StandartPosition();
-            OntologyForm.StandartPosition();
-            ReviewForm.StandartPosition();
-            FactsForm.StandartPosition();
-            this.StandartPosition();
-        }
-
-        public void StandartPosition()
-        {
-            this.Location = new Point()
-            {
-                Y = Screen.PrimaryScreen.WorkingArea.Top,
-                X = Screen.PrimaryScreen.WorkingArea.Left
-            };
-            this.Size = new Size()
-            {
-                Height = Screen.PrimaryScreen.WorkingArea.Height * 2 / 7,
-                Width = Screen.PrimaryScreen.WorkingArea.Width / 2
-            };
+            Point location= new Point();;
+            Size size = new Size();
+            Rectangle area = Screen.PrimaryScreen.WorkingArea;
+            // StopWordsForm
+            location.Y = area.Height * 2 / 7;
+            location.X = area.Width * 9 / 25;
+            size.Height = area.Height * 5 / 7;
+            size.Width = area.Width / 2 - area.Width * 9 / 25;
+            StopWordsForm.WindowPosition(location, size);
+            // OntologyForm
+            location.Y = area.Top;
+            location.X = area.Width / 2;
+            size.Height = area.Height / 2;
+            size.Width = area.Width / 2;
+            OntologyForm.WindowPosition(location, size);
+            // ReviewForm
+            location.Y = area.Height / 2;
+            location.X = area.Width / 2;
+            size.Height = area.Height / 2;
+            size.Width = area.Width / 2;
+            ReviewForm.WindowPosition(location, size);
+            // FactsForm
+            location.Y = area.Height * 2 / 7;
+            location.X = area.Left;
+            size.Height = area.Height * 5 / 7;
+            size.Width = area.Width * 9 / 25;
+            FactsForm.WindowPosition(location, size);
+            // MainForm
+            location.Y = area.Top;
+            location.X = area.Left;
+            size.Height = area.Height * 2 / 7;
+            size.Width = area.Width / 2;
+            this.WindowPosition(location, size);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -82,7 +96,7 @@ namespace Prototype
             WindowsNormalize();
         }
 
-        private void btnWindowsNormalize_Click_1(object sender, EventArgs e)
+        private void btnWindowsNormalize_Click(object sender, EventArgs e)
         {
             WindowsNormalize();
         }
@@ -135,7 +149,7 @@ namespace Prototype
             }
         }
 
-        private void cbSelectClass_DropDown(object sender, EventArgs e)
+        private void ComboBox_DropDown(object sender, EventArgs e)
         {
             int maxWidth = ((ComboBox)sender).Width;
             Label label = new Label();
@@ -152,14 +166,7 @@ namespace Prototype
 
         private void cbSelectClass_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbSelectClass.SelectedItem is OwlClassItem)
-            {
-                btnExtractFacts.Enabled = true;
-            }
-            else
-            {
-                btnExtractFacts.Enabled = false;
-            }
+            btnExtractFacts.Enabled = (cbSelectClass.SelectedItem is OwlItem);
         }
 
         private void btnExtractFacts_Click(object sender, EventArgs e)
@@ -167,19 +174,19 @@ namespace Prototype
             FactsForm.ExtractFacts(
                 ReviewForm.TextReview,
                 ReviewForm.URI,
-                (OwlClass)((OwlClassItem)cbSelectClass.SelectedItem).owlNode);
+                (OwlClass)((OwlItem)cbSelectClass.SelectedItem).owlNode);
         }
 
-        private void btnDeleteStopWord_Click(object sender, EventArgs e)
+        private void btnRemoveStopWord_Click(object sender, EventArgs e)
         {
-            ReviewForm.DeleteStopWords(StopWordsForm.StopWords);
+            ReviewForm.RemoveStopWords(StopWordsForm.StopWords);
         }
 
         private void btnConnecting_Click(object sender, EventArgs e)
         {
             ConnectingForm.ShowDialog();
             var SqlConnStr = ConnectingForm.SqlConnectStr;
-            if (ConnectingForm.SqlConnectStr == null)
+            if (SqlConnStr == null)
             {
                 lStatus.Text = "Не подключено";
                 lStatus.ForeColor = Color.Red;
@@ -231,14 +238,7 @@ namespace Prototype
 
         private void cbTableReview_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbTableReview.SelectedIndex == -1)
-            {
-                btnExport.Enabled = false;
-            }
-            else
-            {
-                btnExport.Enabled = true;
-            }
+            btnExport.Enabled = cbShowQuery.Enabled = (cbTableReview.SelectedIndex != -1);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -247,14 +247,45 @@ namespace Prototype
             ExportForm export = new ExportForm(ConnectingForm.SqlConnectStr, tableReviewName);
             foreach (Review review in FactsForm.Reviews)
             {
-                export.AddReview(review);
+                export.ExecuteQuery(review);
             }
-            export.ShowDialog();
+            if (cbShowQuery.Checked)
+            {
+                export.ShowDialog();
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnActivateWindows_Click(object sender, EventArgs e)
+        {
+            // StopWordsForm
+            StopWordsForm.Activate();
+            // OntologyForm
+            OntologyForm.Activate();
+            // ReviewForm
+            ReviewForm.Activate();
+            // FactsForm
+            FactsForm.Activate();
+            // MainForm
+            this.Activate();
+        }
+
+        private void btnShowAllWindows_Click(object sender, EventArgs e)
+        {
+            // StopWordsForm
+            StopWordsForm.Show();
+            // OntologyForm
+            OntologyForm.Show();
+            // ReviewForm
+            ReviewForm.Show();
+            // FactsForm
+            FactsForm.Show();
+            // MainForm
+            this.Show();
         }
     }
 }

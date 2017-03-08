@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototype.Tools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,64 +10,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prototype.Forms
+namespace Prototype
 {
-    public partial class StopWordsForm : Form
+    public partial class ReviewForm : MasterForm
     {
         private string Path;
 
-        public StopWordsForm()
+        public string URI
+        {
+            get
+            {
+                return tbURI.Text;
+            }
+            set
+            {
+                tbURI.Text = value;
+            }
+        }
+
+        public ReviewForm()
         {
             InitializeComponent();
         }
 
-        public List<string> StopWords
+        public string TextReview
         {
             get
             {
-                List<string> stopWords = new List<string>();
-                foreach (string str in tbStopWords.Text.Split(new char[] { '\r', '\n' }))
-                {
-                    if (str != "")
-                    {
-                        stopWords.Add(str);
-                    }
-                }
-                return stopWords;
+                return tbText.Text;
             }
-        }
-
-        public void StandartPosition()
-        {
-            Location = new Point()
-            {
-                Y = Screen.PrimaryScreen.WorkingArea.Height * 2 / 7,
-                X = Screen.PrimaryScreen.WorkingArea.Width * 9 / 25
-            };
-            Size = new Size()
-            {
-                Height = Screen.PrimaryScreen.WorkingArea.Height * 5 / 7,
-                Width = Screen.PrimaryScreen.WorkingArea.Width / 2 - Screen.PrimaryScreen.WorkingArea.Width * 9 / 25
-            };
         }
 
         private bool ChangedText
         {
             get
             {
-                if (Path == null && tbStopWords.Text == "")
+                if (Path == null && tbText.Text == "")
                 {
-                    return false;
-                }
-                if (Path == null && tbStopWords.Text != "")
-                {
-                    return true;
+                    return (tbText.Text != "");
                 }
                 if (!File.Exists(Path))
                 {
                     return true;
                 }
-                if (File.ReadAllText(Path) != tbStopWords.Text)
+                if (File.ReadAllText(Path) != tbText.Text)
                 {
                     return true;
                 }
@@ -88,7 +75,7 @@ namespace Prototype.Forms
                     dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
-                        tbStopWords.Text = File.ReadAllText(dialog.FileName);
+                        tbText.Text = File.ReadAllText(dialog.FileName).ToLower();
                         Path = dialog.FileName;
                     }
                 }
@@ -102,7 +89,7 @@ namespace Prototype.Forms
 
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
-            SaveAs(tbStopWords.Text);
+            SaveAs(tbText.Text);
         }
 
         private bool Create()
@@ -125,7 +112,7 @@ namespace Prototype.Forms
                     }
                 }
             }
-            tbStopWords.Text = "";
+            tbText.Text = "";
             Path = null;
             return true;
         }
@@ -136,12 +123,12 @@ namespace Prototype.Forms
             {
                 if (File.Exists(Path))
                 {
-                    File.WriteAllText(Path, tbStopWords.Text);
+                    File.WriteAllText(Path, tbText.Text);
                     return true;
                 }
                 else
                 {
-                    return SaveAs(tbStopWords.Text);
+                    return SaveAs(tbText.Text);
                 }
             }
             return true;
@@ -154,12 +141,34 @@ namespace Prototype.Forms
                 dialog.Filter = "*.txt|*.txt";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    File.WriteAllText(dialog.FileName, tbStopWords.Text);
+                    File.WriteAllText(dialog.FileName, tbText.Text);
                     Path = dialog.FileName;
                     return true;
                 }
             }
             return false;
+        }
+
+        public void RemoveStopWords(List<string> stopWords)
+        {
+            string allText = tbText.Text.ToLower();
+            foreach (string word in stopWords)
+            {
+                allText = allText.Replace(" " + word.ToLower() + " ", " ");
+                allText = allText.Replace(" " + word.ToLower() + ",", ", ");
+                allText = allText.Replace("-" + word.ToLower() + " ", "-");
+                allText = allText.Replace(" " + word.ToLower() + "-", "-");
+            }
+            while (allText.Contains("  "))
+            {
+                allText = allText.Replace("  ", " ");
+            }
+            tbText.Text = allText;
+        }
+
+        private void ReviewForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            NoClosing(sender, e);
         }
     }
 }

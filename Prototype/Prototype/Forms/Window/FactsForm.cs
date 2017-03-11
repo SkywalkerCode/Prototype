@@ -33,12 +33,11 @@ namespace Prototype.Forms
             reviews = new List<Review>();
         }
 
-        public void ExtractFacts(string textReview, string URI, OwlClass owlClass)
+        public void ExtractFacts(Review review, OwlClass owlClass)
         {
-            Review review = new Review(textReview, URI);
             reviews.Add(review);
             string owlClassName = OntologyForm.ConvertNameNode(owlClass);
-            TreeNode nodeClass = new TreeNode(owlClassName + " " + (tvFacts.Nodes.Count + 1).ToString() + ": " + URI);
+            TreeNode nodeClass = new TreeNode(owlClassName + " " + (tvFacts.Nodes.Count + 1).ToString() + ": " + review.URI);
             tvFacts.Nodes.Add(nodeClass);
             foreach (OwlEdge owlEdge in owlClass.ParentEdges)
             {
@@ -47,7 +46,7 @@ namespace Prototype.Forms
                 TreeNode nodeIndividual = new TreeNode(owlIndividualName);
                 try
                 {
-                    ExtractFactsFromIndividual(textReview, owlIndividual, nodeIndividual, review);
+                    ExtractFactsFromIndividual(owlIndividual, nodeIndividual, review);
                     nodeClass.Nodes.Add(nodeIndividual);
                 }
                 catch (Exception exception)
@@ -58,7 +57,7 @@ namespace Prototype.Forms
             }
         }
 
-        private void ExtractFactsFromIndividual(string textReview, OwlIndividual owlIndividual, TreeNode nodeIndividual, Review review)
+        private void ExtractFactsFromIndividual(OwlIndividual owlIndividual, TreeNode nodeIndividual, Review review)
         {
             if (owlIndividual is OwlIndividual)
             {
@@ -83,7 +82,7 @@ namespace Prototype.Forms
                         table = attribute.ID;
                     }
                 }
-                foreach (string fact in GetFacts(script, keyWords, textReview))
+                foreach (string fact in GetFacts(script, keyWords, review.Text))
                 {
                     review.Add(new Fact(fact, table));
                     nodeIndividual.Nodes.Add(fact);

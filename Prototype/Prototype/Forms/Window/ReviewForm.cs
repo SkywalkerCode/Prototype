@@ -15,30 +15,25 @@ namespace Prototype
     public partial class ReviewForm : MasterForm
     {
         private string Path;
+        private Review review;
 
-        public string URI
+        public Review Review
         {
             get
             {
-                return tbURI.Text;
+                return review;
             }
             set
             {
-                tbURI.Text = value;
+                tbText.Text = value.Text;
+                tbURI.Text = value.URI;
+                review = value;
             }
         }
 
         public ReviewForm()
         {
             InitializeComponent();
-        }
-
-        public string TextReview
-        {
-            get
-            {
-                return tbText.Text;
-            }
         }
 
         private bool ChangedText

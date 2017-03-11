@@ -26,5 +26,7 @@ namespace Prototype.Properties
                 return defaultInstance;
             }
         }
+
+        public static Settings Friends { get; set; }
     }
 }

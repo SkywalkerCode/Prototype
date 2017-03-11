@@ -44,7 +44,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(120, 432);
+            this.groupBox1.Size = new System.Drawing.Size(120, 149);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Управление";
@@ -84,14 +84,14 @@
             this.tvFacts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvFacts.Location = new System.Drawing.Point(120, 0);
             this.tvFacts.Name = "tvFacts";
-            this.tvFacts.Size = new System.Drawing.Size(606, 432);
+            this.tvFacts.Size = new System.Drawing.Size(409, 149);
             this.tvFacts.TabIndex = 4;
             // 
             // FactsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 432);
+            this.ClientSize = new System.Drawing.Size(529, 149);
             this.Controls.Add(this.tvFacts);
             this.Controls.Add(this.groupBox1);
             this.Name = "FactsForm";

@@ -1,5 +1,7 @@
 ﻿using OwlDotNetApi;
 using Prototype.Forms;
+using Prototype.Forms.Dialog;
+using Prototype.Forms.Window;
 using Prototype.Tools;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,7 @@ namespace Prototype
         public StopWordsForm StopWordsForm;
         public OntologyForm OntologyForm;
         public ReviewForm ReviewForm;
+        public ImportForm ImportForm;
         public FactsForm FactsForm;
 
         public MainForm()
@@ -30,11 +33,14 @@ namespace Prototype
             StopWordsForm = new StopWordsForm();
             OntologyForm = new OntologyForm(this, Path.GetFullPath("Онтология Protege.owl"));
             ReviewForm = new ReviewForm();
+            ImportForm = new ImportForm();
             FactsForm = new FactsForm();
             StopWordsForm.Show();
             OntologyForm.Show();
             ReviewForm.Show();
+            ImportForm.Show();
             FactsForm.Show();
+            lStatusAutorizatoin.Text = String.Format("Подключено: {0} / {1}", ImportForm.CountAutorizedNetWorks, ImportForm.CountNetWorks);
         }
 
         public List<OwlClass> ListOwlClass
@@ -59,36 +65,42 @@ namespace Prototype
             Point location= new Point();;
             Size size = new Size();
             Rectangle area = Screen.PrimaryScreen.WorkingArea;
-            // StopWordsForm
-            location.Y = area.Height * 2 / 7;
-            location.X = area.Width * 9 / 25;
-            size.Height = area.Height * 5 / 7;
-            size.Width = area.Width / 2 - area.Width * 9 / 25;
-            StopWordsForm.WindowPosition(location, size);
-            // OntologyForm
-            location.Y = area.Top;
-            location.X = area.Width / 2;
-            size.Height = area.Height / 2;
-            size.Width = area.Width / 2;
-            OntologyForm.WindowPosition(location, size);
-            // ReviewForm
-            location.Y = area.Height / 2;
-            location.X = area.Width / 2;
-            size.Height = area.Height / 2;
-            size.Width = area.Width / 2;
-            ReviewForm.WindowPosition(location, size);
-            // FactsForm
-            location.Y = area.Height * 2 / 7;
-            location.X = area.Left;
-            size.Height = area.Height * 5 / 7;
-            size.Width = area.Width * 9 / 25;
-            FactsForm.WindowPosition(location, size);
             // MainForm
             location.Y = area.Top;
             location.X = area.Left;
-            size.Height = area.Height * 2 / 7;
-            size.Width = area.Width / 2;
+            size.Height = 256;
+            size.Width = 800;
             this.WindowPosition(location, size);
+            // FactsForm
+            location.Y = this.Height;
+            location.X = area.Left;
+            size.Height = area.Height / 4;
+            size.Width = 570;
+            FactsForm.WindowPosition(location, size);
+            // OntologyForm
+            location.Y = FactsForm.Height + FactsForm.Location.Y;
+            location.X = area.Left;
+            size.Height = area.Height / 2;
+            size.Width = 570;
+            OntologyForm.WindowPosition(location, size);
+            // StopWordsForm
+            location.Y = area.Height * 2 / 3;
+            location.X = OntologyForm.Width;
+            size.Height = area.Height / 3;
+            size.Width = area.Width / 2 - area.Width * 9 / 25;
+            StopWordsForm.WindowPosition(location, size);
+            // ReviewForm
+            location.Y = area.Height * 2 / 3;
+            location.X = OntologyForm.Width + StopWordsForm.Width;
+            size.Height = area.Height / 3;
+            size.Width = area.Width / 3;
+            ReviewForm.WindowPosition(location, size);
+            // ImportForm
+            location.Y = this.Height;
+            location.X = OntologyForm.Width;
+            size.Height = area.Height - this.Height - StopWordsForm.Height;
+            size.Width = area.Width / 3;
+            ImportForm.WindowPosition(location, size);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -149,6 +161,18 @@ namespace Prototype
             }
         }
 
+        private void btnShowImport_Click(object sender, EventArgs e)
+        {
+            if (ImportForm.Visible == true)
+            {
+                ImportForm.Hide();
+            }
+            else
+            {
+                ImportForm.Show();
+            }
+        }
+
         private void ComboBox_DropDown(object sender, EventArgs e)
         {
             int maxWidth = ((ComboBox)sender).Width;
@@ -172,8 +196,7 @@ namespace Prototype
         private void btnExtractFacts_Click(object sender, EventArgs e)
         {
             FactsForm.ExtractFacts(
-                ReviewForm.TextReview,
-                ReviewForm.URI,
+                ReviewForm.Review,
                 (OwlClass)((OwlItem)cbSelectClass.SelectedItem).owlNode);
         }
 
@@ -186,6 +209,7 @@ namespace Prototype
         {
             ConnectingForm.ShowDialog();
             var SqlConnStr = ConnectingForm.SqlConnectStr;
+            gbExport.Enabled = SqlConnStr != null;
             if (SqlConnStr == null)
             {
                 lStatus.Text = "Не подключено";
@@ -268,6 +292,8 @@ namespace Prototype
             OntologyForm.Activate();
             // ReviewForm
             ReviewForm.Activate();
+            // ImportForm
+            ImportForm.Activate();
             // FactsForm
             FactsForm.Activate();
             // MainForm
@@ -282,10 +308,59 @@ namespace Prototype
             OntologyForm.Show();
             // ReviewForm
             ReviewForm.Show();
+            // ImportForm
+            ImportForm.Show();
             // FactsForm
             FactsForm.Show();
             // MainForm
             this.Show();
+        }
+
+        private void btnAutorizationSocialNetwork_Click(object sender, EventArgs e)
+        {
+            ImportForm.Autorization();
+            lStatusAutorizatoin.Text = String.Format("Подключено: {0} / {1}", ImportForm.CountAutorizedNetWorks, ImportForm.CountNetWorks);
+            gbSearchComments.Enabled = ImportForm.CountAutorizedNetWorks > 0;
+        }
+
+        private void btnSearchComments_Click(object sender, EventArgs e)
+        {
+            ImportForm.StartSearchComments();
+            if (ImportForm.Comments.Count == 0)
+            {
+                lStatusSearch.Text = "none";
+                btnPrev.Enabled = btnNext.Enabled = false;
+                pbProgress.Maximum = pbProgress.Minimum = 0;
+            }
+            else
+            {
+                pbProgress.Minimum = 1;
+                pbProgress.Maximum = ImportForm.Comments.Count;
+                ReviewForm.Review = ImportForm.Comments[0];
+                UpdateStateComments();
+            }
+        }
+
+        private void UpdateStateComments()
+        {
+            pbProgress.Value = ImportForm.Comments.IndexOf(ReviewForm.Review) != -1 ? ImportForm.Comments.IndexOf(ReviewForm.Review) + 1 : 1;
+            btnNext.Enabled = pbProgress.Value != pbProgress.Maximum;
+            btnPrev.Enabled = pbProgress.Value != pbProgress.Minimum;
+            lStatusSearch.Text = String.Format("{0}/{1}", pbProgress.Value, pbProgress.Maximum);
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int nextIndex = ImportForm.Comments.IndexOf(ReviewForm.Review) + 1;
+            ReviewForm.Review = ImportForm.Comments[nextIndex];
+            UpdateStateComments();
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            int prevIndex = ImportForm.Comments.IndexOf(ReviewForm.Review) - 1;
+            ReviewForm.Review = ImportForm.Comments[prevIndex];
+            UpdateStateComments();
         }
     }
 }

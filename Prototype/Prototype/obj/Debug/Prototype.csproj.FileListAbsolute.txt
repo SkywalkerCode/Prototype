@@ -21,5 +21,13 @@ D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.FactsForm.reso
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.StopWordsForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.ConnectSqlServerForm.resources
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.ExportForm.resources
-D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Tools.MasterForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.Window.ImportForm.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\VkNet.dll
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\AngleSharp.dll
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\VkNet.xml
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\AngleSharp.xml
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.Dialog.AutorizationSocialNetworkForm.resources

@@ -49,12 +49,21 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VkNet">
+      <HintPath>C:\Users\Anakin\Desktop\VK-API\VK-API\bin\Debug\VkNet.dll</HintPath>
+    </Reference>
     <Reference Include="xNet, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\xNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Dialog\AutorizationSocialNetworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialog\AutorizationSocialNetworkForm.Designer.cs">
+      <DependentUpon>AutorizationSocialNetworkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialog\ConnectSqlServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +75,12 @@
     </Compile>
     <Compile Include="Forms\Dialog\ExportForm.Designer.cs">
       <DependentUpon>ExportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Window\ImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Window\ImportForm.Designer.cs">
+      <DependentUpon>ImportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Window\FactsForm.cs">
       <SubType>Form</SubType>
@@ -98,21 +113,29 @@
     <Compile Include="Forms\Window\ReviewForm.Designer.cs">
       <DependentUpon>ReviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SocialNetwork\VK.cs" />
     <Compile Include="Tools\Fact.cs" />
     <Compile Include="Forms\Abstract\MasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Interfaces\ISocialNetwork.cs" />
     <Compile Include="Tools\OwlClassItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Review.cs" />
     <Compile Include="Tools\SqlQuery.cs" />
     <Compile Include="Tools\WriteInLog.cs" />
+    <EmbeddedResource Include="Forms\Dialog\AutorizationSocialNetworkForm.resx">
+      <DependentUpon>AutorizationSocialNetworkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialog\ConnectSqlServerForm.resx">
       <DependentUpon>ConnectSqlServerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialog\ExportForm.resx">
       <DependentUpon>ExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Window\ImportForm.resx">
+      <DependentUpon>ImportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Window\FactsForm.resx">
       <DependentUpon>FactsForm.cs</DependentUpon>

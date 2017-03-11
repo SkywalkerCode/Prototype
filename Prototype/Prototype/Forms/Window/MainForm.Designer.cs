@@ -28,9 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnActivateWindows = new System.Windows.Forms.Button();
-            this.btnWindowsNormalize = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.gbExport = new System.Windows.Forms.GroupBox();
+            this.cbShowQuery = new System.Windows.Forms.CheckBox();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cbTableReview = new System.Windows.Forms.ComboBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cbCurrentDataBase = new System.Windows.Forms.ComboBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lStatus = new System.Windows.Forms.Label();
+            this.btnConnecting = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -40,76 +51,214 @@
             this.btnExtractFacts = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbSelectClass = new System.Windows.Forms.ComboBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lStatus = new System.Windows.Forms.Label();
-            this.btnConnecting = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cbShowQuery = new System.Windows.Forms.CheckBox();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.cbTableReview = new System.Windows.Forms.ComboBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.cbCurrentDataBase = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnShowAllWindows = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnShowImport = new System.Windows.Forms.Button();
             this.btnShowStopWords = new System.Windows.Forms.Button();
             this.btnShowFacts = new System.Windows.Forms.Button();
             this.btnShowReview = new System.Windows.Forms.Button();
             this.btnShowOntology = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.btnShowAllWindows = new System.Windows.Forms.Button();
+            this.btnActivateWindows = new System.Windows.Forms.Button();
+            this.btnWindowsNormalize = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnAutorizationSocialNetwork = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lStatusAutorizatoin = new System.Windows.Forms.Label();
+            this.gbSearchComments = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lStatusSearch = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSearchComments = new System.Windows.Forms.Button();
+            this.panel3.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.gbExport.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.gbSearchComments.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // panel3
             // 
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.btnShowAllWindows);
-            this.groupBox1.Controls.Add(this.btnActivateWindows);
-            this.groupBox1.Controls.Add(this.btnWindowsNormalize);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(141, 217);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Окна";
+            this.panel3.Controls.Add(this.groupBox12);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(548, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(236, 219);
+            this.panel3.TabIndex = 21;
             // 
-            // btnActivateWindows
+            // groupBox12
             // 
-            this.btnActivateWindows.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnActivateWindows.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnActivateWindows.Location = new System.Drawing.Point(3, 39);
-            this.btnActivateWindows.Name = "btnActivateWindows";
-            this.btnActivateWindows.Size = new System.Drawing.Size(135, 23);
-            this.btnActivateWindows.TabIndex = 2;
-            this.btnActivateWindows.Text = "Показать окна";
-            this.btnActivateWindows.UseVisualStyleBackColor = true;
-            this.btnActivateWindows.Click += new System.EventHandler(this.btnActivateWindows_Click);
+            this.groupBox12.Controls.Add(this.groupBox11);
+            this.groupBox12.Controls.Add(this.gbSearchComments);
+            this.groupBox12.Controls.Add(this.groupBox6);
+            this.groupBox12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox12.ForeColor = System.Drawing.Color.MediumBlue;
+            this.groupBox12.Location = new System.Drawing.Point(0, 0);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(236, 219);
+            this.groupBox12.TabIndex = 22;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Импорт фактов";
             // 
-            // btnWindowsNormalize
+            // panel2
             // 
-            this.btnWindowsNormalize.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnWindowsNormalize.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnWindowsNormalize.Location = new System.Drawing.Point(3, 16);
-            this.btnWindowsNormalize.Name = "btnWindowsNormalize";
-            this.btnWindowsNormalize.Size = new System.Drawing.Size(135, 23);
-            this.btnWindowsNormalize.TabIndex = 0;
-            this.btnWindowsNormalize.Text = "Упорядочить";
-            this.btnWindowsNormalize.UseVisualStyleBackColor = true;
-            this.btnWindowsNormalize.Click += new System.EventHandler(this.btnWindowsNormalize_Click);
+            this.panel2.Controls.Add(this.gbExport);
+            this.panel2.Controls.Add(this.groupBox9);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(321, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(227, 219);
+            this.panel2.TabIndex = 8;
+            // 
+            // gbExport
+            // 
+            this.gbExport.Controls.Add(this.cbShowQuery);
+            this.gbExport.Controls.Add(this.btnExport);
+            this.gbExport.Controls.Add(this.groupBox7);
+            this.gbExport.Controls.Add(this.groupBox8);
+            this.gbExport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbExport.Enabled = false;
+            this.gbExport.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbExport.Location = new System.Drawing.Point(0, 64);
+            this.gbExport.Name = "gbExport";
+            this.gbExport.Size = new System.Drawing.Size(227, 150);
+            this.gbExport.TabIndex = 9;
+            this.gbExport.TabStop = false;
+            this.gbExport.Text = "Экспорт фактов в БД";
+            // 
+            // cbShowQuery
+            // 
+            this.cbShowQuery.AutoSize = true;
+            this.cbShowQuery.Checked = true;
+            this.cbShowQuery.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbShowQuery.Enabled = false;
+            this.cbShowQuery.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbShowQuery.Location = new System.Drawing.Point(6, 127);
+            this.cbShowQuery.Name = "cbShowQuery";
+            this.cbShowQuery.Size = new System.Drawing.Size(193, 17);
+            this.cbShowQuery.TabIndex = 22;
+            this.cbShowQuery.Text = "Показать исполненные запросы";
+            this.cbShowQuery.UseVisualStyleBackColor = true;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExport.Enabled = false;
+            this.btnExport.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnExport.Location = new System.Drawing.Point(3, 98);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(221, 23);
+            this.btnExport.TabIndex = 21;
+            this.btnExport.Text = "Экспортировать факты";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cbTableReview);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox7.Location = new System.Drawing.Point(3, 57);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(221, 41);
+            this.groupBox7.TabIndex = 20;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Таблица для отзыва";
+            // 
+            // cbTableReview
+            // 
+            this.cbTableReview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbTableReview.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTableReview.FormattingEnabled = true;
+            this.cbTableReview.Location = new System.Drawing.Point(3, 16);
+            this.cbTableReview.Name = "cbTableReview";
+            this.cbTableReview.Size = new System.Drawing.Size(215, 21);
+            this.cbTableReview.TabIndex = 2;
+            this.cbTableReview.SelectedIndexChanged += new System.EventHandler(this.cbTableReview_SelectedIndexChanged);
+            this.cbTableReview.TextChanged += new System.EventHandler(this.cbTableReview_SelectedIndexChanged);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cbCurrentDataBase);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox8.Location = new System.Drawing.Point(3, 16);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(221, 41);
+            this.groupBox8.TabIndex = 19;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "База данных";
+            // 
+            // cbCurrentDataBase
+            // 
+            this.cbCurrentDataBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbCurrentDataBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCurrentDataBase.FormattingEnabled = true;
+            this.cbCurrentDataBase.Location = new System.Drawing.Point(3, 16);
+            this.cbCurrentDataBase.Name = "cbCurrentDataBase";
+            this.cbCurrentDataBase.Size = new System.Drawing.Size(215, 21);
+            this.cbCurrentDataBase.TabIndex = 2;
+            this.cbCurrentDataBase.SelectedIndexChanged += new System.EventHandler(this.cbCurrentDataBase_TextChanged);
+            this.cbCurrentDataBase.TextChanged += new System.EventHandler(this.cbCurrentDataBase_TextChanged);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label1);
+            this.groupBox9.Controls.Add(this.lStatus);
+            this.groupBox9.Controls.Add(this.btnConnecting);
+            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox9.ForeColor = System.Drawing.Color.MediumBlue;
+            this.groupBox9.Location = new System.Drawing.Point(0, 0);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(227, 64);
+            this.groupBox9.TabIndex = 8;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Подключение к БД";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(6, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Статус:";
+            // 
+            // lStatus
+            // 
+            this.lStatus.AutoSize = true;
+            this.lStatus.ForeColor = System.Drawing.Color.Red;
+            this.lStatus.Location = new System.Drawing.Point(47, 42);
+            this.lStatus.Name = "lStatus";
+            this.lStatus.Size = new System.Drawing.Size(85, 13);
+            this.lStatus.TabIndex = 18;
+            this.lStatus.Text = "Не подключено";
+            // 
+            // btnConnecting
+            // 
+            this.btnConnecting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConnecting.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnConnecting.Location = new System.Drawing.Point(3, 16);
+            this.btnConnecting.Name = "btnConnecting";
+            this.btnConnecting.Size = new System.Drawing.Size(221, 23);
+            this.btnConnecting.TabIndex = 17;
+            this.btnConnecting.Text = "Подключиться к серверу";
+            this.btnConnecting.UseVisualStyleBackColor = true;
+            this.btnConnecting.Click += new System.EventHandler(this.btnConnecting_Click);
             // 
             // panel1
             // 
@@ -119,7 +268,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(141, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(180, 217);
+            this.panel1.Size = new System.Drawing.Size(180, 219);
             this.panel1.TabIndex = 6;
             // 
             // groupBox10
@@ -221,164 +370,24 @@
             this.cbSelectClass.DropDown += new System.EventHandler(this.ComboBox_DropDown);
             this.cbSelectClass.SelectedValueChanged += new System.EventHandler(this.cbSelectClass_SelectedValueChanged);
             // 
-            // groupBox9
+            // groupBox1
             // 
-            this.groupBox9.Controls.Add(this.label1);
-            this.groupBox9.Controls.Add(this.lStatus);
-            this.groupBox9.Controls.Add(this.btnConnecting);
-            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox9.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox9.Location = new System.Drawing.Point(0, 0);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(227, 64);
-            this.groupBox9.TabIndex = 8;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Подключение к БД";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(6, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Статус:";
-            // 
-            // lStatus
-            // 
-            this.lStatus.AutoSize = true;
-            this.lStatus.ForeColor = System.Drawing.Color.Red;
-            this.lStatus.Location = new System.Drawing.Point(56, 42);
-            this.lStatus.Name = "lStatus";
-            this.lStatus.Size = new System.Drawing.Size(85, 13);
-            this.lStatus.TabIndex = 18;
-            this.lStatus.Text = "Не подключено";
-            // 
-            // btnConnecting
-            // 
-            this.btnConnecting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConnecting.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConnecting.Location = new System.Drawing.Point(3, 16);
-            this.btnConnecting.Name = "btnConnecting";
-            this.btnConnecting.Size = new System.Drawing.Size(221, 23);
-            this.btnConnecting.TabIndex = 17;
-            this.btnConnecting.Text = "Подключиться к серверу";
-            this.btnConnecting.UseVisualStyleBackColor = true;
-            this.btnConnecting.Click += new System.EventHandler(this.btnConnecting_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.cbShowQuery);
-            this.groupBox6.Controls.Add(this.btnExport);
-            this.groupBox6.Controls.Add(this.groupBox7);
-            this.groupBox6.Controls.Add(this.groupBox8);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox6.Location = new System.Drawing.Point(0, 64);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(227, 150);
-            this.groupBox6.TabIndex = 9;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Экспорт фактов в БД";
-            // 
-            // cbShowQuery
-            // 
-            this.cbShowQuery.AutoSize = true;
-            this.cbShowQuery.Checked = true;
-            this.cbShowQuery.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbShowQuery.Enabled = false;
-            this.cbShowQuery.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cbShowQuery.Location = new System.Drawing.Point(6, 127);
-            this.cbShowQuery.Name = "cbShowQuery";
-            this.cbShowQuery.Size = new System.Drawing.Size(193, 17);
-            this.cbShowQuery.TabIndex = 22;
-            this.cbShowQuery.Text = "Показать исполненные запросы";
-            this.cbShowQuery.UseVisualStyleBackColor = true;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnExport.Enabled = false;
-            this.btnExport.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExport.Location = new System.Drawing.Point(3, 98);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(221, 23);
-            this.btnExport.TabIndex = 21;
-            this.btnExport.Text = "Экспортировать факты";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.cbTableReview);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox7.Location = new System.Drawing.Point(3, 57);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(221, 41);
-            this.groupBox7.TabIndex = 20;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Таблица для отзыва";
-            // 
-            // cbTableReview
-            // 
-            this.cbTableReview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbTableReview.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTableReview.FormattingEnabled = true;
-            this.cbTableReview.Location = new System.Drawing.Point(3, 16);
-            this.cbTableReview.Name = "cbTableReview";
-            this.cbTableReview.Size = new System.Drawing.Size(215, 21);
-            this.cbTableReview.TabIndex = 2;
-            this.cbTableReview.SelectedIndexChanged += new System.EventHandler(this.cbTableReview_SelectedIndexChanged);
-            this.cbTableReview.TextChanged += new System.EventHandler(this.cbTableReview_SelectedIndexChanged);
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.cbCurrentDataBase);
-            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox8.Location = new System.Drawing.Point(3, 16);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(221, 41);
-            this.groupBox8.TabIndex = 19;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "База данных";
-            // 
-            // cbCurrentDataBase
-            // 
-            this.cbCurrentDataBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbCurrentDataBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCurrentDataBase.FormattingEnabled = true;
-            this.cbCurrentDataBase.Location = new System.Drawing.Point(3, 16);
-            this.cbCurrentDataBase.Name = "cbCurrentDataBase";
-            this.cbCurrentDataBase.Size = new System.Drawing.Size(215, 21);
-            this.cbCurrentDataBase.TabIndex = 2;
-            this.cbCurrentDataBase.SelectedIndexChanged += new System.EventHandler(this.cbCurrentDataBase_TextChanged);
-            this.cbCurrentDataBase.TextChanged += new System.EventHandler(this.cbCurrentDataBase_TextChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Controls.Add(this.groupBox9);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(321, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(227, 217);
-            this.panel2.TabIndex = 8;
-            // 
-            // btnShowAllWindows
-            // 
-            this.btnShowAllWindows.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnShowAllWindows.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnShowAllWindows.Location = new System.Drawing.Point(3, 62);
-            this.btnShowAllWindows.Name = "btnShowAllWindows";
-            this.btnShowAllWindows.Size = new System.Drawing.Size(135, 23);
-            this.btnShowAllWindows.TabIndex = 4;
-            this.btnShowAllWindows.Text = "Открыть все окна";
-            this.btnShowAllWindows.UseVisualStyleBackColor = true;
-            this.btnShowAllWindows.Click += new System.EventHandler(this.btnShowAllWindows_Click);
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.btnShowAllWindows);
+            this.groupBox1.Controls.Add(this.btnActivateWindows);
+            this.groupBox1.Controls.Add(this.btnWindowsNormalize);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(141, 219);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Окна";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnShowImport);
             this.groupBox2.Controls.Add(this.btnShowStopWords);
             this.groupBox2.Controls.Add(this.btnShowFacts);
             this.groupBox2.Controls.Add(this.btnShowReview);
@@ -386,10 +395,22 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(3, 85);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(135, 112);
+            this.groupBox2.Size = new System.Drawing.Size(135, 134);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Показать/скрыть";
+            // 
+            // btnShowImport
+            // 
+            this.btnShowImport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnShowImport.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnShowImport.Location = new System.Drawing.Point(3, 108);
+            this.btnShowImport.Name = "btnShowImport";
+            this.btnShowImport.Size = new System.Drawing.Size(129, 23);
+            this.btnShowImport.TabIndex = 14;
+            this.btnShowImport.Text = "Импорт";
+            this.btnShowImport.UseVisualStyleBackColor = true;
+            this.btnShowImport.Click += new System.EventHandler(this.btnShowImport_Click);
             // 
             // btnShowStopWords
             // 
@@ -423,7 +444,7 @@
             this.btnShowReview.Name = "btnShowReview";
             this.btnShowReview.Size = new System.Drawing.Size(129, 23);
             this.btnShowReview.TabIndex = 10;
-            this.btnShowReview.Text = "Текст отзыва";
+            this.btnShowReview.Text = "Текст";
             this.btnShowReview.UseVisualStyleBackColor = true;
             this.btnShowReview.Click += new System.EventHandler(this.btnShowReview_Click);
             // 
@@ -439,31 +460,211 @@
             this.btnShowOntology.UseVisualStyleBackColor = true;
             this.btnShowOntology.Click += new System.EventHandler(this.btnShowOntology_Click);
             // 
+            // btnShowAllWindows
+            // 
+            this.btnShowAllWindows.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnShowAllWindows.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnShowAllWindows.Location = new System.Drawing.Point(3, 62);
+            this.btnShowAllWindows.Name = "btnShowAllWindows";
+            this.btnShowAllWindows.Size = new System.Drawing.Size(135, 23);
+            this.btnShowAllWindows.TabIndex = 4;
+            this.btnShowAllWindows.Text = "Открыть все окна";
+            this.btnShowAllWindows.UseVisualStyleBackColor = true;
+            this.btnShowAllWindows.Click += new System.EventHandler(this.btnShowAllWindows_Click);
+            // 
+            // btnActivateWindows
+            // 
+            this.btnActivateWindows.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnActivateWindows.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnActivateWindows.Location = new System.Drawing.Point(3, 39);
+            this.btnActivateWindows.Name = "btnActivateWindows";
+            this.btnActivateWindows.Size = new System.Drawing.Size(135, 23);
+            this.btnActivateWindows.TabIndex = 2;
+            this.btnActivateWindows.Text = "Показать окна";
+            this.btnActivateWindows.UseVisualStyleBackColor = true;
+            this.btnActivateWindows.Click += new System.EventHandler(this.btnActivateWindows_Click);
+            // 
+            // btnWindowsNormalize
+            // 
+            this.btnWindowsNormalize.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnWindowsNormalize.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnWindowsNormalize.Location = new System.Drawing.Point(3, 16);
+            this.btnWindowsNormalize.Name = "btnWindowsNormalize";
+            this.btnWindowsNormalize.Size = new System.Drawing.Size(135, 23);
+            this.btnWindowsNormalize.TabIndex = 0;
+            this.btnWindowsNormalize.Text = "Упорядочить";
+            this.btnWindowsNormalize.UseVisualStyleBackColor = true;
+            this.btnWindowsNormalize.Click += new System.EventHandler(this.btnWindowsNormalize_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label2);
+            this.groupBox6.Controls.Add(this.lStatusAutorizatoin);
+            this.groupBox6.Controls.Add(this.btnAutorizationSocialNetwork);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox6.Location = new System.Drawing.Point(3, 16);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(230, 61);
+            this.groupBox6.TabIndex = 23;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Авторизация";
+            // 
+            // btnAutorizationSocialNetwork
+            // 
+            this.btnAutorizationSocialNetwork.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutorizationSocialNetwork.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAutorizationSocialNetwork.Location = new System.Drawing.Point(3, 16);
+            this.btnAutorizationSocialNetwork.Name = "btnAutorizationSocialNetwork";
+            this.btnAutorizationSocialNetwork.Size = new System.Drawing.Size(224, 23);
+            this.btnAutorizationSocialNetwork.TabIndex = 0;
+            this.btnAutorizationSocialNetwork.Text = "Авторизация в соц. сетях";
+            this.btnAutorizationSocialNetwork.UseVisualStyleBackColor = true;
+            this.btnAutorizationSocialNetwork.Click += new System.EventHandler(this.btnAutorizationSocialNetwork_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(6, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Статус:";
+            // 
+            // lStatusAutorizatoin
+            // 
+            this.lStatusAutorizatoin.AutoSize = true;
+            this.lStatusAutorizatoin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lStatusAutorizatoin.Location = new System.Drawing.Point(47, 42);
+            this.lStatusAutorizatoin.Name = "lStatusAutorizatoin";
+            this.lStatusAutorizatoin.Size = new System.Drawing.Size(103, 13);
+            this.lStatusAutorizatoin.TabIndex = 20;
+            this.lStatusAutorizatoin.Text = "Подключено 0 из 0";
+            // 
+            // gbSearchComments
+            // 
+            this.gbSearchComments.Controls.Add(this.btnSearchComments);
+            this.gbSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbSearchComments.Enabled = false;
+            this.gbSearchComments.Location = new System.Drawing.Point(3, 77);
+            this.gbSearchComments.Name = "gbSearchComments";
+            this.gbSearchComments.Size = new System.Drawing.Size(230, 44);
+            this.gbSearchComments.TabIndex = 25;
+            this.gbSearchComments.TabStop = false;
+            this.gbSearchComments.Text = "Поиск";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.pbProgress);
+            this.groupBox11.Controls.Add(this.btnPrev);
+            this.groupBox11.Controls.Add(this.btnNext);
+            this.groupBox11.Controls.Add(this.lStatusSearch);
+            this.groupBox11.Controls.Add(this.label3);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox11.Location = new System.Drawing.Point(3, 121);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(230, 95);
+            this.groupBox11.TabIndex = 26;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Результаты поиска";
+            // 
+            // pbProgress
+            // 
+            this.pbProgress.Location = new System.Drawing.Point(6, 32);
+            this.pbProgress.Maximum = 0;
+            this.pbProgress.Name = "pbProgress";
+            this.pbProgress.Size = new System.Drawing.Size(221, 23);
+            this.pbProgress.TabIndex = 4;
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Enabled = false;
+            this.btnPrev.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPrev.Location = new System.Drawing.Point(6, 61);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(108, 23);
+            this.btnPrev.TabIndex = 0;
+            this.btnPrev.Text = "<<<";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Enabled = false;
+            this.btnNext.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnNext.Location = new System.Drawing.Point(122, 61);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(105, 23);
+            this.btnNext.TabIndex = 1;
+            this.btnNext.Text = ">>>";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // lStatusSearch
+            // 
+            this.lStatusSearch.AutoSize = true;
+            this.lStatusSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lStatusSearch.Location = new System.Drawing.Point(56, 16);
+            this.lStatusSearch.Name = "lStatusSearch";
+            this.lStatusSearch.Size = new System.Drawing.Size(31, 13);
+            this.lStatusSearch.TabIndex = 3;
+            this.lStatusSearch.Text = "none";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Статус:";
+            // 
+            // btnSearchComments
+            // 
+            this.btnSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSearchComments.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSearchComments.Location = new System.Drawing.Point(3, 16);
+            this.btnSearchComments.Name = "btnSearchComments";
+            this.btnSearchComments.Size = new System.Drawing.Size(224, 23);
+            this.btnSearchComments.TabIndex = 0;
+            this.btnSearchComments.Text = "Искать комментарии";
+            this.btnSearchComments.UseVisualStyleBackColor = true;
+            this.btnSearchComments.Click += new System.EventHandler(this.btnSearchComments_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 217);
+            this.ClientSize = new System.Drawing.Size(784, 219);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Text = "Управление";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.groupBox1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.gbExport.ResumeLayout(false);
+            this.gbExport.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.gbSearchComments.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -483,7 +684,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lStatus;
         private System.Windows.Forms.Button btnConnecting;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox gbExport;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox cbTableReview;
@@ -500,6 +701,21 @@
         private System.Windows.Forms.Button btnShowReview;
         private System.Windows.Forms.Button btnShowOntology;
         private System.Windows.Forms.Button btnShowAllWindows;
+        private System.Windows.Forms.Button btnShowImport;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnAutorizationSocialNetwork;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lStatusAutorizatoin;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.ProgressBar pbProgress;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label lStatusSearch;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox gbSearchComments;
+        private System.Windows.Forms.Button btnSearchComments;
 
     }
 }

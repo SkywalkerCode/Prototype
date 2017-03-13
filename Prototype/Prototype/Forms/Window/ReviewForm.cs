@@ -34,6 +34,7 @@ namespace Prototype
         public ReviewForm()
         {
             InitializeComponent();
+            review = new Review(tbText.Text, tbURI.Text);
         }
 
         private bool ChangedText

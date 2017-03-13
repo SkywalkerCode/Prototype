@@ -78,7 +78,7 @@ namespace Prototype.Forms.Window
             lbQuery.Items.Add(tbNewQuery.Text);
             foreach (ISocialNetwork netWork in ListSocialNetworks)
             {
-                netWork.AddQuery(tbNewQuery.Text);
+                netWork.AddRequest(tbNewQuery.Text);
             }
         }
 
@@ -86,16 +86,24 @@ namespace Prototype.Forms.Window
         {
             foreach (ISocialNetwork netWork in ListSocialNetworks)
             {
-                netWork.RemoveQuery(lbQuery.SelectedItem.ToString());
+                netWork.RemoveRequest(lbQuery.SelectedItem.ToString());
             }
             lbQuery.Items.Remove(lbQuery.SelectedItem);
         }
 
         public void StartSearchComments()
         {
+            Reviews.Clear();
             foreach (ISocialNetwork netWork in ListSocialNetworks)
             {
-                Reviews.AddRange(netWork.GetComments(dtpDate.Value, dtpDateFinish.Value, cbDiscussions.Checked, cbTopics.Checked));
+                if (dtpDateFinish.Enabled)
+                {
+                    Reviews.AddRange(netWork.GetReviews(dtpDate.Value.Date, dtpDateFinish.Value.Date, cbDiscussions.Checked, cbTopics.Checked));
+                }
+                else
+                {
+                    Reviews.AddRange(netWork.GetReviews(dtpDate.Value.Date, dtpDate.Value.Date, cbDiscussions.Checked, cbTopics.Checked));
+                }
             }
         }
     }

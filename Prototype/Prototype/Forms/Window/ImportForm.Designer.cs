@@ -75,6 +75,8 @@
             // 
             this.lbQuery.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbQuery.FormattingEnabled = true;
+            this.lbQuery.Items.AddRange(new object[] {
+            "ЖК"});
             this.lbQuery.Location = new System.Drawing.Point(3, 58);
             this.lbQuery.Name = "lbQuery";
             this.lbQuery.Size = new System.Drawing.Size(193, 136);
@@ -278,6 +280,7 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(137, 20);
             this.dtpDate.TabIndex = 5;
+            this.dtpDate.Value = new System.DateTime(2017, 3, 13, 17, 7, 1, 0);
             // 
             // ImportForm
             // 

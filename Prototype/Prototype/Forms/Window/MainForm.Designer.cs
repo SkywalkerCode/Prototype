@@ -30,6 +30,18 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lStatusSearch = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.gbSearchComments = new System.Windows.Forms.GroupBox();
+            this.btnSearchComments = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lStatusAutorizatoin = new System.Windows.Forms.Label();
+            this.btnAutorizationSocialNetwork = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gbExport = new System.Windows.Forms.GroupBox();
             this.cbShowQuery = new System.Windows.Forms.CheckBox();
@@ -61,20 +73,11 @@
             this.btnShowAllWindows = new System.Windows.Forms.Button();
             this.btnActivateWindows = new System.Windows.Forms.Button();
             this.btnWindowsNormalize = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnAutorizationSocialNetwork = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lStatusAutorizatoin = new System.Windows.Forms.Label();
-            this.gbSearchComments = new System.Windows.Forms.GroupBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.pbProgress = new System.Windows.Forms.ProgressBar();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lStatusSearch = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSearchComments = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.gbSearchComments.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbExport.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -87,9 +90,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.gbSearchComments.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -114,6 +114,142 @@
             this.groupBox12.TabIndex = 22;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Импорт фактов";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.pbProgress);
+            this.groupBox11.Controls.Add(this.btnPrev);
+            this.groupBox11.Controls.Add(this.btnNext);
+            this.groupBox11.Controls.Add(this.lStatusSearch);
+            this.groupBox11.Controls.Add(this.label3);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox11.Location = new System.Drawing.Point(3, 121);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(230, 95);
+            this.groupBox11.TabIndex = 26;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Результаты поиска";
+            // 
+            // pbProgress
+            // 
+            this.pbProgress.Location = new System.Drawing.Point(6, 32);
+            this.pbProgress.Maximum = 0;
+            this.pbProgress.Name = "pbProgress";
+            this.pbProgress.Size = new System.Drawing.Size(221, 23);
+            this.pbProgress.TabIndex = 4;
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Enabled = false;
+            this.btnPrev.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPrev.Location = new System.Drawing.Point(6, 61);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(108, 23);
+            this.btnPrev.TabIndex = 0;
+            this.btnPrev.Text = "<<<";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Enabled = false;
+            this.btnNext.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnNext.Location = new System.Drawing.Point(122, 61);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(105, 23);
+            this.btnNext.TabIndex = 1;
+            this.btnNext.Text = ">>>";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // lStatusSearch
+            // 
+            this.lStatusSearch.AutoSize = true;
+            this.lStatusSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lStatusSearch.Location = new System.Drawing.Point(56, 16);
+            this.lStatusSearch.Name = "lStatusSearch";
+            this.lStatusSearch.Size = new System.Drawing.Size(31, 13);
+            this.lStatusSearch.TabIndex = 3;
+            this.lStatusSearch.Text = "none";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Статус:";
+            // 
+            // gbSearchComments
+            // 
+            this.gbSearchComments.Controls.Add(this.btnSearchComments);
+            this.gbSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbSearchComments.Enabled = false;
+            this.gbSearchComments.Location = new System.Drawing.Point(3, 77);
+            this.gbSearchComments.Name = "gbSearchComments";
+            this.gbSearchComments.Size = new System.Drawing.Size(230, 44);
+            this.gbSearchComments.TabIndex = 25;
+            this.gbSearchComments.TabStop = false;
+            this.gbSearchComments.Text = "Поиск";
+            // 
+            // btnSearchComments
+            // 
+            this.btnSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSearchComments.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSearchComments.Location = new System.Drawing.Point(3, 16);
+            this.btnSearchComments.Name = "btnSearchComments";
+            this.btnSearchComments.Size = new System.Drawing.Size(224, 23);
+            this.btnSearchComments.TabIndex = 0;
+            this.btnSearchComments.Text = "Искать комментарии";
+            this.btnSearchComments.UseVisualStyleBackColor = true;
+            this.btnSearchComments.Click += new System.EventHandler(this.btnSearchComments_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label2);
+            this.groupBox6.Controls.Add(this.lStatusAutorizatoin);
+            this.groupBox6.Controls.Add(this.btnAutorizationSocialNetwork);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox6.Location = new System.Drawing.Point(3, 16);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(230, 61);
+            this.groupBox6.TabIndex = 23;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Авторизация";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(6, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Статус:";
+            // 
+            // lStatusAutorizatoin
+            // 
+            this.lStatusAutorizatoin.AutoSize = true;
+            this.lStatusAutorizatoin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lStatusAutorizatoin.Location = new System.Drawing.Point(47, 42);
+            this.lStatusAutorizatoin.Name = "lStatusAutorizatoin";
+            this.lStatusAutorizatoin.Size = new System.Drawing.Size(103, 13);
+            this.lStatusAutorizatoin.TabIndex = 20;
+            this.lStatusAutorizatoin.Text = "Подключено 0 из 0";
+            // 
+            // btnAutorizationSocialNetwork
+            // 
+            this.btnAutorizationSocialNetwork.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutorizationSocialNetwork.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAutorizationSocialNetwork.Location = new System.Drawing.Point(3, 16);
+            this.btnAutorizationSocialNetwork.Name = "btnAutorizationSocialNetwork";
+            this.btnAutorizationSocialNetwork.Size = new System.Drawing.Size(224, 23);
+            this.btnAutorizationSocialNetwork.TabIndex = 0;
+            this.btnAutorizationSocialNetwork.Text = "Авторизация в соц. сетях";
+            this.btnAutorizationSocialNetwork.UseVisualStyleBackColor = true;
+            this.btnAutorizationSocialNetwork.Click += new System.EventHandler(this.btnAutorizationSocialNetwork_Click);
             // 
             // panel2
             // 
@@ -496,142 +632,6 @@
             this.btnWindowsNormalize.UseVisualStyleBackColor = true;
             this.btnWindowsNormalize.Click += new System.EventHandler(this.btnWindowsNormalize_Click);
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Controls.Add(this.lStatusAutorizatoin);
-            this.groupBox6.Controls.Add(this.btnAutorizationSocialNetwork);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(3, 16);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(230, 61);
-            this.groupBox6.TabIndex = 23;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Авторизация";
-            // 
-            // btnAutorizationSocialNetwork
-            // 
-            this.btnAutorizationSocialNetwork.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAutorizationSocialNetwork.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAutorizationSocialNetwork.Location = new System.Drawing.Point(3, 16);
-            this.btnAutorizationSocialNetwork.Name = "btnAutorizationSocialNetwork";
-            this.btnAutorizationSocialNetwork.Size = new System.Drawing.Size(224, 23);
-            this.btnAutorizationSocialNetwork.TabIndex = 0;
-            this.btnAutorizationSocialNetwork.Text = "Авторизация в соц. сетях";
-            this.btnAutorizationSocialNetwork.UseVisualStyleBackColor = true;
-            this.btnAutorizationSocialNetwork.Click += new System.EventHandler(this.btnAutorizationSocialNetwork_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(6, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Статус:";
-            // 
-            // lStatusAutorizatoin
-            // 
-            this.lStatusAutorizatoin.AutoSize = true;
-            this.lStatusAutorizatoin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lStatusAutorizatoin.Location = new System.Drawing.Point(47, 42);
-            this.lStatusAutorizatoin.Name = "lStatusAutorizatoin";
-            this.lStatusAutorizatoin.Size = new System.Drawing.Size(103, 13);
-            this.lStatusAutorizatoin.TabIndex = 20;
-            this.lStatusAutorizatoin.Text = "Подключено 0 из 0";
-            // 
-            // gbSearchComments
-            // 
-            this.gbSearchComments.Controls.Add(this.btnSearchComments);
-            this.gbSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbSearchComments.Enabled = false;
-            this.gbSearchComments.Location = new System.Drawing.Point(3, 77);
-            this.gbSearchComments.Name = "gbSearchComments";
-            this.gbSearchComments.Size = new System.Drawing.Size(230, 44);
-            this.gbSearchComments.TabIndex = 25;
-            this.gbSearchComments.TabStop = false;
-            this.gbSearchComments.Text = "Поиск";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.pbProgress);
-            this.groupBox11.Controls.Add(this.btnPrev);
-            this.groupBox11.Controls.Add(this.btnNext);
-            this.groupBox11.Controls.Add(this.lStatusSearch);
-            this.groupBox11.Controls.Add(this.label3);
-            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox11.Location = new System.Drawing.Point(3, 121);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(230, 95);
-            this.groupBox11.TabIndex = 26;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Результаты поиска";
-            // 
-            // pbProgress
-            // 
-            this.pbProgress.Location = new System.Drawing.Point(6, 32);
-            this.pbProgress.Maximum = 0;
-            this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(221, 23);
-            this.pbProgress.TabIndex = 4;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.Enabled = false;
-            this.btnPrev.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPrev.Location = new System.Drawing.Point(6, 61);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(108, 23);
-            this.btnPrev.TabIndex = 0;
-            this.btnPrev.Text = "<<<";
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Enabled = false;
-            this.btnNext.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnNext.Location = new System.Drawing.Point(122, 61);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(105, 23);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.Text = ">>>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // lStatusSearch
-            // 
-            this.lStatusSearch.AutoSize = true;
-            this.lStatusSearch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lStatusSearch.Location = new System.Drawing.Point(56, 16);
-            this.lStatusSearch.Name = "lStatusSearch";
-            this.lStatusSearch.Size = new System.Drawing.Size(31, 13);
-            this.lStatusSearch.TabIndex = 3;
-            this.lStatusSearch.Text = "none";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Статус:";
-            // 
-            // btnSearchComments
-            // 
-            this.btnSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSearchComments.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSearchComments.Location = new System.Drawing.Point(3, 16);
-            this.btnSearchComments.Name = "btnSearchComments";
-            this.btnSearchComments.Size = new System.Drawing.Size(224, 23);
-            this.btnSearchComments.TabIndex = 0;
-            this.btnSearchComments.Text = "Искать комментарии";
-            this.btnSearchComments.UseVisualStyleBackColor = true;
-            this.btnSearchComments.Click += new System.EventHandler(this.btnSearchComments_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,6 +646,11 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel3.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.gbSearchComments.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.gbExport.ResumeLayout(false);
             this.gbExport.PerformLayout();
@@ -660,11 +665,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.gbSearchComments.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
 
         }

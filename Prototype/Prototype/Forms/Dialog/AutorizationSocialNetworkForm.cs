@@ -53,5 +53,10 @@ namespace Prototype.Forms.Dialog
                 lvi.ForeColor = netWork.IsAuthorized ? Color.Green : Color.Red;
             }
         }
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

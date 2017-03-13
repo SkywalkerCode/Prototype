@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -99,7 +100,7 @@ namespace Prototype
             location.Y = this.Height;
             location.X = OntologyForm.Width;
             size.Height = area.Height - this.Height - StopWordsForm.Height;
-            size.Width = area.Width / 3;
+            size.Width = area.Width / 4;
             ImportForm.WindowPosition(location, size);
         }
 
@@ -286,6 +287,11 @@ namespace Prototype
 
         private void btnActivateWindows_Click(object sender, EventArgs e)
         {
+            ActivateAllWindows();
+        }
+
+        public void ActivateAllWindows()
+        {
             // StopWordsForm
             StopWordsForm.Activate();
             // OntologyForm
@@ -339,6 +345,7 @@ namespace Prototype
                 ReviewForm.Review = ImportForm.Comments[0];
                 UpdateStateComments();
             }
+            SystemSounds.Hand.Play();
         }
 
         private void UpdateStateComments()

@@ -14,10 +14,10 @@ namespace Prototype.Tools
 
         string Name { get; }
 
-        void AddRequest(string query);
+        List<string> Requests { get; set; }
 
-        void RemoveRequest(string query);
+        List<Review> GetReviewsFromGroups(DateTime dateStart, DateTime dateFinish);
 
-        List<Review> GetReviews(DateTime dateStart, DateTime dateFinish, bool discussions, bool topics);
+        List<Review> GetReviewsFromTopics(DateTime dateStart, DateTime dateFinish);
     }
 }

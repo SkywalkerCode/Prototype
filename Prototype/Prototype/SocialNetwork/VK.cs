@@ -15,7 +15,7 @@ namespace Prototype.SocialNetwork
     public class VK : ISocialNetwork
     {
         private VkApi Vk;
-        private List<string> Requests;
+        private List<string> requests;
         private string NameSocialNetwork;
 
         public VK()
@@ -60,35 +60,78 @@ namespace Prototype.SocialNetwork
             }
         }
 
-        public void AddRequest(string request)
+        public List<string> Requests
         {
-            Requests.Add(request);
+            get
+            {
+                return requests;
+            }
+            set
+            {
+                requests = value;
+            }
         }
 
-        public void RemoveRequest(string request)
-        {
-            Requests.Remove(request);
-        }
-
-        public List<Review> GetReviews(DateTime dateStart, DateTime dateFinish, bool discussions, bool news)
+        public List<Review> GetReviewsFromGroups(DateTime dateStart, DateTime dateFinish)
         {
             List<Review> Reviews = new List<Review>();
             foreach (string request in Requests)
             {
-                foreach (Group group in GetGroups(request))
+                Reviews.AddRange(SearchInGroups(dateStart, dateFinish, request));
+            }
+            return Reviews;
+        }
+
+        public List<Review> GetReviewsFromTopics(DateTime dateStart, DateTime dateFinish)
+        {
+            List<Review> Reviews = new List<Review>();
+            foreach (string request in Requests)
+            {
+                Reviews.AddRange(SearchInTopics(dateStart, dateFinish, request));
+            }
+            return Reviews;
+        }
+
+        private List<Review> SearchInTopics(DateTime dateStart, DateTime dateFinish, string request)
+        {
+            List<Review> Reviews = new List<Review>();
+            foreach (NewsSearchResult newsResult in GetNews(dateStart, dateFinish, request))
+            {
+                string text = newsResult.Text;
+                string uri = String.Format("vk.com/wall{0}_{1}", newsResult.OwnerId, newsResult.Id);
+                Reviews.Add(new Review(text, uri));
+            }
+            return Reviews;
+        }
+
+        private List<NewsSearchResult> GetNews(DateTime dateStart, DateTime dateFinish, string request)
+        {
+            NewsFeedSearchParams newsParams = new NewsFeedSearchParams
+            {
+                Query = request,
+                Count = 200,
+                StartTime = dateStart,
+                EndTime = dateFinish
+            };
+            return Vk.NewsFeed.Search(newsParams).ToList();
+        }
+
+        private List<Review> SearchInGroups(DateTime dateStart, DateTime dateFinish, string request)
+        {
+            List<Review> Reviews = new List<Review>();
+            foreach (Group group in GetGroups(request))
+            {
+                if (group.IsClosed == 0)
                 {
-                    if (group.IsClosed == 0)
+                    foreach (Topic topic in GetTopics(group))
                     {
-                        foreach (Topic topic in GetTopics(group))
+                        if (topic.Сreated.Value.Date <= dateFinish && topic.Updated.Value.Date >= dateStart)
                         {
-                            if (topic.Сreated.Value.Date <= dateFinish && topic.Updated.Value.Date >= dateStart)
+                            foreach (Comment comment in GetComments(group, topic, dateStart, dateFinish))
                             {
-                                foreach (Comment comment in GetComments(group, topic, dateStart, dateFinish))
-                                {
-                                    string text = comment.Text;
-                                    string uri = String.Format("vk.com/topic{0}_{1}?post={2}", group.Id, topic.Id, comment.Id);
-                                    Reviews.Add(new Review(text, uri));
-                                }
+                                string text = comment.Text;
+                                string uri = String.Format("vk.com/topic{0}_{1}?post={2}", group.Id, topic.Id, comment.Id);
+                                Reviews.Add(new Review(text, uri));
                             }
                         }
                     }
@@ -110,7 +153,15 @@ namespace Prototype.SocialNetwork
             };
             do
             {
-                newGroups = Vk.Groups.Search(groupsParams).ToList();
+                try
+                {
+                    newGroups = Vk.Groups.Search(groupsParams).ToList();
+                }
+                finally
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    newGroups = Vk.Groups.Search(groupsParams).ToList();
+                }
                 resultGroups.AddRange(newGroups);
                 groupsParams.Offset += groupsParams.Count;
             }
@@ -130,7 +181,15 @@ namespace Prototype.SocialNetwork
             };
             do
             {
-                newTopics = Vk.Board.GetTopics(topicsParams).ToList();
+                try
+                {
+                    newTopics = Vk.Board.GetTopics(topicsParams).ToList();
+                }
+                finally
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    newTopics = Vk.Board.GetTopics(topicsParams).ToList();
+                }
                 resultTopics.AddRange(newTopics);
                 topicsParams.Offset += topicsParams.Count;
             }
@@ -151,7 +210,15 @@ namespace Prototype.SocialNetwork
             };
             do
             {
-                newComments = Vk.Board.GetComments(commentsParams).Items.ToList();
+                try
+                {
+                    newComments = Vk.Board.GetComments(commentsParams).Items.ToList();
+                }
+                finally
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    newComments = Vk.Board.GetComments(commentsParams).Items.ToList();
+                }
                 commentsParams.Offset += commentsParams.Count;
                 if (newComments.Count > 0)
                 {

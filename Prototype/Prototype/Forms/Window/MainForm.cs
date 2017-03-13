@@ -69,7 +69,7 @@ namespace Prototype
             // MainForm
             location.Y = area.Top;
             location.X = area.Left;
-            size.Height = 256;
+            size.Height = 270;
             size.Width = 800;
             this.WindowPosition(location, size);
             // FactsForm
@@ -81,7 +81,7 @@ namespace Prototype
             // OntologyForm
             location.Y = FactsForm.Height + FactsForm.Location.Y;
             location.X = area.Left;
-            size.Height = area.Height / 2;
+            size.Height = area.Height - this.Height - FactsForm.Height;
             size.Width = 570;
             OntologyForm.WindowPosition(location, size);
             // StopWordsForm
@@ -368,6 +368,11 @@ namespace Prototype
             int prevIndex = ImportForm.Comments.IndexOf(ReviewForm.Review) - 1;
             ReviewForm.Review = ImportForm.Comments[prevIndex];
             UpdateStateComments();
+        }
+
+        private void btnRemoveSpam_Click(object sender, EventArgs e)
+        {
+            ImportForm.RemoveSpam();
         }
     }
 }

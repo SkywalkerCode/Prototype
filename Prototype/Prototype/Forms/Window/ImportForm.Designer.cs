@@ -37,10 +37,9 @@
             this.tbNewQuery = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbDiscussions = new System.Windows.Forms.CheckBox();
+            this.cbGroup = new System.Windows.Forms.CheckBox();
             this.cbTopics = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,14 +48,31 @@
             this.rbRange = new System.Windows.Forms.RadioButton();
             this.dtpDateFinish = new System.Windows.Forms.DateTimePicker();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lbSpam = new System.Windows.Forms.ListBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnRemoveSpam = new System.Windows.Forms.Button();
+            this.btnAddSpam = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.tbSpam = new System.Windows.Forms.TextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -64,9 +80,9 @@
             this.groupBox4.Controls.Add(this.lbQuery);
             this.groupBox4.Controls.Add(this.panel3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(201, 0);
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(199, 197);
+            this.groupBox4.Size = new System.Drawing.Size(283, 385);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Тексты запросов";
@@ -76,10 +92,10 @@
             this.lbQuery.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbQuery.FormattingEnabled = true;
             this.lbQuery.Items.AddRange(new object[] {
-            "ЖК"});
+            "Жилой комплекс"});
             this.lbQuery.Location = new System.Drawing.Point(3, 58);
             this.lbQuery.Name = "lbQuery";
-            this.lbQuery.Size = new System.Drawing.Size(193, 136);
+            this.lbQuery.Size = new System.Drawing.Size(277, 324);
             this.lbQuery.TabIndex = 7;
             // 
             // panel3
@@ -90,7 +106,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 16);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(193, 42);
+            this.panel3.Size = new System.Drawing.Size(277, 42);
             this.panel3.TabIndex = 4;
             // 
             // btnDeleteSelectQuery
@@ -122,7 +138,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(193, 20);
+            this.panel1.Size = new System.Drawing.Size(277, 20);
             this.panel1.TabIndex = 3;
             // 
             // tbNewQuery
@@ -130,7 +146,7 @@
             this.tbNewQuery.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbNewQuery.Location = new System.Drawing.Point(50, 0);
             this.tbNewQuery.Name = "tbNewQuery";
-            this.tbNewQuery.Size = new System.Drawing.Size(143, 20);
+            this.tbNewQuery.Size = new System.Drawing.Size(227, 20);
             this.tbNewQuery.TabIndex = 5;
             // 
             // panel2
@@ -151,50 +167,41 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Запрос:";
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.groupBox1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(201, 197);
-            this.panel4.TabIndex = 21;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(201, 197);
+            this.groupBox1.Size = new System.Drawing.Size(209, 172);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cbDiscussions);
+            this.groupBox3.Controls.Add(this.cbGroup);
             this.groupBox3.Controls.Add(this.cbTopics);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 108);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(195, 63);
+            this.groupBox3.Size = new System.Drawing.Size(203, 63);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Контент";
             // 
-            // cbDiscussions
+            // cbGroup
             // 
-            this.cbDiscussions.AutoSize = true;
-            this.cbDiscussions.Checked = true;
-            this.cbDiscussions.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDiscussions.Location = new System.Drawing.Point(6, 19);
-            this.cbDiscussions.Name = "cbDiscussions";
-            this.cbDiscussions.Size = new System.Drawing.Size(145, 17);
-            this.cbDiscussions.TabIndex = 10;
-            this.cbDiscussions.Text = "Поиск по обсуждениям";
-            this.cbDiscussions.UseVisualStyleBackColor = true;
+            this.cbGroup.AutoSize = true;
+            this.cbGroup.Checked = true;
+            this.cbGroup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGroup.Location = new System.Drawing.Point(6, 19);
+            this.cbGroup.Name = "cbGroup";
+            this.cbGroup.Size = new System.Drawing.Size(118, 17);
+            this.cbGroup.TabIndex = 10;
+            this.cbGroup.Text = "Поиск по группам";
+            this.cbGroup.UseVisualStyleBackColor = true;
             // 
             // cbTopics
             // 
@@ -219,7 +226,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(3, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(195, 92);
+            this.groupBox2.Size = new System.Drawing.Size(203, 92);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Временной диапазон";
@@ -282,13 +289,120 @@
             this.dtpDate.TabIndex = 5;
             this.dtpDate.Value = new System.DateTime(2017, 3, 13, 17, 7, 1, 0);
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer1.Size = new System.Drawing.Size(496, 385);
+            this.splitContainer1.SplitterDistance = 209;
+            this.splitContainer1.TabIndex = 23;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.lbSpam);
+            this.groupBox5.Controls.Add(this.panel5);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 172);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(209, 213);
+            this.groupBox5.TabIndex = 24;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Спам-фильтр";
+            // 
+            // lbSpam
+            // 
+            this.lbSpam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbSpam.FormattingEnabled = true;
+            this.lbSpam.Location = new System.Drawing.Point(3, 58);
+            this.lbSpam.Name = "lbSpam";
+            this.lbSpam.Size = new System.Drawing.Size(203, 152);
+            this.lbSpam.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnRemoveSpam);
+            this.panel5.Controls.Add(this.btnAddSpam);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(3, 16);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(203, 42);
+            this.panel5.TabIndex = 4;
+            // 
+            // btnRemoveSpam
+            // 
+            this.btnRemoveSpam.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRemoveSpam.Location = new System.Drawing.Point(92, 20);
+            this.btnRemoveSpam.Name = "btnRemoveSpam";
+            this.btnRemoveSpam.Size = new System.Drawing.Size(92, 22);
+            this.btnRemoveSpam.TabIndex = 5;
+            this.btnRemoveSpam.Text = "Удалить";
+            this.btnRemoveSpam.UseVisualStyleBackColor = true;
+            this.btnRemoveSpam.Click += new System.EventHandler(this.btnRemoveSpam_Click);
+            // 
+            // btnAddSpam
+            // 
+            this.btnAddSpam.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAddSpam.Location = new System.Drawing.Point(0, 20);
+            this.btnAddSpam.Name = "btnAddSpam";
+            this.btnAddSpam.Size = new System.Drawing.Size(92, 22);
+            this.btnAddSpam.TabIndex = 4;
+            this.btnAddSpam.Text = "Добавить";
+            this.btnAddSpam.UseVisualStyleBackColor = true;
+            this.btnAddSpam.Click += new System.EventHandler(this.btnAddSpam_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.tbSpam);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(203, 20);
+            this.panel6.TabIndex = 3;
+            // 
+            // tbSpam
+            // 
+            this.tbSpam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSpam.Location = new System.Drawing.Point(42, 0);
+            this.tbSpam.Name = "tbSpam";
+            this.tbSpam.Size = new System.Drawing.Size(161, 20);
+            this.tbSpam.TabIndex = 5;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(42, 20);
+            this.panel7.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Спам:";
+            // 
             // ImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 197);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.panel4);
+            this.ClientSize = new System.Drawing.Size(496, 385);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "ImportForm";
             this.Text = "Импорт";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImportForm_FormClosing);
@@ -298,12 +412,21 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -319,7 +442,6 @@
         private System.Windows.Forms.TextBox tbNewQuery;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
@@ -329,8 +451,18 @@
         private System.Windows.Forms.DateTimePicker dtpDateFinish;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox cbDiscussions;
+        private System.Windows.Forms.CheckBox cbGroup;
         private System.Windows.Forms.CheckBox cbTopics;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListBox lbSpam;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnRemoveSpam;
+        private System.Windows.Forms.Button btnAddSpam;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox tbSpam;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label3;
 
 
 

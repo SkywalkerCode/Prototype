@@ -34,6 +34,11 @@ namespace Prototype.Forms.Window
             Reviews = new List<Review>();
         }
 
+        public void Autorization()
+        {
+            new AutorizationSocialNetworkForm(ListSocialNetworks).ShowDialog();
+        }
+
         public int CountNetWorks
         {
             get
@@ -58,14 +63,32 @@ namespace Prototype.Forms.Window
             }
         }
 
+        private DateTime StartTime
+        {
+            get
+            {
+                return dtpDate.Value.Date;
+            }
+        }
+
+        private DateTime EndTime
+        {
+            get
+            {
+                if (rbRange.Checked)
+                {
+                    return dtpDateFinish.Value.Date;
+                }
+                else
+                {
+                    return StartTime;
+                }
+            }
+        }
+
         private void ImportForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             NoClosing(sender, e);
-        }
-
-        public void Autorization()
-        {
-            new AutorizationSocialNetworkForm(ListSocialNetworks).ShowDialog();
         }
 
         private void ChangeDateTypeSearch(object sender, EventArgs e)
@@ -76,18 +99,10 @@ namespace Prototype.Forms.Window
         private void btnAddQuery_Click(object sender, EventArgs e)
         {
             lbQuery.Items.Add(tbNewQuery.Text);
-            foreach (ISocialNetwork netWork in ListSocialNetworks)
-            {
-                netWork.AddRequest(tbNewQuery.Text);
-            }
         }
 
         private void btnDeleteSelectQuery_Click(object sender, EventArgs e)
         {
-            foreach (ISocialNetwork netWork in ListSocialNetworks)
-            {
-                netWork.RemoveRequest(lbQuery.SelectedItem.ToString());
-            }
             lbQuery.Items.Remove(lbQuery.SelectedItem);
         }
 
@@ -96,15 +111,43 @@ namespace Prototype.Forms.Window
             Reviews.Clear();
             foreach (ISocialNetwork netWork in ListSocialNetworks)
             {
-                if (dtpDateFinish.Enabled)
+                foreach (string request in lbQuery.Items)
                 {
-                    Reviews.AddRange(netWork.GetReviews(dtpDate.Value.Date, dtpDateFinish.Value.Date, cbDiscussions.Checked, cbTopics.Checked));
+                    netWork.Requests.Add(request);
                 }
-                else
+                if (cbGroup.Checked)
                 {
-                    Reviews.AddRange(netWork.GetReviews(dtpDate.Value.Date, dtpDate.Value.Date, cbDiscussions.Checked, cbTopics.Checked));
+                    Reviews.AddRange(netWork.GetReviewsFromGroups(StartTime, EndTime));
+                }
+                if (cbTopics.Checked)
+                {
+                    Reviews.AddRange(netWork.GetReviewsFromTopics(StartTime, EndTime));
                 }
             }
+        }
+
+        public void RemoveSpam()
+        {
+            foreach (Review review in Reviews)
+            {
+                foreach (string spam in lbSpam.Items)
+                {
+                    if (review.Text.ToLower().Contains(spam.ToLower()))
+                    {
+                        Reviews.Remove(review);
+                    }
+                }
+            }
+        }
+
+        private void btnAddSpam_Click(object sender, EventArgs e)
+        {
+            lbSpam.Items.Add(tbSpam.Text);
+        }
+
+        private void btnRemoveSpam_Click(object sender, EventArgs e)
+        {
+            lbSpam.Items.Remove(tbSpam.Text);
         }
     }
 }

@@ -37,6 +37,7 @@
             this.lStatusSearch = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.gbSearchComments = new System.Windows.Forms.GroupBox();
+            this.btnRemoveSpam = new System.Windows.Forms.Button();
             this.btnSearchComments = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,7 +99,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(548, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(236, 219);
+            this.panel3.Size = new System.Drawing.Size(236, 231);
             this.panel3.TabIndex = 21;
             // 
             // groupBox12
@@ -110,7 +111,7 @@
             this.groupBox12.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox12.Location = new System.Drawing.Point(0, 0);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(236, 219);
+            this.groupBox12.Size = new System.Drawing.Size(236, 231);
             this.groupBox12.TabIndex = 22;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Импорт фактов";
@@ -123,9 +124,9 @@
             this.groupBox11.Controls.Add(this.lStatusSearch);
             this.groupBox11.Controls.Add(this.label3);
             this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox11.Location = new System.Drawing.Point(3, 121);
+            this.groupBox11.Location = new System.Drawing.Point(3, 141);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(230, 95);
+            this.groupBox11.Size = new System.Drawing.Size(230, 87);
             this.groupBox11.TabIndex = 26;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Результаты поиска";
@@ -184,15 +185,28 @@
             // 
             // gbSearchComments
             // 
+            this.gbSearchComments.Controls.Add(this.btnRemoveSpam);
             this.gbSearchComments.Controls.Add(this.btnSearchComments);
             this.gbSearchComments.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbSearchComments.Enabled = false;
             this.gbSearchComments.Location = new System.Drawing.Point(3, 77);
             this.gbSearchComments.Name = "gbSearchComments";
-            this.gbSearchComments.Size = new System.Drawing.Size(230, 44);
+            this.gbSearchComments.Size = new System.Drawing.Size(230, 64);
             this.gbSearchComments.TabIndex = 25;
             this.gbSearchComments.TabStop = false;
             this.gbSearchComments.Text = "Поиск";
+            // 
+            // btnRemoveSpam
+            // 
+            this.btnRemoveSpam.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRemoveSpam.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRemoveSpam.Location = new System.Drawing.Point(3, 39);
+            this.btnRemoveSpam.Name = "btnRemoveSpam";
+            this.btnRemoveSpam.Size = new System.Drawing.Size(224, 23);
+            this.btnRemoveSpam.TabIndex = 1;
+            this.btnRemoveSpam.Text = "Удалить спам из найденного";
+            this.btnRemoveSpam.UseVisualStyleBackColor = true;
+            this.btnRemoveSpam.Click += new System.EventHandler(this.btnRemoveSpam_Click);
             // 
             // btnSearchComments
             // 
@@ -258,7 +272,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(321, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(227, 219);
+            this.panel2.Size = new System.Drawing.Size(227, 231);
             this.panel2.TabIndex = 8;
             // 
             // gbExport
@@ -404,7 +418,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(141, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(180, 219);
+            this.panel1.Size = new System.Drawing.Size(180, 231);
             this.panel1.TabIndex = 6;
             // 
             // groupBox10
@@ -516,7 +530,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(141, 219);
+            this.groupBox1.Size = new System.Drawing.Size(141, 231);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Окна";
@@ -636,7 +650,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 219);
+            this.ClientSize = new System.Drawing.Size(784, 231);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -716,6 +730,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbSearchComments;
         private System.Windows.Forms.Button btnSearchComments;
+        private System.Windows.Forms.Button btnRemoveSpam;
 
     }
 }

@@ -58,35 +58,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Dialog\AutorizationSocialNetworkForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialog\AutorizationSocialNetworkForm.Designer.cs">
-      <DependentUpon>AutorizationSocialNetworkForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Dialog\ConnectSqlServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Dialog\ConnectSqlServerForm.Designer.cs">
       <DependentUpon>ConnectSqlServerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialog\ExportForm.cs">
+    <Compile Include="Forms\Window\Aggregator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialog\ExportForm.Designer.cs">
-      <DependentUpon>ExportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Window\ImportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Window\ImportForm.Designer.cs">
-      <DependentUpon>ImportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Window\FactsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Window\FactsForm.Designer.cs">
-      <DependentUpon>FactsForm.cs</DependentUpon>
+    <Compile Include="Forms\Window\Aggregator.Designer.cs">
+      <DependentUpon>Aggregator.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Window\StopWordsForm.cs">
       <SubType>Form</SubType>
@@ -95,23 +77,11 @@
       <DependentUpon>StopWordsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ILogWriter.cs" />
-    <Compile Include="Forms\Window\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Window\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Window\OntologyForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Window\OntologyForm.Designer.cs">
       <DependentUpon>OntologyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Window\ReviewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Window\ReviewForm.Designer.cs">
-      <DependentUpon>ReviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SocialNetwork\VK.cs" />
     <Compile Include="Tools\Fact.cs" />
@@ -119,29 +89,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interfaces\ISocialNetwork.cs" />
+    <Compile Include="Tools\ItemComparer.cs" />
     <Compile Include="Tools\OwlClassItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Review.cs" />
     <Compile Include="Tools\SqlQuery.cs" />
     <Compile Include="Tools\WriteInLog.cs" />
-    <EmbeddedResource Include="Forms\Dialog\AutorizationSocialNetworkForm.resx">
-      <DependentUpon>AutorizationSocialNetworkForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialog\ConnectSqlServerForm.resx">
       <DependentUpon>ConnectSqlServerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialog\ExportForm.resx">
-      <DependentUpon>ExportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Window\ImportForm.resx">
-      <DependentUpon>ImportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Window\FactsForm.resx">
-      <DependentUpon>FactsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Window\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Window\Aggregator.resx">
+      <DependentUpon>Aggregator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Window\OntologyForm.resx">
       <DependentUpon>OntologyForm.cs</DependentUpon>
@@ -158,9 +117,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Window\ReviewForm.resx">
-      <DependentUpon>ReviewForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Abstract\MasterForm.resx">
       <DependentUpon>MasterForm.cs</DependentUpon>
     </EmbeddedResource>

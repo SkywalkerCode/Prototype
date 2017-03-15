@@ -143,11 +143,11 @@ namespace Prototype.SocialNetwork
         private List<Group> GetGroups(string request)
         {
             List<Group> resultGroups = new List<Group>();
-            List<Group> newGroups;
+            List<Group> newGroups = new List<Group>();
             GroupsSearchParams groupsParams = new GroupsSearchParams
             {
                 Query = request,
-                CityId = 110,
+                //CityId = 110,
                 Count = 1000,
                 Offset = 0
             };
@@ -157,10 +157,17 @@ namespace Prototype.SocialNetwork
                 {
                     newGroups = Vk.Groups.Search(groupsParams).ToList();
                 }
-                finally
+                catch
                 {
-                    System.Threading.Thread.Sleep(1000);
-                    newGroups = Vk.Groups.Search(groupsParams).ToList();
+                    try
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        newGroups = Vk.Groups.Search(groupsParams).ToList();
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 resultGroups.AddRange(newGroups);
                 groupsParams.Offset += groupsParams.Count;
@@ -185,7 +192,7 @@ namespace Prototype.SocialNetwork
                 {
                     newTopics = Vk.Board.GetTopics(topicsParams).ToList();
                 }
-                finally
+                catch
                 {
                     System.Threading.Thread.Sleep(1000);
                     newTopics = Vk.Board.GetTopics(topicsParams).ToList();
@@ -214,7 +221,7 @@ namespace Prototype.SocialNetwork
                 {
                     newComments = Vk.Board.GetComments(commentsParams).Items.ToList();
                 }
-                finally
+                catch
                 {
                     System.Threading.Thread.Sleep(1000);
                     newComments = Vk.Board.GetComments(commentsParams).Items.ToList();

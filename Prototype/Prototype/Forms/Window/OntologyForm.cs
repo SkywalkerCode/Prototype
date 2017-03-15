@@ -3,20 +3,14 @@ using Prototype.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Prototype
 {
     public partial class OntologyForm : MasterForm
     {
-        private MainForm MainForm;
+        private ToolStripComboBox ComboBoxClasses;
         private WriteInLog LogWriter;
         private string Path;
         private OwlGraph OwlGraph;
@@ -25,18 +19,11 @@ namespace Prototype
         private List<OwlIndividual> ListOwlIndividual;
         private List<OwlDatatypeProperty> ListOwlDatatypeProperty;
 
-        public OntologyForm(MainForm mainForm)
+        public OntologyForm(ToolStripComboBox listBox, string path)
         {
             InitializeComponent();
             LogWriter = new WriteInLog(lbLog);
-            MainForm = mainForm;
-        }
-
-        public OntologyForm(MainForm mainForm, string path)
-        {
-            InitializeComponent();
-            LogWriter = new WriteInLog(lbLog);
-            MainForm = mainForm;
+            ComboBoxClasses = listBox;
             if (File.Exists(path))
             {
                 Path = path;
@@ -68,7 +55,24 @@ namespace Prototype
             LogWriter.Write(string.Format("Онтологический граф построен и содержит {0} вершин и {1} граней.", OwlGraph.Nodes.Count, OwlGraph.Edges.Count));
             ClassificationOwlNodes();
             WriteTree();
-            MainForm.ListOwlClass = ListOwlClass;
+            UpdateComboBox();
+        }
+
+        private void UpdateComboBox()
+        {
+            if (ComboBoxClasses != null)
+            {
+                ComboBoxClasses.Items.Clear();
+                foreach (OwlClass owlClass in ListOwlClass)
+                {
+                    OwlItem item = new OwlItem(owlClass);
+                    ComboBoxClasses.Items.Add(item);
+                }
+                if (ListOwlClass.Count != 0)
+                {
+                    ComboBoxClasses.SelectedItem = ComboBoxClasses.Items[0];
+                }
+            }
         }
 
         private void ClassificationOwlNodes()

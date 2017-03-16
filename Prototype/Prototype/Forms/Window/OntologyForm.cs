@@ -133,24 +133,6 @@ namespace Prototype
             }
         }
 
-        public static string ConvertNameNode(OwlNode owlNode)
-        {
-            string[] name = owlNode.ID.Split('#');
-            if (name.Length > 1)
-                return name[1];
-            else
-                return "---";
-        }
-
-        public static string ConvertNameNode(OwlEdge owlEdge)
-        {
-            string[] name = owlEdge.ID.Split('#');
-            if (name.Length > 1)
-                return name[1];
-            else
-                return "Нет Вершины!!! Ошибка!!!";
-        }
-
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             LogWriter.Clear();
@@ -250,6 +232,24 @@ namespace Prototype
                     break;
                 }
             }
+        }
+
+        public static string ConvertNameNode(OwlNode owlNode)
+        {
+            string[] name = owlNode.ID.Split('#');
+            if (name.Length > 1)
+                return name[1];
+            else
+                return "---";
+        }
+
+        public static string ConvertNameNode(OwlEdge owlEdge)
+        {
+            string[] name = owlEdge.ID.Split('#');
+            if (name.Length > 1)
+                return name[1];
+            else
+                return "Нет Вершины!!! Ошибка!!!";
         }
     }
 }

@@ -2,7 +2,6 @@
 using Prototype.SocialNetwork;
 using Prototype.Tools;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,10 +14,10 @@ namespace Prototype.Forms.Window
     public partial class Aggregator : Form
     {
         private List<ISocialNetwork> SocialNetworks;
-        private List<Review> Reviews;
-        private OntologyForm Ontology;
         private ConnectSqlServerForm ConnectingForm;
         private StopWordsForm StopWords;
+        private OntologyForm Ontology;
+        private List<Review> Reviews;
 
         public Aggregator()
         {
@@ -199,16 +198,13 @@ namespace Prototype.Forms.Window
         private void UpdateUriReviews()
         {
             lvReviews.Items.Clear();
-            lvReviews.Columns.Clear();
-            lvReviews.Columns.Add("URI");
-            lvReviews.Columns.Add("Фактов");
-            lvReviews.Columns.Add("Длина");
             foreach (Review review in Reviews)
             {
                 ListViewItem lvi = new ListViewItem(new string[] {
                     review.URI,
                     review.FactsExtracted ? review.CountFacts.ToString() : "---",
-                    review.Text.Length.ToString()
+                    review.Text.Length.ToString(),
+                    review.CountKeyWords.ToString()
                 })
                 {
                     Tag = review
@@ -246,11 +242,11 @@ namespace Prototype.Forms.Window
             {
                 if (lvReviews.FocusedItem != null)
                 {
-                    menuReview.Items[0].Enabled = (lvReviews.FocusedItem.Bounds.Contains(e.Location));
+                    menuReview.Items[1].Enabled = (lvReviews.FocusedItem.Bounds.Contains(e.Location));
                 }
                 else
                 {
-                    menuReview.Items[0].Enabled = false;
+                    menuReview.Items[1].Enabled = false;
                 }
                 menuReview.Show(Cursor.Position);
             }
@@ -268,10 +264,16 @@ namespace Prototype.Forms.Window
                 Review review = (Review)lvi.Tag;
                 lvReviews.SelectedItems.Clear();
                 lvi.Selected = true;
-                review.ExtractFacts((OwlClass)((OwlItem)cbHeadOwlClass.SelectedItem).owlNode);
+                if (cbDeleteStopWords.Checked)
+                {
+                    review.ExtractFacts((OwlClass)((OwlItem)cbHeadOwlClass.SelectedItem).owlNode, cbToLowerTextReview.Checked, StopWords.StopWords);
+                }
+                else
+                {
+                    review.ExtractFacts((OwlClass)((OwlItem)cbHeadOwlClass.SelectedItem).owlNode, cbToLowerTextReview.Checked);
+                }
                 lvi.SubItems[1].Text = review.FactsExtracted ? review.CountFacts.ToString() : "---";
                 tbTextReview.Text = review.Text;
-                break;
             }
             foreach (ListViewItem lvi in selectedItems)
             {
@@ -325,7 +327,8 @@ namespace Prototype.Forms.Window
                     ListViewItem lvi = new ListViewItem(new string[] {
                     review.URI,
                     review.FactsExtracted ? review.CountFacts.ToString() : "---",
-                    review.Text.Length.ToString()})
+                    review.Text.Length.ToString(),
+                    review.CountKeyWords.ToString()})
                     {
                         Tag = review
                     };
@@ -369,6 +372,35 @@ namespace Prototype.Forms.Window
         private void btnCollapseFacts_Click(object sender, EventArgs e)
         {
             tvFacts.CollapseAll();
+        }
+
+        private void btnCalcCountKeyWords_Click(object sender, EventArgs e)
+        {
+            List<string> keyWords = new List<string>();
+            OwlClass owlMainClass = (OwlClass)((OwlItem)cbHeadOwlClass.SelectedItem).owlNode;
+            foreach (OwlEdge owlEdge in owlMainClass.ParentEdges)
+            {
+                OwlIndividual owlIndividual = (OwlIndividual)owlEdge.ParentNode;
+                foreach (OwlEdge owlAttribute in owlIndividual.ChildEdges)
+                {
+                    if (OntologyForm.ConvertNameNode(owlAttribute) == "HasKeyWord")
+                    {
+                        OwlNode attribute = (OwlNode)(owlAttribute.ChildNode);
+                        keyWords.Add(attribute.ID);
+                    }
+                }
+            }
+            foreach (ListViewItem lvi in lvReviews.SelectedItems)
+            {
+                Review review = (Review)lvi.Tag;
+                review.CalcCountKeyWords(keyWords);
+                lvi.SubItems[3].Text = review.CountKeyWords.ToString();
+            }
+        }
+
+        private void cbToLowerTextReview_Click(object sender, EventArgs e)
+        {
+            cbToLowerTextReview.Checked = !cbToLowerTextReview.Checked;
         }
         #endregion
 

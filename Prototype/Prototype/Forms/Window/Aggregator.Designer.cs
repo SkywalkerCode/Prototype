@@ -71,6 +71,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tvFacts = new System.Windows.Forms.TreeView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -95,16 +96,16 @@
             this.btnConnectAllNetWork = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReloadAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReview = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnExtractFacts = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.выделенноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCalcCountKeyWords = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLoadReview = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSettingsExtract = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cbHeadOwlClass = new System.Windows.Forms.ToolStripComboBox();
-            this.cbDeleteStopWords = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFacts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnExpandFacts = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCollapseFacts = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,6 +113,10 @@
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowOntology = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowStopWords = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExtractFacts = new System.Windows.Forms.ToolStripMenuItem();
+            this.извлечениеФактовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbDeleteStopWords = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbToLowerTextReview = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMainTabs.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -617,7 +622,8 @@
             this.lvReviews.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader4});
             this.lvReviews.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvReviews.FullRowSelect = true;
             this.lvReviews.Location = new System.Drawing.Point(3, 16);
@@ -641,6 +647,10 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Длина";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Ключевых слов";
             // 
             // groupBox3
             // 
@@ -894,22 +904,14 @@
             // menuReview
             // 
             this.menuReview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnExtractFacts,
             this.btnSelectAll,
-            this.btnDeleteSelected,
+            this.выделенноеToolStripMenuItem,
             this.toolStripMenuItem2,
             this.btnLoadReview,
             this.toolStripMenuItem1,
             this.btnSettingsExtract});
             this.menuReview.Name = "menuReview";
-            this.menuReview.Size = new System.Drawing.Size(189, 126);
-            // 
-            // btnExtractFacts
-            // 
-            this.btnExtractFacts.Name = "btnExtractFacts";
-            this.btnExtractFacts.Size = new System.Drawing.Size(188, 22);
-            this.btnExtractFacts.Text = "Извлечь факты";
-            this.btnExtractFacts.Click += new System.EventHandler(this.btnExtractFacts_Click);
+            this.menuReview.Size = new System.Drawing.Size(189, 104);
             // 
             // btnSelectAll
             // 
@@ -918,12 +920,29 @@
             this.btnSelectAll.Text = "Выделить всё";
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
+            // выделенноеToolStripMenuItem
+            // 
+            this.выделенноеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDeleteSelected,
+            this.btnExtractFacts,
+            this.btnCalcCountKeyWords});
+            this.выделенноеToolStripMenuItem.Name = "выделенноеToolStripMenuItem";
+            this.выделенноеToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.выделенноеToolStripMenuItem.Text = "Выделенное";
+            // 
             // btnDeleteSelected
             // 
             this.btnDeleteSelected.Name = "btnDeleteSelected";
-            this.btnDeleteSelected.Size = new System.Drawing.Size(188, 22);
-            this.btnDeleteSelected.Text = "Удалить выделенное";
+            this.btnDeleteSelected.Size = new System.Drawing.Size(227, 22);
+            this.btnDeleteSelected.Text = "Удалить";
             this.btnDeleteSelected.Click += new System.EventHandler(this.btnDeleteSelected_Click);
+            // 
+            // btnCalcCountKeyWords
+            // 
+            this.btnCalcCountKeyWords.Name = "btnCalcCountKeyWords";
+            this.btnCalcCountKeyWords.Size = new System.Drawing.Size(227, 22);
+            this.btnCalcCountKeyWords.Text = "Посчитать ключевые слова";
+            this.btnCalcCountKeyWords.Click += new System.EventHandler(this.btnCalcCountKeyWords_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -946,7 +965,7 @@
             // 
             this.btnSettingsExtract.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItem1,
-            this.cbDeleteStopWords});
+            this.извлечениеФактовToolStripMenuItem});
             this.btnSettingsExtract.Name = "btnSettingsExtract";
             this.btnSettingsExtract.Size = new System.Drawing.Size(188, 22);
             this.btnSettingsExtract.Text = "Параметры";
@@ -964,15 +983,6 @@
             this.cbHeadOwlClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHeadOwlClass.Name = "cbHeadOwlClass";
             this.cbHeadOwlClass.Size = new System.Drawing.Size(121, 23);
-            // 
-            // cbDeleteStopWords
-            // 
-            this.cbDeleteStopWords.Checked = true;
-            this.cbDeleteStopWords.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDeleteStopWords.Name = "cbDeleteStopWords";
-            this.cbDeleteStopWords.Size = new System.Drawing.Size(182, 22);
-            this.cbDeleteStopWords.Text = "Удалять стоп-слова";
-            this.cbDeleteStopWords.Click += new System.EventHandler(this.cbDeleteStopWords_Click);
             // 
             // menuFacts
             // 
@@ -1015,16 +1025,50 @@
             // btnShowOntology
             // 
             this.btnShowOntology.Name = "btnShowOntology";
-            this.btnShowOntology.Size = new System.Drawing.Size(152, 22);
+            this.btnShowOntology.Size = new System.Drawing.Size(138, 22);
             this.btnShowOntology.Text = "Онтология";
             this.btnShowOntology.Click += new System.EventHandler(this.btnShowOntology_Click);
             // 
             // btnShowStopWords
             // 
             this.btnShowStopWords.Name = "btnShowStopWords";
-            this.btnShowStopWords.Size = new System.Drawing.Size(152, 22);
+            this.btnShowStopWords.Size = new System.Drawing.Size(138, 22);
             this.btnShowStopWords.Text = "Стоп-слова";
             this.btnShowStopWords.Click += new System.EventHandler(this.btnShowStopWords_Click);
+            // 
+            // btnExtractFacts
+            // 
+            this.btnExtractFacts.Name = "btnExtractFacts";
+            this.btnExtractFacts.Size = new System.Drawing.Size(227, 22);
+            this.btnExtractFacts.Text = "Извлечь факты";
+            this.btnExtractFacts.Click += new System.EventHandler(this.btnExtractFacts_Click);
+            // 
+            // извлечениеФактовToolStripMenuItem
+            // 
+            this.извлечениеФактовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cbDeleteStopWords,
+            this.cbToLowerTextReview});
+            this.извлечениеФактовToolStripMenuItem.Name = "извлечениеФактовToolStripMenuItem";
+            this.извлечениеФактовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.извлечениеФактовToolStripMenuItem.Text = "Извлечение фактов";
+            // 
+            // cbDeleteStopWords
+            // 
+            this.cbDeleteStopWords.Checked = true;
+            this.cbDeleteStopWords.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDeleteStopWords.Name = "cbDeleteStopWords";
+            this.cbDeleteStopWords.Size = new System.Drawing.Size(249, 22);
+            this.cbDeleteStopWords.Text = "Удалять стоп-слова";
+            this.cbDeleteStopWords.Click += new System.EventHandler(this.cbDeleteStopWords_Click);
+            // 
+            // cbToLowerTextReview
+            // 
+            this.cbToLowerTextReview.Checked = true;
+            this.cbToLowerTextReview.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbToLowerTextReview.Name = "cbToLowerTextReview";
+            this.cbToLowerTextReview.Size = new System.Drawing.Size(249, 22);
+            this.cbToLowerTextReview.Text = "Приводить к нижнему регистру";
+            this.cbToLowerTextReview.Click += new System.EventHandler(this.cbToLowerTextReview_Click);
             // 
             // Aggregator
             // 
@@ -1033,7 +1077,7 @@
             this.ClientSize = new System.Drawing.Size(840, 459);
             this.Controls.Add(this.tcMainTabs);
             this.Name = "Aggregator";
-            this.Text = "Агрегатор";
+            this.Text = "Агрегатор 2000";
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ShowMenuSettings);
             this.tcMainTabs.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -1146,13 +1190,11 @@
         private System.Windows.Forms.TreeView tvFacts;
         private System.Windows.Forms.TextBox tbTextReview;
         private System.Windows.Forms.ContextMenuStrip menuReview;
-        private System.Windows.Forms.ToolStripMenuItem btnExtractFacts;
         private System.Windows.Forms.ToolStripMenuItem btnSelectAll;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem btnSettingsExtract;
         private System.Windows.Forms.ToolStripMenuItem menuItem1;
         private System.Windows.Forms.ToolStripComboBox cbHeadOwlClass;
-        private System.Windows.Forms.ToolStripMenuItem cbDeleteStopWords;
         private System.Windows.Forms.ToolStripMenuItem btnLoadReview;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -1174,7 +1216,6 @@
         private System.Windows.Forms.ListBox lbReviews;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.ListBox lbErrors;
-        private System.Windows.Forms.ToolStripMenuItem btnDeleteSelected;
         private System.Windows.Forms.ContextMenuStrip menuFacts;
         private System.Windows.Forms.ToolStripMenuItem btnExpandFacts;
         private System.Windows.Forms.ToolStripMenuItem btnCollapseFacts;
@@ -1182,5 +1223,13 @@
         private System.Windows.Forms.ToolStripMenuItem окнаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnShowOntology;
         private System.Windows.Forms.ToolStripMenuItem btnShowStopWords;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ToolStripMenuItem выделенноеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteSelected;
+        private System.Windows.Forms.ToolStripMenuItem btnCalcCountKeyWords;
+        private System.Windows.Forms.ToolStripMenuItem btnExtractFacts;
+        private System.Windows.Forms.ToolStripMenuItem извлечениеФактовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cbDeleteStopWords;
+        private System.Windows.Forms.ToolStripMenuItem cbToLowerTextReview;
     }
 }

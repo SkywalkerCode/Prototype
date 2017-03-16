@@ -74,8 +74,10 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
         <HasKeyWord>Застройщик</HasKeyWord>
         <HasKeyWord>Ответственный</HasKeyWord>
+        <HasKeyWord>ПЗСП</HasKeyWord>
         <HasKeyWord>Подрядчик</HasKeyWord>
         <HasKeyWord>Строитель</HasKeyWord>
+        <HasKeyWord>трест</HasKeyWord>
         <HasScript>AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;

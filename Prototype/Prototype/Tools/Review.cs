@@ -16,6 +16,7 @@ namespace Prototype.Tools
         private List<Fact> facts;
         private List<TreeNode> nodes;
         private bool factsExtracted;
+        private int countKeyWords;
 
         public Review(string text, string uri)
         {
@@ -24,6 +25,7 @@ namespace Prototype.Tools
             this.uri = uri;
             factsExtracted = false;
             nodes = new List<TreeNode>();
+            countKeyWords = -1;
         }
 
         public string URI
@@ -47,6 +49,14 @@ namespace Prototype.Tools
             get
             {
                 return facts.Count;
+            }
+        }
+
+        public int CountKeyWords
+        {
+            get
+            {
+                return countKeyWords;
             }
         }
 
@@ -74,12 +84,56 @@ namespace Prototype.Tools
             }
         }
 
-        public void Add(Fact fact)
+        public void CalcCountKeyWords(List<string> keyWords)
         {
-            this.facts.Add(fact);
-        } // удалить после..
+            countKeyWords = 0;
+            string lowText = text.ToLower();
+            char[] vowels = { 'а', 'е', 'ё', 'о', 'у', 'и', 'э', 'ю', 'я', 'ы' };
+            foreach (string word in keyWords)
+            {
+                string lowWord = word.ToLower();
+                if (vowels.Contains(lowWord[lowWord.Length - 1]))
+                {
+                    lowWord = lowWord.Remove(lowWord.Length - 1, 1);
+                }
+                if (lowText.Contains(lowWord))
+                {
+                    countKeyWords++;
+                }
+            }
+        }
 
-        public void ExtractFacts(OwlClass owlClass)
+        public void ExtractFacts(OwlClass owlClass, bool toLower, List<string> stopWords)
+        {
+            string thisText = this.text.Replace("\r\n", "; ");
+            string text = "";
+            char[] punctuation = { '!', ',', '.', '?', ';', ' ' };
+            for (int i = 0; i < thisText.Length; i++)
+            {
+                if (Char.IsLetterOrDigit(thisText[i]) || punctuation.Contains(thisText[i]))
+                {
+                    text += thisText[i];
+                }
+            }
+            text = toLower ? text.ToLower() : text;
+            foreach (string word in stopWords)
+            {
+                text = text.Replace(word.ToLower(), " ");
+            }
+            while (text.Contains("  "))
+            {
+                text = text.Replace("  ", " ");
+            }
+            MainExtractFacts(owlClass, text);
+        }
+
+        public void ExtractFacts(OwlClass owlClass, bool toLower)
+        {
+            string thisText = this.text.Replace("\r\n", "; ");
+            MainExtractFacts(owlClass, toLower ? thisText.ToLower() : thisText);
+        }
+
+        private void MainExtractFacts(OwlClass owlClass, string text)
         {
             if (factsExtracted) return;
             string owlClassName = OntologyForm.ConvertNameNode(owlClass);
@@ -90,7 +144,7 @@ namespace Prototype.Tools
                 TreeNode nodeIndividual = new TreeNode(owlIndividualName);
                 try
                 {
-                    ExtractFactsFromIndividual(owlIndividual, nodeIndividual);
+                    ExtractFactsFromIndividual(owlIndividual, nodeIndividual, text);
                     nodes.Add(nodeIndividual);
                 }
                 catch (Exception exception)
@@ -101,7 +155,7 @@ namespace Prototype.Tools
             factsExtracted = true;
         }
 
-        private void ExtractFactsFromIndividual(OwlIndividual owlIndividual, TreeNode nodeIndividual)
+        private void ExtractFactsFromIndividual(OwlIndividual owlIndividual, TreeNode nodeIndividual, string text)
         {
             if (owlIndividual is OwlIndividual)
             {
@@ -126,7 +180,7 @@ namespace Prototype.Tools
                         table = attribute.ID;
                     }
                 }
-                foreach (string fact in GetFacts(script, keyWords))
+                foreach (string fact in GetFacts(script, keyWords, text))
                 {
                     facts.Add(new Fact(fact, table));
                     nodeIndividual.Nodes.Add(fact);
@@ -134,7 +188,7 @@ namespace Prototype.Tools
             }
         }
 
-        private List<string> GetFacts(string script, List<string> keyWords)
+        private List<string> GetFacts(string script, List<string> keyWords, string text)
         {
             if (script == "")
             {

@@ -129,7 +129,7 @@ namespace Prototype.SocialNetwork
                         {
                             foreach (Comment comment in GetComments(group, topic, dateStart, dateFinish))
                             {
-                                string text = comment.Text;
+                                string text = CorrectingText(comment.Text);
                                 string uri = String.Format("vk.com/topic{0}_{1}?post={2}", group.Id, topic.Id, comment.Id);
                                 Reviews.Add(new Review(text, uri));
                             }
@@ -270,6 +270,18 @@ namespace Prototype.SocialNetwork
                     comment.Date.Value.Month,
                     comment.Date.Value.Day
                     );
+        }
+
+        private string CorrectingText(string text)
+        {
+            if (text.Length > 0)
+            {
+                if (text[0] == '[')
+                {
+                    return text.Remove(0, text.IndexOf(']') + 1);
+                }
+            }
+            return text;
         }
     }
 }

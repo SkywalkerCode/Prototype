@@ -25,3 +25,4 @@ D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\VkNet.xml
 D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\Prototype\Prototype\Prototype\bin\Debug\AngleSharp.xml
 D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.Forms.Window.Aggregator.resources
+D:\GitHub\Prototype\Prototype\Prototype\obj\Debug\Prototype.csprojResolveAssemblyReference.cache

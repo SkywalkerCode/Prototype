@@ -42,16 +42,16 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbRequest = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lbSpam = new System.Windows.Forms.ListBox();
+            this.lbKeyWords = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.tbSpam = new System.Windows.Forms.TextBox();
+            this.tbKeyWords = new System.Windows.Forms.TextBox();
             this.gbSearchComments = new System.Windows.Forms.GroupBox();
             this.btnSearchComments = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbKeyWordsOff = new System.Windows.Forms.RadioButton();
+            this.rbKeyWordsOn = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cbGroup = new System.Windows.Forms.CheckBox();
             this.cbTopics = new System.Windows.Forms.CheckBox();
@@ -99,6 +99,7 @@
             this.btnSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.выделенноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExtractFacts = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCalcCountKeyWords = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLoadReview = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +107,9 @@
             this.btnSettingsExtract = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cbHeadOwlClass = new System.Windows.Forms.ToolStripComboBox();
+            this.извлечениеФактовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbDeleteStopWords = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbToLowerTextReview = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFacts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnExpandFacts = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCollapseFacts = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,10 +117,6 @@
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowOntology = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowStopWords = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExtractFacts = new System.Windows.Forms.ToolStripMenuItem();
-            this.извлечениеФактовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbDeleteStopWords = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbToLowerTextReview = new System.Windows.Forms.ToolStripMenuItem();
             this.tcMainTabs.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -281,7 +281,8 @@
             this.lbRequests.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbRequests.FormattingEnabled = true;
             this.lbRequests.Items.AddRange(new object[] {
-            "permzsp"});
+            "permzsp",
+            "mytestgroupreviews"});
             this.lbRequests.Location = new System.Drawing.Point(3, 35);
             this.lbRequests.Name = "lbRequests";
             this.lbRequests.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
@@ -318,27 +319,28 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.lbSpam);
+            this.groupBox5.Controls.Add(this.lbKeyWords);
             this.groupBox5.Controls.Add(this.panel5);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Enabled = false;
             this.groupBox5.Location = new System.Drawing.Point(0, 0);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(313, 279);
             this.groupBox5.TabIndex = 42;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Спам-фильтр";
+            this.groupBox5.Text = "Ключевые слова";
             // 
-            // lbSpam
+            // lbKeyWords
             // 
-            this.lbSpam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbSpam.FormattingEnabled = true;
-            this.lbSpam.Location = new System.Drawing.Point(3, 35);
-            this.lbSpam.Name = "lbSpam";
-            this.lbSpam.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbSpam.Size = new System.Drawing.Size(307, 241);
-            this.lbSpam.TabIndex = 43;
-            this.lbSpam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RemoveSelectedItemsFromListBox);
+            this.lbKeyWords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbKeyWords.FormattingEnabled = true;
+            this.lbKeyWords.Items.AddRange(new object[] {
+            "медовый"});
+            this.lbKeyWords.Location = new System.Drawing.Point(3, 35);
+            this.lbKeyWords.Name = "lbKeyWords";
+            this.lbKeyWords.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbKeyWords.Size = new System.Drawing.Size(307, 241);
+            this.lbKeyWords.TabIndex = 43;
+            this.lbKeyWords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RemoveSelectedItemsFromListBox);
             // 
             // panel5
             // 
@@ -351,21 +353,21 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.tbSpam);
+            this.panel6.Controls.Add(this.tbKeyWords);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(307, 20);
             this.panel6.TabIndex = 3;
             // 
-            // tbSpam
+            // tbKeyWords
             // 
-            this.tbSpam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbSpam.Location = new System.Drawing.Point(0, 0);
-            this.tbSpam.Name = "tbSpam";
-            this.tbSpam.Size = new System.Drawing.Size(307, 20);
-            this.tbSpam.TabIndex = 5;
-            this.tbSpam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddNewSpam);
+            this.tbKeyWords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbKeyWords.Location = new System.Drawing.Point(0, 0);
+            this.tbKeyWords.Name = "tbKeyWords";
+            this.tbKeyWords.Size = new System.Drawing.Size(307, 20);
+            this.tbKeyWords.TabIndex = 5;
+            this.tbKeyWords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddNewKeyWord);
             // 
             // gbSearchComments
             // 
@@ -404,38 +406,37 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.radioButton2);
-            this.groupBox10.Controls.Add(this.radioButton1);
+            this.groupBox10.Controls.Add(this.rbKeyWordsOff);
+            this.groupBox10.Controls.Add(this.rbKeyWordsOn);
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox10.Enabled = false;
             this.groupBox10.Location = new System.Drawing.Point(444, 16);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(215, 70);
             this.groupBox10.TabIndex = 13;
             this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Удаление спама";
+            this.groupBox10.Text = "Поиск с ключевыми словами";
             // 
-            // radioButton2
+            // rbKeyWordsOff
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(52, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Выкл";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbKeyWordsOff.AutoSize = true;
+            this.rbKeyWordsOff.Location = new System.Drawing.Point(6, 42);
+            this.rbKeyWordsOff.Name = "rbKeyWordsOff";
+            this.rbKeyWordsOff.Size = new System.Drawing.Size(52, 17);
+            this.rbKeyWordsOff.TabIndex = 3;
+            this.rbKeyWordsOff.Text = "Выкл";
+            this.rbKeyWordsOff.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbKeyWordsOn
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.Text = "Вкл";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbKeyWordsOn.AutoSize = true;
+            this.rbKeyWordsOn.Checked = true;
+            this.rbKeyWordsOn.Location = new System.Drawing.Point(6, 19);
+            this.rbKeyWordsOn.Name = "rbKeyWordsOn";
+            this.rbKeyWordsOn.Size = new System.Drawing.Size(44, 17);
+            this.rbKeyWordsOn.TabIndex = 2;
+            this.rbKeyWordsOn.TabStop = true;
+            this.rbKeyWordsOn.Text = "Вкл";
+            this.rbKeyWordsOn.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -534,7 +535,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(137, 20);
             this.dtpStartDate.TabIndex = 5;
-            this.dtpStartDate.Value = new System.DateTime(2017, 3, 13, 17, 7, 1, 0);
+            this.dtpStartDate.Value = new System.DateTime(2017, 3, 21, 0, 0, 0, 0);
             // 
             // tabPage1
             // 
@@ -937,6 +938,13 @@
             this.btnDeleteSelected.Text = "Удалить";
             this.btnDeleteSelected.Click += new System.EventHandler(this.btnDeleteSelected_Click);
             // 
+            // btnExtractFacts
+            // 
+            this.btnExtractFacts.Name = "btnExtractFacts";
+            this.btnExtractFacts.Size = new System.Drawing.Size(227, 22);
+            this.btnExtractFacts.Text = "Извлечь факты";
+            this.btnExtractFacts.Click += new System.EventHandler(this.btnExtractFacts_Click);
+            // 
             // btnCalcCountKeyWords
             // 
             this.btnCalcCountKeyWords.Name = "btnCalcCountKeyWords";
@@ -983,6 +991,33 @@
             this.cbHeadOwlClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHeadOwlClass.Name = "cbHeadOwlClass";
             this.cbHeadOwlClass.Size = new System.Drawing.Size(121, 23);
+            // 
+            // извлечениеФактовToolStripMenuItem
+            // 
+            this.извлечениеФактовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cbDeleteStopWords,
+            this.cbToLowerTextReview});
+            this.извлечениеФактовToolStripMenuItem.Name = "извлечениеФактовToolStripMenuItem";
+            this.извлечениеФактовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.извлечениеФактовToolStripMenuItem.Text = "Извлечение фактов";
+            // 
+            // cbDeleteStopWords
+            // 
+            this.cbDeleteStopWords.Checked = true;
+            this.cbDeleteStopWords.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDeleteStopWords.Name = "cbDeleteStopWords";
+            this.cbDeleteStopWords.Size = new System.Drawing.Size(249, 22);
+            this.cbDeleteStopWords.Text = "Удалять стоп-слова";
+            this.cbDeleteStopWords.Click += new System.EventHandler(this.cbDeleteStopWords_Click);
+            // 
+            // cbToLowerTextReview
+            // 
+            this.cbToLowerTextReview.Checked = true;
+            this.cbToLowerTextReview.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbToLowerTextReview.Name = "cbToLowerTextReview";
+            this.cbToLowerTextReview.Size = new System.Drawing.Size(249, 22);
+            this.cbToLowerTextReview.Text = "Приводить к нижнему регистру";
+            this.cbToLowerTextReview.Click += new System.EventHandler(this.cbToLowerTextReview_Click);
             // 
             // menuFacts
             // 
@@ -1035,40 +1070,6 @@
             this.btnShowStopWords.Size = new System.Drawing.Size(138, 22);
             this.btnShowStopWords.Text = "Стоп-слова";
             this.btnShowStopWords.Click += new System.EventHandler(this.btnShowStopWords_Click);
-            // 
-            // btnExtractFacts
-            // 
-            this.btnExtractFacts.Name = "btnExtractFacts";
-            this.btnExtractFacts.Size = new System.Drawing.Size(227, 22);
-            this.btnExtractFacts.Text = "Извлечь факты";
-            this.btnExtractFacts.Click += new System.EventHandler(this.btnExtractFacts_Click);
-            // 
-            // извлечениеФактовToolStripMenuItem
-            // 
-            this.извлечениеФактовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cbDeleteStopWords,
-            this.cbToLowerTextReview});
-            this.извлечениеФактовToolStripMenuItem.Name = "извлечениеФактовToolStripMenuItem";
-            this.извлечениеФактовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.извлечениеФактовToolStripMenuItem.Text = "Извлечение фактов";
-            // 
-            // cbDeleteStopWords
-            // 
-            this.cbDeleteStopWords.Checked = true;
-            this.cbDeleteStopWords.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDeleteStopWords.Name = "cbDeleteStopWords";
-            this.cbDeleteStopWords.Size = new System.Drawing.Size(249, 22);
-            this.cbDeleteStopWords.Text = "Удалять стоп-слова";
-            this.cbDeleteStopWords.Click += new System.EventHandler(this.cbDeleteStopWords_Click);
-            // 
-            // cbToLowerTextReview
-            // 
-            this.cbToLowerTextReview.Checked = true;
-            this.cbToLowerTextReview.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbToLowerTextReview.Name = "cbToLowerTextReview";
-            this.cbToLowerTextReview.Size = new System.Drawing.Size(249, 22);
-            this.cbToLowerTextReview.Text = "Приводить к нижнему регистру";
-            this.cbToLowerTextReview.Click += new System.EventHandler(this.cbToLowerTextReview_Click);
             // 
             // Aggregator
             // 
@@ -1176,15 +1177,15 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tbRequest;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ListBox lbSpam;
+        private System.Windows.Forms.ListBox lbKeyWords;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox tbSpam;
+        private System.Windows.Forms.TextBox tbKeyWords;
         private System.Windows.Forms.GroupBox gbSearchComments;
         private System.Windows.Forms.Button btnSearchComments;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbKeyWordsOff;
+        private System.Windows.Forms.RadioButton rbKeyWordsOn;
         private System.Windows.Forms.ToolStripMenuItem btnReloadAll;
         private System.Windows.Forms.ListView lvReviews;
         private System.Windows.Forms.TreeView tvFacts;

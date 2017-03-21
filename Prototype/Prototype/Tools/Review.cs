@@ -103,6 +103,14 @@ namespace Prototype.Tools
             }
         }
 
+        public bool Contains(List<string> keyWords)
+        {
+            if (keyWords.Count == 0) return true;
+            string script = "#encoding \"utf-8\"\nEntity-> [ENTITY];";
+            string text = this.text.ToLower();
+            return (GetFacts(script, keyWords, text).Count > 0);
+        }
+
         public void ExtractFacts(OwlClass owlClass, bool toLower, List<string> stopWords)
         {
             string thisText = this.text.Replace("\r\n", "; ");
@@ -198,13 +206,13 @@ namespace Prototype.Tools
             {
                 throw new Exception("Ключевые слова отсутствуют!");
             }
-            string entity = "#encoding \"utf-8\"\n#GRAMMAR_ROOT S\nEntity -> ";
+            string entity = "";
             List<string> listFacts = new List<string>();
             foreach (string synonym in keyWords)
             {
                 entity += String.Format("'{0}' | ", synonym.ToLower());
             }
-            string pattern = entity.Remove(entity.Length - 3) + ";\n" + script;
+            string pattern = script.Replace("[ENTITY]", entity.Remove(entity.Length - 3));
             File.WriteAllText(@"Script.cxx", pattern);
             File.WriteAllText(@"Input.txt", text);
             using (Process Parsing = new Process())
@@ -228,8 +236,8 @@ namespace Prototype.Tools
             File.Delete(@"Script.cxx");
             File.Delete(@"PrettyOutput.html");
             File.Delete(@"Input.txt");
-            File.Delete(@"Dictionary.gzt.bin");
-            File.Delete(@"Script.bin");
+            //File.Delete(@"Dictionary.gzt.bin");
+            //File.Delete(@"Script.bin");
             return listFacts;
         }
 

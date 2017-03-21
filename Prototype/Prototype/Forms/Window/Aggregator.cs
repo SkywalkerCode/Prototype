@@ -48,11 +48,11 @@ namespace Prototype.Forms.Window
             }
         }
 
-        private void AddNewSpam(object sender, KeyEventArgs e)
+        private void AddNewKeyWord(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
-                lbSpam.Items.Add(tbSpam.Text);
+                lbKeyWords.Items.Add(tbKeyWords.Text);
             }
         }
 
@@ -172,18 +172,40 @@ namespace Prototype.Forms.Window
                 {
                     requests.Add(item);
                 }
+                List<string> keyWords = new List<string>();
+                foreach (string item in lbKeyWords.Items)
+                {
+                    keyWords.Add(item);
+                }
                 foreach (ISocialNetwork netWork in SocialNetworks)
                 {
                     if (netWork.IsAuthorized)
                     {
+                        List<Review> allReviews = new List<Review>();
+                        netWork.Requests.Clear();
                         netWork.Requests.AddRange(requests);
                         if (cbGroup.Checked)
                         {
-                            Reviews.AddRange(netWork.GetReviewsFromGroups(dtpStartDate.Value.Date, dtpEndDate.Value.Date));
+                            allReviews.AddRange(netWork.GetReviewsFromGroups(dtpStartDate.Value.Date, dtpEndDate.Value.Date));
                         }
                         if (cbTopics.Checked)
                         {
-                            Reviews.AddRange(netWork.GetReviewsFromTopics(dtpStartDate.Value.Date, dtpEndDate.Value.Date));
+                            allReviews.AddRange(netWork.GetReviewsFromTopics(dtpStartDate.Value.Date, dtpEndDate.Value.Date));
+                        }
+
+                        if (rbKeyWordsOn.Checked)
+                        {
+                            foreach (Review review in allReviews)
+                            {
+                                if (review.Contains(keyWords))
+                                {
+                                    Reviews.Add(review);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Reviews.AddRange(allReviews);
                         }
                     }
                 }
@@ -213,6 +235,7 @@ namespace Prototype.Forms.Window
             }
             lvReviews.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lvReviews.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            SelectedReview();
         }
 
         private void lvReviews_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,6 +254,7 @@ namespace Prototype.Forms.Window
             {
                 Review review = (Review)lvReviews.SelectedItems[0].Tag;
                 tbTextReview.Text = review.Text;
+                tvFacts.Nodes.Clear();
                 tvFacts.Nodes.AddRange(review.Nodes);
                 tvFacts.ExpandAll();
             }

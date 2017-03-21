@@ -72,24 +72,24 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Застройщик">
         <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
-        <HasKeyWord>Застройщик</HasKeyWord>
-        <HasKeyWord>Ответственный</HasKeyWord>
-        <HasKeyWord>ПЗСП</HasKeyWord>
-        <HasKeyWord>Подрядчик</HasKeyWord>
-        <HasKeyWord>Строитель</HasKeyWord>
+        <HasKeyWord>застройщик</HasKeyWord>
+        <HasKeyWord>ответственный</HasKeyWord>
+        <HasKeyWord>персонал</HasKeyWord>
+        <HasKeyWord>петрострой</HasKeyWord>
+        <HasKeyWord>пзсп</HasKeyWord>
+        <HasKeyWord>подрядчик</HasKeyWord>
+        <HasKeyWord>строитель</HasKeyWord>
         <HasKeyWord>трест</HasKeyWord>
-        <HasScript>AdjCoord -&gt; Adj;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
-S1 -&gt; Entity;
-S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
-S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
-S4 -&gt; S1 | S2 | S3;
-S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
-S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
-S7 -&gt; S5 | S6;
-S -&gt; (Prep) S7;</HasScript>
+        <HasKeyWord>трест 14</HasKeyWord>
+        <HasKeyWord>трест № 14</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+Abbr -&gt; &apos;оао&apos; | &apos;ооо&apos; | &apos;зао&apos; | &apos;пао&apos; | &apos;ск&apos; | &apos;одо&apos; | &apos;пк&apos; | &apos;ип&apos;;
+KeyWord -&gt; [ENTITY];
+NameCompany -&gt; Abbr Word;
+W1 -&gt; NameCompany | Word;
+Fact1 -&gt; KeyWord&lt;gnc-agr[1]&gt; Adj&lt;gnc-agr[1], gnc-agr[2]&gt; (W1&lt;gnc-agr[2]&gt;);
+Fact2 -&gt; Adj&lt;gnc-agr[1]&gt; KeyWord&lt;gnc-agr[1]&gt;;
+Result -&gt; Fact1 | Fact2;</HasScript>
         <HasTable>Застройщик</HasTable>
     </owl:NamedIndividual>
     
@@ -100,8 +100,10 @@ S -&gt; (Prep) S7;</HasScript>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Инфраструктура">
         <rdf:type rdf:resource="http://www.semanticweb.org/anakin/ontologies/2017/2/untitled-ontology-47#Отзыв"/>
         <HasKeyWord>Инфраструктура</HasKeyWord>
-        <HasKeyWord>Развитая</HasKeyWord>
-        <HasScript>AdjCoord -&gt; Adj;
+        <HasKeyWord>развитая</HasKeyWord>
+        <HasScript>#encoding &quot;utf-8&quot;
+Entity -&gt; [ENTITY];
+AdjCoord -&gt; Adj;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
 AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
 MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
@@ -112,7 +114,8 @@ S4 -&gt; S1 | S2 | S3;
 S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
 S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
 S7 -&gt; S5 | S6;
-S -&gt; (Prep) S7;</HasScript>
+S8 -&gt; S7 Noun;
+S -&gt; (Prep) S7 | S8;</HasScript>
         <HasTable>Инфраструктура</HasTable>
     </owl:NamedIndividual>
     
@@ -125,6 +128,7 @@ S -&gt; (Prep) S7;</HasScript>
         <HasKeyWord>балкон</HasKeyWord>
         <HasKeyWord>батарея</HasKeyWord>
         <HasKeyWord>ванная</HasKeyWord>
+        <HasKeyWord>внутренняя отделка</HasKeyWord>
         <HasKeyWord>гардероб</HasKeyWord>
         <HasKeyWord>дверь</HasKeyWord>
         <HasKeyWord>зал</HasKeyWord>
@@ -148,18 +152,15 @@ S -&gt; (Prep) S7;</HasScript>
         <HasKeyWord>стеклопакет</HasKeyWord>
         <HasKeyWord>стены</HasKeyWord>
         <HasKeyWord>туалет</HasKeyWord>
-        <HasScript>AdjCoord -&gt; Adj;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
-S1 -&gt; Entity;
-S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
-S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
-S4 -&gt; S1 | S2 | S3;
-S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
-S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
-S7 -&gt; S5 | S6;
-S -&gt; (Prep) S7;</HasScript>
+        <HasScript>#encoding &quot;utf-8&quot;
+KeyWord -&gt; [ENTITY];
+AdjChar -&gt; &apos;хороший&apos; | &apos;плохой&apos; | &apos;отличный&apos; | &apos;ужасный&apos; | &apos;классный&apos; | &apos;великолепный&apos; | &apos;невероятный&apos; | &apos;красивый&apos; | &apos;прочный&apos; | &apos;качественный&apos; | &apos;современный&apos; | &apos;старый&apos;;
+AdjN -&gt; (Adj&lt;gnc-agr[1]&gt;) AdjChar&lt;gnc-agr[1]&gt; (Adj&lt;gnc-agr[1]&gt;);
+Adj7 -&gt; (Adv) AdjN (Adv);
+Fact1 -&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) KeyWord&lt;gnc-agr[1]&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) Adj7&lt;gnc-agr[1], gnc-agr[2]&gt; (Noun&lt;gnc-agr[2]&gt;);
+Fact2 -&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) Adj7&lt;gnc-agr[1]&gt; (Noun&lt;gnc-agr[2]&gt;) KeyWord&lt;gnc-agr[1]&gt; (Noun&lt;gnc-agr[2]&gt;);
+Fact3 -&gt; Noun &apos;без&apos; KeyWord | KeyWord &apos;без&apos; Noun;
+Result -&gt; Fact1 | Fact2 | Fact3;</HasScript>
         <HasTable>Отделка</HasTable>
     </owl:NamedIndividual>
     
@@ -172,18 +173,13 @@ S -&gt; (Prep) S7;</HasScript>
         <HasKeyWord>Макрорайон</HasKeyWord>
         <HasKeyWord>Микрорайон</HasKeyWord>
         <HasKeyWord>Район</HasKeyWord>
-        <HasScript>AdjCoord -&gt; Adj;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
-S1 -&gt; Entity;
-S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
-S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
-S4 -&gt; S1 | S2 | S3;
-S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
-S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
-S7 -&gt; S5 | S6;
-S -&gt; (Prep) S7;</HasScript>
+        <HasScript>#encoding &quot;utf-8&quot;
+KeyWord -&gt; [ENTITY];
+Adj7 -&gt; (Adv) Adj (Adv);
+Fact1 -&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) KeyWord&lt;gnc-agr[1]&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) Adj7&lt;gnc-agr[1], gnc-agr[2]&gt; (Noun&lt;gnc-agr[2]&gt;);
+Fact2 -&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) Adj7&lt;gnc-agr[1]&gt; (Noun&lt;gnc-agr[2]&gt;) KeyWord&lt;gnc-agr[1]&gt; (Noun&lt;gnc-agr[2]&gt;);
+Fact3 -&gt; Noun Prep&lt;gnc-agr[1]&gt; KeyWord&lt;gnc-agr[1]&gt; | KeyWord&lt;gnc-agr[1]&gt; Prep&lt;gnc-agr[1]&gt; Noun;
+Result -&gt; Fact1 | Fact2 | Fact3;</HasScript>
         <HasTable>Район</HasTable>
     </owl:NamedIndividual>
     
@@ -200,18 +196,13 @@ S -&gt; (Prep) S7;</HasScript>
         <HasKeyWord>Расценка</HasKeyWord>
         <HasKeyWord>Стоимость</HasKeyWord>
         <HasKeyWord>Цена</HasKeyWord>
-        <HasScript>AdjCoord -&gt; Adj;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;,&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-AdjCoord -&gt; AdjCoord&lt;gnc-agr[1]&gt; &apos;и&apos; Adj&lt;gnc-agr[1], l-reg&gt;;
-MegaWord -&gt; Word | Word Prep&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; | Prep Word&lt;l-reg&gt; Prep&lt;l-reg&gt;;
-S1 -&gt; Entity;
-S2 -&gt; Entity&lt;gnc-agr[1]&gt; (Prep) AdjCoord&lt;gnc-agr[1], l-reg&gt; | AdjCoord&lt;gnc-agr[2]&gt; (Prep) Entity&lt;gnc-agr[2], l-reg&gt; | AdjCoord&lt;gnc-agr[3]&gt; (Prep) Entity&lt;gnc-agr[3]&gt; (Prep) AdjCoord&lt;gnc-agr[3], l-reg&gt;;
-S3 -&gt; Verb (Verb&lt;l-reg&gt;) (Prep) Entity&lt;l-reg&gt; | Entity (Prep) Verb&lt;l-reg&gt; (Verb&lt;l-reg&gt;);
-S4 -&gt; S1 | S2 | S3;
-S5 -&gt; Word&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) Word&lt;gnc-agr[2], l-reg&gt; | Word&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) Word&lt;gnc-agr[3], l-reg&gt;;
-S6 -&gt; MegaWord&lt;gnc-agr[1]&gt; (Prep) S4&lt;gnc-agr[1], l-reg&gt; | S4&lt;gnc-agr[2]&gt; (Prep) MegaWord&lt;gnc-agr[2], l-reg&gt; | MegaWord&lt;gnc-agr[3]&gt; (Prep) S4&lt;gnc-agr[3], l-reg&gt; (Prep) MegaWord&lt;gnc-agr[3], l-reg&gt;;
-S7 -&gt; S5 | S6;
-S -&gt; (Prep) S7;</HasScript>
+        <HasScript>#encoding &quot;utf-8&quot;
+KeyWord -&gt; [ENTITY];
+Adj7 -&gt; (Adv) Adj (Adv);
+Fact1 -&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) KeyWord&lt;gnc-agr[1]&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) Adj7&lt;gnc-agr[1], gnc-agr[2]&gt; (Noun&lt;gnc-agr[2]&gt;);
+Fact2 -&gt; (Prep) (Noun&lt;gnc-agr[2]&gt;) Adj7&lt;gnc-agr[1]&gt; (Noun&lt;gnc-agr[2]&gt;) KeyWord&lt;gnc-agr[1]&gt; (Noun&lt;gnc-agr[2]&gt;);
+Fact3 -&gt; Noun Prep&lt;gnc-agr[1]&gt; KeyWord&lt;gnc-agr[1]&gt; | KeyWord&lt;gnc-agr[1]&gt; Prep&lt;gnc-agr[1]&gt; Noun;
+Result -&gt; Fact1 | Fact2 | Fact3;</HasScript>
         <HasTable>Цена</HasTable>
     </owl:NamedIndividual>
 </rdf:RDF>
